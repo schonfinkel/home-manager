@@ -83,7 +83,7 @@ then this is set to
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/astroid.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/astroid.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-accounts.email.accounts._name_.astroid.extraConfig"></a><a class="term" href="options.html#opt-accounts.email.accounts._name_.astroid.extraConfig"><code class="option">accounts.email.accounts.&lt;name&gt;.astroid.extraConfig</code></a></span></dt><dd><p>Extra settings to add to this astroid account configuration.
-</p><p><span class="emphasis"><em>Type:</em></span> attribute set</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+</p><p><span class="emphasis"><em>Type:</em></span> attribute set of anythings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -1472,7 +1472,7 @@ message = Message from above
 <code class="filename">~/.config/alacritty/alacritty.yml</code>. See
 <a class="link" href="https://github.com/jwilm/alacritty/blob/master/alacritty.yml" target="_top">https://github.com/jwilm/alacritty/blob/master/alacritty.yml</a>
 for the default configuration.
-</p><p><span class="emphasis"><em>Type:</em></span> attribute set</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+</p><p><span class="emphasis"><em>Type:</em></span> YAML value</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -1662,23 +1662,16 @@ See <a class="link" href="https://github.com/astroidmail/astroid/wiki/Customizin
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/astroid.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/astroid.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.astroid.extraConfig"></a><a class="term" href="options.html#opt-programs.astroid.extraConfig"><code class="option">programs.astroid.extraConfig</code></a></span></dt><dd><p>JSON config that will override the default Astroid configuration.
-</p><p><span class="emphasis"><em>Type:</em></span> attribute set</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+</p><p><span class="emphasis"><em>Type:</em></span> JSON value</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
         }
     
-      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
-        
-        {
-        poll = 
-        {
-        interval = 0; 
-        }
-    ; 
-        }
-    
-      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/astroid.nix#blob-path" target="_top">
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">{
+  poll.interval = 0;
+}
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/astroid.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/astroid.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.astroid.pollScript"></a><a class="term" href="options.html#opt-programs.astroid.pollScript"><code class="option">programs.astroid.pollScript</code></a></span></dt><dd><p>Script to run to fetch/update mails.
 </p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
@@ -2090,7 +2083,7 @@ Can be used to specify extensions.
                     &lt;home-manager/modules/programs/beets.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.beets.settings"></a><a class="term" href="options.html#opt-programs.beets.settings"><code class="option">programs.beets.settings</code></a></span></dt><dd><p>Configuration written to
 <code class="filename">~/.config/beets/config.yaml</code>
-</p><p><span class="emphasis"><em>Type:</em></span> attribute set</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+</p><p><span class="emphasis"><em>Type:</em></span> YAML value</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -2150,48 +2143,49 @@ Add <code class="literal">_fg</code> for a foreground color and
 }
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/broot.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/broot.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.broot.verbs"></a><a class="term" href="options.html#opt-programs.broot.verbs"><code class="option">programs.broot.verbs</code></a></span></dt><dd><p>Define new verbs. The attribute name indicates how the verb is
-called by the user, with placeholders for arguments.
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.broot.verbs"></a><a class="term" href="options.html#opt-programs.broot.verbs"><code class="option">programs.broot.verbs</code></a></span></dt><dd><p>Define new verbs. For more information, see
+<a class="link" href="https://dystroy.org/broot/documentation/configuration/#verb-definition-attributes" target="_top">https://dystroy.org/broot/documentation/configuration/#verb-definition-attributes</a>.
 </p><p>
 The possible attributes are:
 </p><p>
-</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">execution</code> (mandatory)</span></dt><dd><p>how the verb is executed</p></dd><dt><span class="term"><code class="literal">shortcut</code> (optional)</span></dt><dd><p>an alternate way to call the verb (without
+</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">invocation</code> (optional)</span></dt><dd><p>how the verb is called by the user, with placeholders for arguments</p></dd><dt><span class="term"><code class="literal">execution</code> (mandatory)</span></dt><dd><p>how the verb is executed</p></dd><dt><span class="term"><code class="literal">key</code> (optional)</span></dt><dd><p>a keyboard key triggering execution</p></dd><dt><span class="term"><code class="literal">shortcut</code> (optional)</span></dt><dd><p>an alternate way to call the verb (without
     the arguments part)</p></dd><dt><span class="term"><code class="literal">leave_broot</code> (optional)</span></dt><dd><p>whether to quit broot on execution
     (default: <code class="literal">true</code>)</p></dd><dt><span class="term"><code class="literal">from_shell</code> (optional)</span></dt><dd><p>whether the verb must be executed from the
     parent shell (default:
     <code class="literal">false</code>)</p></dd></dl></div><p>
-</p><p><span class="emphasis"><em>Type:</em></span> attribute set of attribute set of boolean or stringss</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+</p><p><span class="emphasis"><em>Type:</em></span> list of attribute set of boolean or stringss</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        [
         
         {
-        create {subpath} = 
+        execution = ":parent"; invocation = "p"; 
+        }
+     
         {
-        execution = "\$EDITOR {directory}/{subpath}"; 
+        execution = "\$EDITOR {file}"; invocation = "edit"; shortcut = "e"; 
         }
-    ; edit = 
+     
         {
-        execution = "\$EDITOR {file}"; shortcut = "e"; 
+        execution = "\$EDITOR {directory}/{subpath}"; invocation = "create {subpath}"; 
         }
-    ; p = 
+     
         {
-        execution = ":parent"; 
+        execution = "less {file}"; invocation = "view"; 
         }
-    ; view = 
-        {
-        execution = "less {file}"; 
-        }
-    ; 
-        }
+     
+        ]
     
-      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">{
-  "p" = { execution = ":parent"; };
-  "edit" = { shortcut = "e"; execution = "$EDITOR {file}" ; };
-  "create {subpath}" = { execution = "$EDITOR {directory}/{subpath}"; };
-  "view" = { execution = "less {file}"; };
-  "blop {name}\\.{type}" = {
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">[
+  { invocation = "p"; execution = ":parent"; }
+  { invocation = "edit"; shortcut = "e"; execution = "$EDITOR {file}" ; }
+  { invocation = "create {subpath}"; execution = "$EDITOR {directory}/{subpath}"; }
+  { invocation = "view"; execution = "less {file}"; }
+  {
+    invocation = "blop {name}\\.{type}";
     execution = "/bin/mkdir {parent}/{type} &amp;&amp; /usr/bin/nvim {parent}/{type}/{name}.{type}";
     from_shell = true;
-  };
-}
+  }
+]
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/broot.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/broot.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.browserpass.enable"></a><a class="term" href="options.html#opt-programs.browserpass.enable"><code class="option">programs.browserpass.enable</code></a></span></dt><dd><p>Whether to enable the browserpass extension host application.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
@@ -2330,7 +2324,7 @@ for options.
 See
 <span class="citerefentry"><span class="refentrytitle">direnv.toml</span>(1)</span>.
 for the full list of options.
-</p><p><span class="emphasis"><em>Type:</em></span> attribute set</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+</p><p><span class="emphasis"><em>Type:</em></span> TOML value</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -2986,7 +2980,7 @@ matches. Allowed conditions are described in
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/git.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/git.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.git.includes._.contents"></a><a class="term" href="options.html#opt-programs.git.includes._.contents"><code class="option">programs.git.includes.*.contents</code></a></span></dt><dd><p>Configuration to include. If empty then a path must be given.
-</p><p><span class="emphasis"><em>Type:</em></span> attribute set</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+</p><p><span class="emphasis"><em>Type:</em></span> attribute set of anythings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -4671,7 +4665,7 @@ this option.
                     &lt;home-manager/modules/programs/matplotlib.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.matplotlib.config"></a><a class="term" href="options.html#opt-programs.matplotlib.config"><code class="option">programs.matplotlib.config</code></a></span></dt><dd><p>Add terms to the <code class="filename">matplotlibrc</code> file to
 control the default matplotlib behavior.
-</p><p><span class="emphasis"><em>Type:</em></span> attribute set</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+</p><p><span class="emphasis"><em>Type:</em></span> attribute set of anythings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -4765,7 +4759,7 @@ control the default matplotlib behavior.
         pkgs.mercurial
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/mercurial.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/mercurial.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.mercurial.aliases"></a><a class="term" href="options.html#opt-programs.mercurial.aliases"><code class="option">programs.mercurial.aliases</code></a></span></dt><dd><p>Mercurial aliases to define.</p><p><span class="emphasis"><em>Type:</em></span> attribute set</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.mercurial.aliases"></a><a class="term" href="options.html#opt-programs.mercurial.aliases"><code class="option">programs.mercurial.aliases</code></a></span></dt><dd><p>Mercurial aliases to define.</p><p><span class="emphasis"><em>Type:</em></span> attribute set of anythings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -4773,7 +4767,7 @@ control the default matplotlib behavior.
     
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/mercurial.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/mercurial.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.mercurial.extraConfig"></a><a class="term" href="options.html#opt-programs.mercurial.extraConfig"><code class="option">programs.mercurial.extraConfig</code></a></span></dt><dd><p>Additional configuration to add.</p><p><span class="emphasis"><em>Type:</em></span> attribute set or strings concatenated with "\n"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.mercurial.extraConfig"></a><a class="term" href="options.html#opt-programs.mercurial.extraConfig"><code class="option">programs.mercurial.extraConfig</code></a></span></dt><dd><p>Additional configuration to add.</p><p><span class="emphasis"><em>Type:</em></span> attribute set of anythings or strings concatenated with "\n"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -5140,7 +5134,7 @@ and loads it from the store via <span class="command"><strong>nvim -u /nix/store
 
 This option is mutually exclusive with <code class="varname">extraConfig</code>
 and <code class="varname">plugins</code>.
-</p><p><span class="emphasis"><em>Type:</em></span> attribute set</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+</p><p><span class="emphasis"><em>Type:</em></span> attribute set of anythings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -5922,7 +5916,7 @@ prepending the search engine name to the search term, for example
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.qutebrowser.settings"></a><a class="term" href="options.html#opt-programs.qutebrowser.settings"><code class="option">programs.qutebrowser.settings</code></a></span></dt><dd><p>Options to add to qutebrowser <code class="filename">config.py</code> file.
 See <a class="link" href="https://qutebrowser.org/doc/help/settings.html" target="_top">https://qutebrowser.org/doc/help/settings.html</a>
 for options.
-</p><p><span class="emphasis"><em>Type:</em></span> attribute set</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+</p><p><span class="emphasis"><em>Type:</em></span> attribute set of anythings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -5988,7 +5982,7 @@ for options.
                     &lt;home-manager/modules/programs/rofi.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.rofi.package"></a><a class="term" href="options.html#opt-programs.rofi.package"><code class="option">programs.rofi.package</code></a></span></dt><dd><p>Package providing the <span class="command"><strong>rofi</strong></span> binary.
 </p><p><span class="emphasis"><em>Type:</em></span> package</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        <em class="replaceable"><code>(build of rofi-1.6.0)</code></em>
+        <em class="replaceable"><code>(build of rofi-1.6.1)</code></em>
       </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">pkgs.rofi.override { plugins = [ pkgs.rofi-emoji ]; };
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/rofi.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/rofi.nix&gt;
@@ -6658,7 +6652,7 @@ path to a theme configuration file.
                     &lt;home-manager/modules/programs/taskwarrior.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.taskwarrior.config"></a><a class="term" href="options.html#opt-programs.taskwarrior.config"><code class="option">programs.taskwarrior.config</code></a></span></dt><dd><p>Key-value configuration written to
 <code class="filename">~/.taskrc</code>.
-</p><p><span class="emphasis"><em>Type:</em></span> attribute set</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+</p><p><span class="emphasis"><em>Type:</em></span> attribute set of anythings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -7056,6 +7050,12 @@ is possible to override the sensible settings using the
         true
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/tmux.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/tmux.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.tmux.shell"></a><a class="term" href="options.html#opt-programs.tmux.shell"><code class="option">programs.tmux.shell</code></a></span></dt><dd><p>Set the default-shell tmux variable.</p><p><span class="emphasis"><em>Type:</em></span> null or string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        null
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        "\${pkgs.zsh}/bin/zsh"
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/tmux.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/tmux.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.tmux.shortcut"></a><a class="term" href="options.html#opt-programs.tmux.shortcut"><code class="option">programs.tmux.shortcut</code></a></span></dt><dd><p>CTRL following by this key is used as the main shortcut.
 </p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         "b"
@@ -7091,7 +7091,7 @@ is possible to override the sensible settings using the
         pkgs.rxvt_unicode
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/urxvt.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/urxvt.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.urxvt.extraConfig"></a><a class="term" href="options.html#opt-programs.urxvt.extraConfig"><code class="option">programs.urxvt.extraConfig</code></a></span></dt><dd><p>Additional configuration to add.</p><p><span class="emphasis"><em>Type:</em></span> attribute set</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.urxvt.extraConfig"></a><a class="term" href="options.html#opt-programs.urxvt.extraConfig"><code class="option">programs.urxvt.extraConfig</code></a></span></dt><dd><p>Additional configuration to add.</p><p><span class="emphasis"><em>Type:</em></span> attribute set of anythings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -7246,7 +7246,7 @@ manually set any options not listed above.
                     &lt;home-manager/modules/programs/vscode.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.vscode.package"></a><a class="term" href="options.html#opt-programs.vscode.package"><code class="option">programs.vscode.package</code></a></span></dt><dd><p>Version of Visual Studio Code to install.
 </p><p><span class="emphasis"><em>Type:</em></span> package</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        <em class="replaceable"><code>(build of vscode-1.51.0)</code></em>
+        <em class="replaceable"><code>(build of vscode-1.51.1)</code></em>
       </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">pkgs.vscodium</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/vscode.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/vscode.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.vscode.extensions"></a><a class="term" href="options.html#opt-programs.vscode.extensions"><code class="option">programs.vscode.extensions</code></a></span></dt><dd><p>The extensions Visual Studio Code should be started with.
@@ -7315,7 +7315,7 @@ overlay or set this option. Example overlay configuration:
                     &lt;home-manager/modules/programs/vscode.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.vscode.userSettings"></a><a class="term" href="options.html#opt-programs.vscode.userSettings"><code class="option">programs.vscode.userSettings</code></a></span></dt><dd><p>Configuration written to Visual Studio Code's
 <code class="filename">settings.json</code>.
-</p><p><span class="emphasis"><em>Type:</em></span> attribute set</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+</p><p><span class="emphasis"><em>Type:</em></span> JSON value</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -7335,7 +7335,7 @@ overlay or set this option. Example overlay configuration:
                     &lt;home-manager/modules/programs/waybar.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.waybar.package"></a><a class="term" href="options.html#opt-programs.waybar.package"><code class="option">programs.waybar.package</code></a></span></dt><dd><p>Waybar package to use. Set to <code class="code">null</code> to use the default module.
 </p><p><span class="emphasis"><em>Type:</em></span> package</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        ${pkgs.waybar}
+        "pkgs.waybar"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/waybar.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/waybar.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.waybar.settings"></a><a class="term" href="options.html#opt-programs.waybar.settings"><code class="option">programs.waybar.settings</code></a></span></dt><dd><p>Configuration for Waybar, see <a class="link" href="https://github.com/Alexays/Waybar/wiki/Configuration" target="_top">https://github.com/Alexays/Waybar/wiki/Configuration</a>
@@ -7426,7 +7426,7 @@ of the windows or behind (<code class="code">"bottom"</code>).
         10
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/waybar.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/waybar.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.waybar.settings._.modules"></a><a class="term" href="options.html#opt-programs.waybar.settings._.modules"><code class="option">programs.waybar.settings.*.modules</code></a></span></dt><dd><p>Modules configuration.</p><p><span class="emphasis"><em>Type:</em></span> attribute set of unspecifieds</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.waybar.settings._.modules"></a><a class="term" href="options.html#opt-programs.waybar.settings._.modules"><code class="option">programs.waybar.settings.*.modules</code></a></span></dt><dd><p>Modules configuration.</p><p><span class="emphasis"><em>Type:</em></span> JSON value</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -7442,18 +7442,30 @@ of the windows or behind (<code class="code">"bottom"</code>).
 }
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/waybar.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/waybar.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.waybar.settings._.modules-center"></a><a class="term" href="options.html#opt-programs.waybar.settings._.modules-center"><code class="option">programs.waybar.settings.*.modules-center</code></a></span></dt><dd><p>Modules that will be displayed in the center.</p><p><span class="emphasis"><em>Type:</em></span> null or list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        null
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.waybar.settings._.modules-center"></a><a class="term" href="options.html#opt-programs.waybar.settings._.modules-center"><code class="option">programs.waybar.settings.*.modules-center</code></a></span></dt><dd><p>Modules that will be displayed in the center.</p><p><span class="emphasis"><em>Type:</em></span> list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        [
+        
+        ]
+    
       </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">[ "sway/window" ]
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/waybar.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/waybar.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.waybar.settings._.modules-left"></a><a class="term" href="options.html#opt-programs.waybar.settings._.modules-left"><code class="option">programs.waybar.settings.*.modules-left</code></a></span></dt><dd><p>Modules that will be displayed on the left.</p><p><span class="emphasis"><em>Type:</em></span> null or list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        null
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.waybar.settings._.modules-left"></a><a class="term" href="options.html#opt-programs.waybar.settings._.modules-left"><code class="option">programs.waybar.settings.*.modules-left</code></a></span></dt><dd><p>Modules that will be displayed on the left.</p><p><span class="emphasis"><em>Type:</em></span> list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        [
+        
+        ]
+    
       </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">[ "sway/workspaces" "sway/mode" "wlr/taskbar" ]
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/waybar.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/waybar.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.waybar.settings._.modules-right"></a><a class="term" href="options.html#opt-programs.waybar.settings._.modules-right"><code class="option">programs.waybar.settings.*.modules-right</code></a></span></dt><dd><p>Modules that will be displayed on the right.</p><p><span class="emphasis"><em>Type:</em></span> null or list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
-        null
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.waybar.settings._.modules-right"></a><a class="term" href="options.html#opt-programs.waybar.settings._.modules-right"><code class="option">programs.waybar.settings.*.modules-right</code></a></span></dt><dd><p>Modules that will be displayed on the right.</p><p><span class="emphasis"><em>Type:</em></span> list of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        [
+        
+        ]
+    
       </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">[ "mpd" "custom/mymodule#with-css-id" "temperature" ]
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/waybar.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/waybar.nix&gt;
@@ -7554,6 +7566,10 @@ focused on keyboard interaction.</p><p><span class="emphasis"><em>Type:</em></sp
         false
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
         true
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zathura.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/zathura.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.zathura.package"></a><a class="term" href="options.html#opt-programs.zathura.package"><code class="option">programs.zathura.package</code></a></span></dt><dd><p>The Zathura package to use</p><p><span class="emphasis"><em>Type:</em></span> package</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        "pkgs.zathura"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zathura.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/zathura.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.zathura.extraConfig"></a><a class="term" href="options.html#opt-programs.zathura.extraConfig"><code class="option">programs.zathura.extraConfig</code></a></span></dt><dd><p>Additional commands for zathura that will be added to the
@@ -7669,6 +7685,20 @@ directory.
         "emacs"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/zsh.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.zsh.dirHashes"></a><a class="term" href="options.html#opt-programs.zsh.dirHashes"><code class="option">programs.zsh.dirHashes</code></a></span></dt><dd><p>An attribute set that adds to named directory hash table.
+</p><p><span class="emphasis"><em>Type:</em></span> attribute set of strings</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        {
+        
+        }
+    
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">{
+  docs  = "$HOME/Documents";
+  vids  = "$HOME/Videos";
+  dl    = "$HOME/Downloads";
+}
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/zsh.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.zsh.dotDir"></a><a class="term" href="options.html#opt-programs.zsh.dotDir"><code class="option">programs.zsh.dotDir</code></a></span></dt><dd><p>Directory where the zsh configuration and more should be located,
 relative to the users home directory. The default is the home
 directory.
@@ -7731,6 +7761,10 @@ if the first character is a space.
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/zsh.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.zsh.initExtraBeforeCompInit"></a><a class="term" href="options.html#opt-programs.zsh.initExtraBeforeCompInit"><code class="option">programs.zsh.initExtraBeforeCompInit</code></a></span></dt><dd><p>Extra commands that should be added to <code class="filename">.zshrc</code> before compinit.</p><p><span class="emphasis"><em>Type:</em></span> strings concatenated with "\n"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        ""
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/programs/zsh.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.zsh.initExtraFirst"></a><a class="term" href="options.html#opt-programs.zsh.initExtraFirst"><code class="option">programs.zsh.initExtraFirst</code></a></span></dt><dd><p>Commands that should be added to top of <code class="filename">.zshrc</code>.</p><p><span class="emphasis"><em>Type:</em></span> strings concatenated with "\n"</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         ""
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix#blob-path" target="_top">
                     &lt;home-manager/modules/programs/zsh.nix&gt;
@@ -8413,7 +8447,7 @@ percent symbol).
         "pkgs.dwm-status.override { enableAlsaUtils = false; }"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/dwm-status.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/dwm-status.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.dwm-status.extraConfig"></a><a class="term" href="options.html#opt-services.dwm-status.extraConfig"><code class="option">services.dwm-status.extraConfig</code></a></span></dt><dd><p>Extra config of dwm-status.</p><p><span class="emphasis"><em>Type:</em></span> attribute set</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.dwm-status.extraConfig"></a><a class="term" href="options.html#opt-services.dwm-status.extraConfig"><code class="option">services.dwm-status.extraConfig</code></a></span></dt><dd><p>Extra config of dwm-status.</p><p><span class="emphasis"><em>Type:</em></span> JSON value</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -8438,6 +8472,12 @@ percent symbol).
         false
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
         true
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/emacs.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/emacs.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.emacs.package"></a><a class="term" href="options.html#opt-services.emacs.package"><code class="option">services.emacs.package</code></a></span></dt><dd><p>The Emacs package to use.</p><p><span class="emphasis"><em>Type:</em></span> package</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        if config.programs.emacs.enable then config.programs.emacs.finalPackage
+else pkgs.emacs
+
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/emacs.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/emacs.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.emacs.client.enable"></a><a class="term" href="options.html#opt-services.emacs.client.enable"><code class="option">services.emacs.client.enable</code></a></span></dt><dd><p>Whether to enable generation of Emacs client desktop file.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
@@ -8789,7 +8829,7 @@ key in <code class="filename">~/.config/grobi.conf</code>.
         2
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/hound.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/hound.nix&gt;
-                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.hound.repositories"></a><a class="term" href="options.html#opt-services.hound.repositories"><code class="option">services.hound.repositories</code></a></span></dt><dd><p>The repository configuration.</p><p><span class="emphasis"><em>Type:</em></span> attribute set of attribute sets</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.hound.repositories"></a><a class="term" href="options.html#opt-services.hound.repositories"><code class="option">services.hound.repositories</code></a></span></dt><dd><p>The repository configuration.</p><p><span class="emphasis"><em>Type:</em></span> attribute set of JSON values</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         
         {
         
@@ -9966,6 +10006,47 @@ for a list of available options.
         "\$XDG_DATA_HOME/unison"
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/unison.nix#blob-path" target="_top">
                     &lt;home-manager/modules/services/unison.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.wlsunset.enable"></a><a class="term" href="options.html#opt-services.wlsunset.enable"><code class="option">services.wlsunset.enable</code></a></span></dt><dd><p>Whether to enable Whether to enable wlsunset..</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        false
+      </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
+        true
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/wlsunset.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/wlsunset.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.wlsunset.package"></a><a class="term" href="options.html#opt-services.wlsunset.package"><code class="option">services.wlsunset.package</code></a></span></dt><dd><p>wlsunset derivation to use.
+</p><p><span class="emphasis"><em>Type:</em></span> package</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        "pkgs.wlsunset"
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/wlsunset.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/wlsunset.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.wlsunset.gamma"></a><a class="term" href="options.html#opt-services.wlsunset.gamma"><code class="option">services.wlsunset.gamma</code></a></span></dt><dd><p>Gamma value to use.
+</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        "1.0"
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/wlsunset.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/wlsunset.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.wlsunset.latitude"></a><a class="term" href="options.html#opt-services.wlsunset.latitude"><code class="option">services.wlsunset.latitude</code></a></span></dt><dd><p>Your current latitude, between <code class="literal">-90.0</code> and
+<code class="literal">90.0</code>.
+</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/wlsunset.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/wlsunset.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.wlsunset.longitude"></a><a class="term" href="options.html#opt-services.wlsunset.longitude"><code class="option">services.wlsunset.longitude</code></a></span></dt><dd><p>Your current longitude, between <code class="literal">-180.0</code> and
+<code class="literal">180.0</code>.
+</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/wlsunset.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/wlsunset.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.wlsunset.systemdTarget"></a><a class="term" href="options.html#opt-services.wlsunset.systemdTarget"><code class="option">services.wlsunset.systemdTarget</code></a></span></dt><dd><p>Systemd target to bind to.
+</p><p><span class="emphasis"><em>Type:</em></span> string</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        "graphical-session.target"
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/wlsunset.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/wlsunset.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.wlsunset.temperature.day"></a><a class="term" href="options.html#opt-services.wlsunset.temperature.day"><code class="option">services.wlsunset.temperature.day</code></a></span></dt><dd><p>Colour temperature to use during the day, in Kelvin (K).
+This value must be greater than <code class="literal">temperature.night</code>.
+</p><p><span class="emphasis"><em>Type:</em></span> signed integer</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        6500
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/wlsunset.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/wlsunset.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.wlsunset.temperature.night"></a><a class="term" href="options.html#opt-services.wlsunset.temperature.night"><code class="option">services.wlsunset.temperature.night</code></a></span></dt><dd><p>Colour temperature to use during the night, in Kelvin (K).
+This value must be smaller than <code class="literal">temperature.day</code>.
+</p><p><span class="emphasis"><em>Type:</em></span> signed integer</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        4000
+      </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/wlsunset.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/services/wlsunset.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.xcape.enable"></a><a class="term" href="options.html#opt-services.xcape.enable"><code class="option">services.xcape.enable</code></a></span></dt><dd><p>Whether to enable xcape.</p><p><span class="emphasis"><em>Type:</em></span> boolean</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
         false
       </code></p><p><span class="emphasis"><em>Example:</em></span> <code class="literal">
@@ -10231,7 +10312,7 @@ by systemd. More details can be found in
     Path = {
       …
     };
-  }
+  };
 };
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/systemd.nix#blob-path" target="_top">
                     &lt;home-manager/modules/systemd.nix&gt;
@@ -10257,7 +10338,7 @@ by systemd. More details can be found in
     Service = {
       …
     };
-  }
+  };
 };
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/systemd.nix#blob-path" target="_top">
                     &lt;home-manager/modules/systemd.nix&gt;
@@ -10284,6 +10365,32 @@ The variable values must be as described in
     
       </code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/systemd.nix#blob-path" target="_top">
                     &lt;home-manager/modules/systemd.nix&gt;
+                </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-systemd.user.slices"></a><a class="term" href="options.html#opt-systemd.user.slices"><code class="option">systemd.user.slices</code></a></span></dt><dd><p>Definition of systemd per-user slices units. Attributes are
+merged recursively.
+</p><p>
+Note that the attributes follow the capitalization and naming used
+by systemd. More details can be found in
+<span class="citerefentry"><span class="refentrytitle">systemd.slices</span>(5)</span>.
+</p><p><span class="emphasis"><em>Type:</em></span> systemd slices unit configuration</p><p><span class="emphasis"><em>Default:</em></span> <code class="literal">
+        
+        {
+        
+        }
+    
+      </code></p><p><span class="emphasis"><em>Example:</em></span> </p><pre class="programlisting">{
+  slices-name = {
+    Unit = {
+      Description = "Example description";
+      Documentation = [ "man:example(1)" "man:example(5)" ];
+    };
+
+    Slices = {
+      …
+    };
+  };
+};
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/systemd.nix#blob-path" target="_top">
+                    &lt;home-manager/modules/systemd.nix&gt;
                 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-systemd.user.sockets"></a><a class="term" href="options.html#opt-systemd.user.sockets"><code class="option">systemd.user.sockets</code></a></span></dt><dd><p>Definition of systemd per-user socket units. Attributes are
 merged recursively.
 </p><p>
@@ -10306,7 +10413,7 @@ by systemd. More details can be found in
     Socket = {
       …
     };
-  }
+  };
 };
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/systemd.nix#blob-path" target="_top">
                     &lt;home-manager/modules/systemd.nix&gt;
@@ -10346,7 +10453,7 @@ by systemd. More details can be found in
     Target = {
       …
     };
-  }
+  };
 };
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/systemd.nix#blob-path" target="_top">
                     &lt;home-manager/modules/systemd.nix&gt;
@@ -10372,7 +10479,7 @@ by systemd. More details can be found in
     Timer = {
       …
     };
-  }
+  };
 };
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/systemd.nix#blob-path" target="_top">
                     &lt;home-manager/modules/systemd.nix&gt;
