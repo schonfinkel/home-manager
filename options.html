@@ -3063,6 +3063,29 @@ strings concatenated with “\n”</p><p><span class="emphasis"><em>Default:</em
 strings concatenated with “\n”</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">""</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/autorandr.nix" target="_top">
 &lt;home-manager/modules/programs/autorandr.nix&gt;
+</a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.bacon.enable"></a><a class="term" href="options.html#opt-programs.bacon.enable"><code class="option">programs.bacon.enable</code></a></span></dt><dd><p>Whether to enable bacon, a background rust code checker.</p><p><span class="emphasis"><em>Type:</em></span>
+boolean</p><p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p><p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/bacon.nix" target="_top">
+&lt;home-manager/modules/programs/bacon.nix&gt;
+</a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.bacon.settings"></a><a class="term" href="options.html#opt-programs.bacon.settings"><code class="option">programs.bacon.settings</code></a></span></dt><dd><p>Bacon configuration.
+For available settings see <a class="link" href="https://dystroy.org/bacon/#global-preferences" target="_top">https://dystroy.org/bacon/#global-preferences</a>.</p><p><span class="emphasis"><em>Type:</em></span>
+TOML value</p><p><span class="emphasis"><em>Example:</em></span></p><pre class="programlisting">{
+  jobs = {
+    default = {
+      command = [
+        "cargo"
+        "build"
+        "--all-features"
+        "--color"
+        "always"
+      ];
+      need_stdout = true;
+    };
+  };
+}
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/bacon.nix" target="_top">
+&lt;home-manager/modules/programs/bacon.nix&gt;
 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.bash.enable"></a><a class="term" href="options.html#opt-programs.bash.enable"><code class="option">programs.bash.enable</code></a></span></dt><dd><p>Whether to enable GNU Bourne-Again SHell.</p><p><span class="emphasis"><em>Type:</em></span>
 boolean</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">false</code></p><p><span class="emphasis"><em>Example:</em></span>
@@ -6843,6 +6866,20 @@ boolean</p><p><span class="emphasis"><em>Default:</em></span>
 boolean</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">false</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/lsd.nix" target="_top">
 &lt;home-manager/modules/programs/lsd.nix&gt;
+</a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.lsd.colors"></a><a class="term" href="options.html#opt-programs.lsd.colors"><code class="option">programs.lsd.colors</code></a></span></dt><dd><p>Configuration written to <code class="filename">$XDG_CONFIG_HOME/lsd/colors.yaml</code>. See
+<a class="link" href="https://github.com/lsd-rs/lsd/tree/v1.0.0#color-theme-file-content" target="_top">https://github.com/lsd-rs/lsd/tree/v1.0.0#color-theme-file-content</a> for
+supported colors.</p><p>If this option is non-empty then the <code class="literal">color.theme</code> option is
+automatically set to <code class="literal">"custom"</code>.</p><p><span class="emphasis"><em>Type:</em></span>
+YAML value</p><p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p><p><span class="emphasis"><em>Example:</em></span></p><pre class="programlisting">{
+  size = {
+    large = "dark_yellow";
+    none = "grey";
+    small = "yellow";
+  };
+}
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/lsd.nix" target="_top">
+&lt;home-manager/modules/programs/lsd.nix&gt;
 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.lsd.settings"></a><a class="term" href="options.html#opt-programs.lsd.settings"><code class="option">programs.lsd.settings</code></a></span></dt><dd><p>Configuration written to
 <code class="filename">$XDG_CONFIG_HOME/lsd/config.yaml</code>. See
 <a class="link" href="https://github.com/Peltoche/lsd#config-file-content" target="_top">https://github.com/Peltoche/lsd#config-file-content</a>
@@ -7531,6 +7568,9 @@ See the example for more info.</p><p><span class="emphasis"><em>Type:</em></span
 (function that evaluates to a(n) list of package) or (list of package) convertible to it</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">ps: [ ]</code></p><p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">pyPkgs: with pyPkgs; [ python-language-server ]</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/neovim.nix" target="_top">
+&lt;home-manager/modules/programs/neovim.nix&gt;
+</a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.neovim.finalPackage"></a><a class="term" href="options.html#opt-programs.neovim.finalPackage"><code class="option">programs.neovim.finalPackage</code></a></span></dt><dd><p>Resulting customized neovim package.</p><p><span class="emphasis"><em>Type:</em></span>
+package <span class="emphasis"><em>(read only)</em></span></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/neovim.nix" target="_top">
 &lt;home-manager/modules/programs/neovim.nix&gt;
 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.neovim.generatedConfigViml"></a><a class="term" href="options.html#opt-programs.neovim.generatedConfigViml"><code class="option">programs.neovim.generatedConfigViml</code></a></span></dt><dd><p>Generated vimscript config.</p><p><span class="emphasis"><em>Type:</em></span>
 strings concatenated with “\n” <span class="emphasis"><em>(read only)</em></span></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/neovim.nix" target="_top">
@@ -11054,6 +11094,16 @@ boolean</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">true</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/yazi.nix" target="_top">
 &lt;home-manager/modules/programs/yazi.nix&gt;
 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.yazi.enableBashIntegration"></a><a class="term" href="options.html#opt-programs.yazi.enableBashIntegration"><code class="option">programs.yazi.enableBashIntegration</code></a></span></dt><dd><p>Whether to enable Bash integration.</p><p><span class="emphasis"><em>Type:</em></span>
+boolean</p><p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p><p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/yazi.nix" target="_top">
+&lt;home-manager/modules/programs/yazi.nix&gt;
+</a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.yazi.enableFishIntegration"></a><a class="term" href="options.html#opt-programs.yazi.enableFishIntegration"><code class="option">programs.yazi.enableFishIntegration</code></a></span></dt><dd><p>Whether to enable Fish integration.</p><p><span class="emphasis"><em>Type:</em></span>
+boolean</p><p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p><p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/yazi.nix" target="_top">
+&lt;home-manager/modules/programs/yazi.nix&gt;
+</a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.yazi.enableNushellIntegration"></a><a class="term" href="options.html#opt-programs.yazi.enableNushellIntegration"><code class="option">programs.yazi.enableNushellIntegration</code></a></span></dt><dd><p>Whether to enable Nushell integration.</p><p><span class="emphasis"><em>Type:</em></span>
 boolean</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">false</code></p><p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">true</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/yazi.nix" target="_top">
@@ -15972,7 +16022,7 @@ null or string</p><p><span class="emphasis"><em>Default:</em></span></p><pre cla
 null or string</p><p><span class="emphasis"><em>Default:</em></span></p><pre class="programlisting">null for state version ≥ 20.09, as example otherwise
 
 </pre><p><span class="emphasis"><em>Example:</em></span>
-<code class="literal">"primary"</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix" target="_top">
+<code class="literal">"*"</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/window-managers/i3-sway/sway.nix" target="_top">
 &lt;home-manager/modules/services/window-managers/i3-sway/sway.nix&gt;
 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-wayland.windowManager.sway.config.bars._.trayPadding"></a><a class="term" href="options.html#opt-wayland.windowManager.sway.config.bars._.trayPadding"><code class="option">wayland.windowManager.sway.config.bars.*.trayPadding</code></a></span></dt><dd><p>Sets the pixel padding of the system tray.
 This padding will surround the tray on all sides and between each item.</p><p><span class="emphasis"><em>Type:</em></span>
