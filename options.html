@@ -1869,7 +1869,7 @@ settings are in effect and will therefore help avoid breaking
 program configurations. Switching to a higher state version
 typically requires performing some manual steps, such as data
 conversion or moving files.</p><p><span class="emphasis"><em>Type:</em></span>
-one of “18.09”, “19.03”, “19.09”, “20.03”, “20.09”, “21.03”, “21.05”, “21.11”, “22.05”, “22.11”, “23.05”, “23.11”</p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/version.nix" target="_top">
+one of “18.09”, “19.03”, “19.09”, “20.03”, “20.09”, “21.03”, “21.05”, “21.11”, “22.05”, “22.11”, “23.05”, “23.11”, “24.05”</p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/misc/version.nix" target="_top">
 &lt;home-manager/modules/misc/version.nix&gt;
 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-home.username"></a><a class="term" href="options.html#opt-home.username"><code class="option">home.username</code></a></span></dt><dd><p>The user’s username.</p><p><span class="emphasis"><em>Type:</em></span>
 string</p><p><span class="emphasis"><em>Default:</em></span></p><pre class="programlisting">"$USER"   for state version &lt; 20.09,
@@ -3241,7 +3241,7 @@ boolean</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">true</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/bat.nix" target="_top">
 &lt;home-manager/modules/programs/bat.nix&gt;
 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.bat.config"></a><a class="term" href="options.html#opt-programs.bat.config"><code class="option">programs.bat.config</code></a></span></dt><dd><p>Bat configuration.</p><p><span class="emphasis"><em>Type:</em></span>
-attribute set of (string or list of string)</p><p><span class="emphasis"><em>Default:</em></span>
+attribute set of (string or list of string or boolean)</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p><p><span class="emphasis"><em>Example:</em></span></p><pre class="programlisting">{
   map-syntax = [
     "*.jenkinsfile:Groovy"
@@ -4429,11 +4429,16 @@ path</p><p><span class="emphasis"><em>Declared by:</em></span></p><table border=
 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.fish.shellAbbrs"></a><a class="term" href="options.html#opt-programs.fish.shellAbbrs"><code class="option">programs.fish.shellAbbrs</code></a></span></dt><dd><p>An attribute set that maps aliases (the top level attribute names
 in this option) to abbreviations. Abbreviations are expanded with
 the longer phrase after they are entered.</p><p><span class="emphasis"><em>Type:</em></span>
-attribute set of string</p><p><span class="emphasis"><em>Default:</em></span>
+attribute set of (string or (submodule))</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p><p><span class="emphasis"><em>Example:</em></span></p><pre class="programlisting">{
-  gco = "git checkout";
   l = "less";
+  gco = "git checkout";
+  "-C" = {
+    position = "anywhere";
+    expansion = "--color";
+  };
 }
+
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/fish.nix" target="_top">
 &lt;home-manager/modules/programs/fish.nix&gt;
 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.fish.shellAliases"></a><a class="term" href="options.html#opt-programs.fish.shellAliases"><code class="option">programs.fish.shellAliases</code></a></span></dt><dd><p>An attribute set that maps aliases (the top level attribute names
@@ -9323,6 +9328,28 @@ settings = {
 
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/rtx.nix" target="_top">
 &lt;home-manager/modules/programs/rtx.nix&gt;
+</a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.ruff.enable"></a><a class="term" href="options.html#opt-programs.ruff.enable"><code class="option">programs.ruff.enable</code></a></span></dt><dd><p>Whether to enable ruff, an extremely fast Python linter and code formatter, written in Rust.</p><p><span class="emphasis"><em>Type:</em></span>
+boolean</p><p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p><p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ruff.nix" target="_top">
+&lt;home-manager/modules/programs/ruff.nix&gt;
+</a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.ruff.package"></a><a class="term" href="options.html#opt-programs.ruff.package"><code class="option">programs.ruff.package</code></a></span></dt><dd><p>The ruff package to use.</p><p><span class="emphasis"><em>Type:</em></span>
+package</p><p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.ruff</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ruff.nix" target="_top">
+&lt;home-manager/modules/programs/ruff.nix&gt;
+</a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.ruff.settings"></a><a class="term" href="options.html#opt-programs.ruff.settings"><code class="option">programs.ruff.settings</code></a></span></dt><dd><p>Ruff configuration.
+For available settings see <a class="link" href="https://docs.astral.sh/ruff/settings" target="_top">https://docs.astral.sh/ruff/settings</a>.</p><p><span class="emphasis"><em>Type:</em></span>
+TOML value</p><p><span class="emphasis"><em>Example:</em></span></p><pre class="programlisting">{
+  line-length = 100;
+  per-file-ignores = { "__init__.py" = [ "F401" ]; };
+  lint = {
+    select = [ "E4" "E7" "E9" "F" ];
+    ignore = [ ];
+  };
+}
+
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ruff.nix" target="_top">
+&lt;home-manager/modules/programs/ruff.nix&gt;
 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.sagemath.enable"></a><a class="term" href="options.html#opt-programs.sagemath.enable"><code class="option">programs.sagemath.enable</code></a></span></dt><dd><p>Whether to enable SageMath, a mathematics software system.</p><p><span class="emphasis"><em>Type:</em></span>
 boolean</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">false</code></p><p><span class="emphasis"><em>Example:</em></span>
@@ -11570,7 +11597,7 @@ package</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.yazi</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/yazi.nix" target="_top">
 &lt;home-manager/modules/programs/yazi.nix&gt;
 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.yazi.keymap"></a><a class="term" href="options.html#opt-programs.yazi.keymap"><code class="option">programs.yazi.keymap</code></a></span></dt><dd><p>Configuration written to
-<code class="filename">$XDG_CONFIG_HOME/yazi/keymap.toml</code>.</p><p>See <a class="link" href="https://github.com/sxyazi/yazi/blob/main/config/docs/keymap.md" target="_top">https://github.com/sxyazi/yazi/blob/main/config/docs/keymap.md</a>
+<code class="filename">$XDG_CONFIG_HOME/yazi/keymap.toml</code>.</p><p>See <a class="link" href="https://yazi-rs.github.io/docs/configuration/keymap" target="_top">https://yazi-rs.github.io/docs/configuration/keymap</a>
 for the full list of options.</p><p><span class="emphasis"><em>Type:</em></span>
 TOML value</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p><p><span class="emphasis"><em>Example:</em></span></p><pre class="programlisting">{
@@ -11590,7 +11617,7 @@ TOML value</p><p><span class="emphasis"><em>Default:</em></span>
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/yazi.nix" target="_top">
 &lt;home-manager/modules/programs/yazi.nix&gt;
 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.yazi.settings"></a><a class="term" href="options.html#opt-programs.yazi.settings"><code class="option">programs.yazi.settings</code></a></span></dt><dd><p>Configuration written to
-<code class="filename">$XDG_CONFIG_HOME/yazi/yazi.toml</code>.</p><p>See <a class="link" href="https://github.com/sxyazi/yazi/blob/main/config/docs/yazi.md" target="_top">https://github.com/sxyazi/yazi/blob/main/config/docs/yazi.md</a>
+<code class="filename">$XDG_CONFIG_HOME/yazi/yazi.toml</code>.</p><p>See <a class="link" href="https://yazi-rs.github.io/docs/configuration/yazi" target="_top">https://yazi-rs.github.io/docs/configuration/yazi</a>
 for the full list of options.</p><p><span class="emphasis"><em>Type:</em></span>
 TOML value</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p><p><span class="emphasis"><em>Example:</em></span></p><pre class="programlisting">{
@@ -11608,7 +11635,7 @@ TOML value</p><p><span class="emphasis"><em>Default:</em></span>
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/programs/yazi.nix" target="_top">
 &lt;home-manager/modules/programs/yazi.nix&gt;
 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-programs.yazi.theme"></a><a class="term" href="options.html#opt-programs.yazi.theme"><code class="option">programs.yazi.theme</code></a></span></dt><dd><p>Configuration written to
-<code class="filename">$XDG_CONFIG_HOME/yazi/theme.toml</code>.</p><p>See <a class="link" href="https://github.com/sxyazi/yazi/blob/main/config/docs/theme.md" target="_top">https://github.com/sxyazi/yazi/blob/main/config/docs/theme.md</a>
+<code class="filename">$XDG_CONFIG_HOME/yazi/theme.toml</code>.</p><p>See <a class="link" href="https://yazi-rs.github.io/docs/configuration/theme" target="_top">https://yazi-rs.github.io/docs/configuration/theme</a>
 for the full list of options</p><p><span class="emphasis"><em>Type:</em></span>
 TOML value</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p><p><span class="emphasis"><em>Example:</em></span></p><pre class="programlisting">{
@@ -15000,6 +15027,29 @@ for more details.</p><p><span class="emphasis"><em>Type:</em></span>
 integer between 2500 and 9000 (both inclusive)</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">4500</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/sctd.nix" target="_top">
 &lt;home-manager/modules/services/sctd.nix&gt;
+</a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.signaturepdf.enable"></a><a class="term" href="options.html#opt-services.signaturepdf.enable"><code class="option">services.signaturepdf.enable</code></a></span></dt><dd><p>Whether to enable signaturepdf; signing, organizing, editing metadatas or compressing PDFs.</p><p><span class="emphasis"><em>Type:</em></span>
+boolean</p><p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p><p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/signaturepdf.nix" target="_top">
+&lt;home-manager/modules/services/signaturepdf.nix&gt;
+</a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.signaturepdf.package"></a><a class="term" href="options.html#opt-services.signaturepdf.package"><code class="option">services.signaturepdf.package</code></a></span></dt><dd><p>signaturepdf derivation to use.</p><p><span class="emphasis"><em>Type:</em></span>
+package</p><p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">"pkgs.signaturepdf"</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/signaturepdf.nix" target="_top">
+&lt;home-manager/modules/services/signaturepdf.nix&gt;
+</a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.signaturepdf.extraConfig"></a><a class="term" href="options.html#opt-services.signaturepdf.extraConfig"><code class="option">services.signaturepdf.extraConfig</code></a></span></dt><dd><p>Additional configuration optional.</p><p><span class="emphasis"><em>Type:</em></span>
+attribute set of (string or signed integer or boolean or floating point number)</p><p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p><p><span class="emphasis"><em>Example:</em></span></p><pre class="programlisting">{
+  max_file_uploads = "201";
+  post_max_size = "24M";
+  upload_max_filesize = "24M";
+}
+</pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/signaturepdf.nix" target="_top">
+&lt;home-manager/modules/services/signaturepdf.nix&gt;
+</a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.signaturepdf.port"></a><a class="term" href="options.html#opt-services.signaturepdf.port"><code class="option">services.signaturepdf.port</code></a></span></dt><dd><p>The port on which the application runs</p><p><span class="emphasis"><em>Type:</em></span>
+16 bit unsigned integer; between 0 and 65535 (both inclusive)</p><p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">8080</code></p><p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">8081</code></p><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/signaturepdf.nix" target="_top">
+&lt;home-manager/modules/services/signaturepdf.nix&gt;
 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.spotifyd.enable"></a><a class="term" href="options.html#opt-services.spotifyd.enable"><code class="option">services.spotifyd.enable</code></a></span></dt><dd><p>Whether to enable SpotifyD connect.</p><p><span class="emphasis"><em>Type:</em></span>
 boolean</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">false</code></p><p><span class="emphasis"><em>Example:</em></span>
@@ -15082,7 +15132,7 @@ package</p><p><span class="emphasis"><em>Default:</em></span>
 </a></code></td></tr></table></dd><dt><span class="term"><a id="opt-services.swayidle.events"></a><a class="term" href="options.html#opt-services.swayidle.events"><code class="option">services.swayidle.events</code></a></span></dt><dd><p>Run command on occurrence of a event.</p><p><span class="emphasis"><em>Type:</em></span>
 list of (submodule)</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">[ ]</code></p><p><span class="emphasis"><em>Example:</em></span></p><pre class="programlisting">[
-  { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock"; }
+  { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
   { event = "lock"; command = "lock"; }
 ]
 
@@ -15107,6 +15157,7 @@ string</p><p><span class="emphasis"><em>Default:</em></span>
 list of (submodule)</p><p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">[ ]</code></p><p><span class="emphasis"><em>Example:</em></span></p><pre class="programlisting">[
   { timeout = 60; command = "${pkgs.swaylock}/bin/swaylock -fF"; }
+  { timeout = 90; command = "${pkgs.systemd}/bin/systemctl suspend"; }
 ]
 
 </pre><p><span class="emphasis"><em>Declared by:</em></span></p><table border="0" summary="Simple list" class="simplelist"><tr><td><code class="filename"><a class="filename" href="https://github.com/nix-community/home-manager/blob/master/modules/services/swayidle.nix" target="_top">
