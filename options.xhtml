@@ -11473,12 +11473,14 @@ package</p>
 </dt>
 <dd>
 <p>Configuration written to
-<code class="filename">$XDG_CONFIG_HOME/alacritty/alacritty.yml</code>. See
-<a class="link" href="https://github.com/alacritty/alacritty/blob/master/alacritty.yml"  target="_top">https://github.com/alacritty/alacritty/blob/master/alacritty.yml</a>
-for the default configuration.</p>
+<code class="filename">$XDG_CONFIG_HOME/alacritty/alacritty.yml</code> or
+<code class="filename">$XDG_CONFIG_HOME/alacritty/alacritty.toml</code>
+(the latter being used for alacritty 0.13 and later).
+See <a class="link" href="https://github.com/alacritty/alacritty/tree/master#configuration"  target="_top">https://github.com/alacritty/alacritty/tree/master#configuration</a>
+for more info.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+TOML value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -11488,7 +11490,7 @@ YAML value</p>
     lines = 3;
     columns = 200;
   };
-  key_bindings = [
+  keyboard.bindings = [
     {
       key = &quot;K&quot;;
       mods = &quot;Control&quot;;
@@ -14172,6 +14174,99 @@ YAML value</p>
 <tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/beets.nix" target="_top">
 &lt;home-manager/modules/programs/beets.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.bemenu.enable"></a><a class="term" href="options.xhtml#opt-programs.bemenu.enable"><code class="option">programs.bemenu.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable bemenu.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/bemenu.nix" target="_top">
+&lt;home-manager/modules/programs/bemenu.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.bemenu.package"></a><a class="term" href="options.xhtml#opt-programs.bemenu.package"><code class="option">programs.bemenu.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The bemenu package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.bemenu</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/bemenu.nix" target="_top">
+&lt;home-manager/modules/programs/bemenu.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.bemenu.settings"></a><a class="term" href="options.xhtml#opt-programs.bemenu.settings"><code class="option">programs.bemenu.settings</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Configuration options for bemenu. See <span class="citerefentry"><span class="refentrytitle">bemenu</span>(1)</span>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of (string or signed integer or boolean)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  line-height = 28;
+  prompt = &quot;open&quot;;
+  ignorecase = true;
+  fb = &quot;#1e1e2e&quot;;
+  ff = &quot;#cdd6f4&quot;;
+  nb = &quot;#1e1e2e&quot;;
+  nf = &quot;#cdd6f4&quot;;
+  tb = &quot;#1e1e2e&quot;;
+  hb = &quot;#1e1e2e&quot;;
+  tf = &quot;#f38ba8&quot;;
+  hf = &quot;#f9e2af&quot;;
+  af = &quot;#cdd6f4&quot;;
+  ab = &quot;#1e1e2e&quot;;
+}
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/bemenu.nix" target="_top">
+&lt;home-manager/modules/programs/bemenu.nix&gt;
 </a></code>
 </td></tr>
 </table>
@@ -17636,12 +17731,12 @@ null or package</p>
 
 <p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">pkgs.firefox.override {
   # See nixpkgs&#x27; firefox/wrapper.nix to check which options you can use
-  cfg = {
+  nativeMessagingHosts = [
     # Gnome shell native connector
-    enableGnomeExtensions = true;
+    pkgs.gnome-browser-connector
     # Tridactyl native connector
-    enableTridactylNative = true;
-  };
+    pkgs.tridactyl-native
+  ];
 }
 
 </code></pre>
@@ -22145,6 +22240,205 @@ attribute set of (string or boolean or list of string)</p>
 <tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/gpg.nix" target="_top">
 &lt;home-manager/modules/programs/gpg.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.gradle.enable"></a><a class="term" href="options.xhtml#opt-programs.gradle.enable"><code class="option">programs.gradle.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Gradle Build Tool.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/gradle.nix" target="_top">
+&lt;home-manager/modules/programs/gradle.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.gradle.package"></a><a class="term" href="options.xhtml#opt-programs.gradle.package"><code class="option">programs.gradle.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The gradle package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.gradle</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">pkgs.gradle_7</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/gradle.nix" target="_top">
+&lt;home-manager/modules/programs/gradle.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.gradle.home"></a><a class="term" href="options.xhtml#opt-programs.gradle.home"><code class="option">programs.gradle.home</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The Gradle home directory, relative to <a class="xref" href="options.xhtml#opt-home.homeDirectory"  ><code class="option">home.homeDirectory</code></a>.</p><p>If set, the <code class="envar">GRADLE_USER_HOME</code> environment variable will be
+set accordingly. Defaults to <code class="filename">.gradle</code>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;.gradle&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/gradle.nix" target="_top">
+&lt;home-manager/modules/programs/gradle.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.gradle.initScripts"></a><a class="term" href="options.xhtml#opt-programs.gradle.initScripts"><code class="option">programs.gradle.initScripts</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Definition of init scripts to link into the Gradle home directory.</p><p>For more information about init scripts, including naming conventions
+see https://docs.gradle.org/current/userguide/init_scripts.html.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of (submodule)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  &quot;maven-local.gradle&quot;.text = &#x27;&#x27;
+      allProject {
+        repositories {
+          mavenLocal()
+        }
+      }
+  &#x27;&#x27;;
+  &quot;another.init.gradle.kts&quot;.source = ./another.init.gradle.kts;
+}
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/gradle.nix" target="_top">
+&lt;home-manager/modules/programs/gradle.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.gradle.initScripts._name_.source"></a><a class="term" href="options.xhtml#opt-programs.gradle.initScripts._name_.source"><code class="option">programs.gradle.initScripts.&lt;name&gt;.source</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Path of the init script file. If
+<code class="literal">text</code> is non-null then this option will automatically point
+to a file containing that text.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+path</p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/gradle.nix" target="_top">
+&lt;home-manager/modules/programs/gradle.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.gradle.initScripts._name_.text"></a><a class="term" href="options.xhtml#opt-programs.gradle.initScripts._name_.text"><code class="option">programs.gradle.initScripts.&lt;name&gt;.text</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Text of the init script file. if this option is null
+then <code class="literal">source</code> must be set.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or strings concatenated with “\n”</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/gradle.nix" target="_top">
+&lt;home-manager/modules/programs/gradle.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.gradle.settings"></a><a class="term" href="options.xhtml#opt-programs.gradle.settings"><code class="option">programs.gradle.settings</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Key value pairs to write to <code class="filename">gradle.properties</code> in the Gradle
+home directory.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of (string, package, bool, int or float)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  &quot;org.gradle.caching&quot; = true;
+  &quot;org.gradle.parallel&quot; = true;
+  &quot;org.gradle.jvmargs&quot; = &quot;-XX:MaxMetaspaceSize=384m&quot;;
+  &quot;org.gradle.home&quot; = pkgs.jdk17;
+};
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/gradle.nix" target="_top">
+&lt;home-manager/modules/programs/gradle.nix&gt;
 </a></code>
 </td></tr>
 </table>
@@ -34397,6 +34691,30 @@ boolean</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.oh-my-posh.enableNushellIntegration"></a><a class="term" href="options.xhtml#opt-programs.oh-my-posh.enableNushellIntegration"><code class="option">programs.oh-my-posh.enableNushellIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Nushell integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/oh-my-posh.nix" target="_top">
+&lt;home-manager/modules/programs/oh-my-posh.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.oh-my-posh.enableZshIntegration"></a><a class="term" href="options.xhtml#opt-programs.oh-my-posh.enableZshIntegration"><code class="option">programs.oh-my-posh.enableZshIntegration</code>
   </a>
  </span>
@@ -37422,7 +37740,7 @@ system configuration:</p><pre><code class="programlisting nix">services.dbus.pac
 now.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package or one of “curses”, “tty”, “gtk2”, “emacs”, “gnome3”, “qt”</p>
+package or one of “curses”, “tty”, “emacs”, “gnome3”, “qt”</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">&quot;gtk2&quot;</code></p>
@@ -38649,6 +38967,147 @@ strings concatenated with “\n”</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.sapling.enable"></a><a class="term" href="options.xhtml#opt-programs.sapling.enable"><code class="option">programs.sapling.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Sapling.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sapling.nix" target="_top">
+&lt;home-manager/modules/programs/sapling.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sapling.package"></a><a class="term" href="options.xhtml#opt-programs.sapling.package"><code class="option">programs.sapling.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The sapling package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.sapling</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sapling.nix" target="_top">
+&lt;home-manager/modules/programs/sapling.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sapling.aliases"></a><a class="term" href="options.xhtml#opt-programs.sapling.aliases"><code class="option">programs.sapling.aliases</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Sapling aliases to define.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sapling.nix" target="_top">
+&lt;home-manager/modules/programs/sapling.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sapling.extraConfig"></a><a class="term" href="options.xhtml#opt-programs.sapling.extraConfig"><code class="option">programs.sapling.extraConfig</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Additional configuration to add.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of anything</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sapling.nix" target="_top">
+&lt;home-manager/modules/programs/sapling.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sapling.userEmail"></a><a class="term" href="options.xhtml#opt-programs.sapling.userEmail"><code class="option">programs.sapling.userEmail</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Default user email to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sapling.nix" target="_top">
+&lt;home-manager/modules/programs/sapling.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sapling.userName"></a><a class="term" href="options.xhtml#opt-programs.sapling.userName"><code class="option">programs.sapling.userName</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Default user name to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sapling.nix" target="_top">
+&lt;home-manager/modules/programs/sapling.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.sbt.enable"></a><a class="term" href="options.xhtml#opt-programs.sbt.enable"><code class="option">programs.sbt.enable</code>
   </a>
  </span>
@@ -39387,6 +39846,290 @@ null or string</p>
 <tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/senpai.nix" target="_top">
 &lt;home-manager/modules/programs/senpai.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sftpman.enable"></a><a class="term" href="options.xhtml#opt-programs.sftpman.enable"><code class="option">programs.sftpman.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable sftpman, an application that handles sshfs/sftp file systems mounting.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sftpman.nix" target="_top">
+&lt;home-manager/modules/programs/sftpman.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sftpman.package"></a><a class="term" href="options.xhtml#opt-programs.sftpman.package"><code class="option">programs.sftpman.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The sftpman package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.sftpman</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sftpman.nix" target="_top">
+&lt;home-manager/modules/programs/sftpman.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sftpman.defaultSshKey"></a><a class="term" href="options.xhtml#opt-programs.sftpman.defaultSshKey"><code class="option">programs.sftpman.defaultSshKey</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Path to the SSH key to be used by default. Can be overridden per host.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sftpman.nix" target="_top">
+&lt;home-manager/modules/programs/sftpman.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sftpman.mounts"></a><a class="term" href="options.xhtml#opt-programs.sftpman.mounts"><code class="option">programs.sftpman.mounts</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The sshfs mount configurations written to
+<code class="filename">$XDG_CONFIG_HOME/sftpman/mounts/</code>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of (submodule)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sftpman.nix" target="_top">
+&lt;home-manager/modules/programs/sftpman.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sftpman.mounts._name_.authType"></a><a class="term" href="options.xhtml#opt-programs.sftpman.mounts._name_.authType"><code class="option">programs.sftpman.mounts.&lt;name&gt;.authType</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The authentication method to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+one of “password”, “publickey”, “hostbased”, “keyboard-interactive”, “gssapi-with-mic”</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;publickey&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sftpman.nix" target="_top">
+&lt;home-manager/modules/programs/sftpman.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sftpman.mounts._name_.beforeMount"></a><a class="term" href="options.xhtml#opt-programs.sftpman.mounts._name_.beforeMount"><code class="option">programs.sftpman.mounts.&lt;name&gt;.beforeMount</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Command to run before mounting.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;true&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sftpman.nix" target="_top">
+&lt;home-manager/modules/programs/sftpman.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sftpman.mounts._name_.host"></a><a class="term" href="options.xhtml#opt-programs.sftpman.mounts._name_.host"><code class="option">programs.sftpman.mounts.&lt;name&gt;.host</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The host to connect to.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sftpman.nix" target="_top">
+&lt;home-manager/modules/programs/sftpman.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sftpman.mounts._name_.mountOptions"></a><a class="term" href="options.xhtml#opt-programs.sftpman.mounts._name_.mountOptions"><code class="option">programs.sftpman.mounts.&lt;name&gt;.mountOptions</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Options to pass to sshfs.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sftpman.nix" target="_top">
+&lt;home-manager/modules/programs/sftpman.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sftpman.mounts._name_.mountPoint"></a><a class="term" href="options.xhtml#opt-programs.sftpman.mounts._name_.mountPoint"><code class="option">programs.sftpman.mounts.&lt;name&gt;.mountPoint</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The remote path to mount.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sftpman.nix" target="_top">
+&lt;home-manager/modules/programs/sftpman.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sftpman.mounts._name_.port"></a><a class="term" href="options.xhtml#opt-programs.sftpman.mounts._name_.port"><code class="option">programs.sftpman.mounts.&lt;name&gt;.port</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The port to connect to.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+16 bit unsigned integer; between 0 and 65535 (both inclusive)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">22</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sftpman.nix" target="_top">
+&lt;home-manager/modules/programs/sftpman.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sftpman.mounts._name_.sshKey"></a><a class="term" href="options.xhtml#opt-programs.sftpman.mounts._name_.sshKey"><code class="option">programs.sftpman.mounts.&lt;name&gt;.sshKey</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Path to the SSH key to use for authentication.
+Only applies if authMethod is <code class="literal">publickey</code>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">config.programs.sftpman.defaultSshKey</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sftpman.nix" target="_top">
+&lt;home-manager/modules/programs/sftpman.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.sftpman.mounts._name_.user"></a><a class="term" href="options.xhtml#opt-programs.sftpman.mounts._name_.user"><code class="option">programs.sftpman.mounts.&lt;name&gt;.user</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The username to authenticate with.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/sftpman.nix" target="_top">
+&lt;home-manager/modules/programs/sftpman.nix&gt;
 </a></code>
 </td></tr>
 </table>
@@ -50647,10 +51390,8 @@ list of path</p>
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">[ ]</code></p>
 
-<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[
-  &quot;$HOME/.zprezto-contrib&quot;
-]
-</code></pre>
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">[ &quot;${config.home.homeDirectory}/.zprezto-contrib&quot; ]</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -51657,6 +52398,30 @@ path</p>
 <tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zplug.nix" target="_top">
 &lt;home-manager/modules/programs/zplug.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.zsh.zproof.enable"></a><a class="term" href="options.xhtml#opt-programs.zsh.zproof.enable"><code class="option">programs.zsh.zproof.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Enable zproof in your zshrc.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+unspecified value</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix" target="_top">
+&lt;home-manager/modules/programs/zsh.nix&gt;
 </a></code>
 </td></tr>
 </table>
@@ -55651,6 +56416,33 @@ boolean</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-services.gpg-agent.enableNushellIntegration"></a><a class="term" href="options.xhtml#opt-services.gpg-agent.enableNushellIntegration"><code class="option">services.gpg-agent.enableNushellIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Nushell integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/gpg-agent.nix" target="_top">
+&lt;home-manager/modules/services/gpg-agent.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-services.gpg-agent.enableScDaemon"></a><a class="term" href="options.xhtml#opt-services.gpg-agent.enableScDaemon"><code class="option">services.gpg-agent.enableScDaemon</code>
   </a>
  </span>
@@ -55903,14 +56695,13 @@ null or signed integer</p>
 <code class="literal">pinentry-gnome3</code> may not work on non-Gnome
 systems. You can fix it by adding the following to your
 system configuration:</p><pre><code class="programlisting nix">services.dbus.packages = [ pkgs.gcr ];
-</code></pre><p>For this reason, the default is <code class="literal">gtk2</code> for
-now.</p>
+</code></pre>
 
 <p><span class="emphasis"><em>Type:</em></span>
-null or one of “curses”, “tty”, “gtk2”, “emacs”, “gnome3”, “qt”</p>
+null or one of “curses”, “tty”, “emacs”, “gnome3”, “qt”</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">&quot;gtk2&quot;</code></p>
+<code class="literal">null</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">&quot;gnome3&quot;</code></p>
@@ -60056,6 +60847,129 @@ boolean</p>
 <tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/opensnitch-ui.nix" target="_top">
 &lt;home-manager/modules/services/opensnitch-ui.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.osmscout-server.enable"></a><a class="term" href="options.xhtml#opt-services.osmscout-server.enable"><code class="option">services.osmscout-server.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable OSM Scout Server.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/osmscout-server.nix" target="_top">
+&lt;home-manager/modules/services/osmscout-server.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.osmscout-server.package"></a><a class="term" href="options.xhtml#opt-services.osmscout-server.package"><code class="option">services.osmscout-server.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The osmscout-server package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.osmscout-server</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/osmscout-server.nix" target="_top">
+&lt;home-manager/modules/services/osmscout-server.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.osmscout-server.network.listenAddress"></a><a class="term" href="options.xhtml#opt-services.osmscout-server.network.listenAddress"><code class="option">services.osmscout-server.network.listenAddress</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The address for the server to listen on.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;127.0.0.1&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/osmscout-server.nix" target="_top">
+&lt;home-manager/modules/services/osmscout-server.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.osmscout-server.network.port"></a><a class="term" href="options.xhtml#opt-services.osmscout-server.network.port"><code class="option">services.osmscout-server.network.port</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The TCP port on which the server will listen.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+16 bit unsigned integer; between 0 and 65535 (both inclusive)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">8553</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/osmscout-server.nix" target="_top">
+&lt;home-manager/modules/services/osmscout-server.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.osmscout-server.network.startWhenNeeded"></a><a class="term" href="options.xhtml#opt-services.osmscout-server.network.startWhenNeeded"><code class="option">services.osmscout-server.network.startWhenNeeded</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Enable systemd socket activation.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/osmscout-server.nix" target="_top">
+&lt;home-manager/modules/services/osmscout-server.nix&gt;
 </a></code>
 </td></tr>
 </table>
