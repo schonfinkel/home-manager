@@ -7115,9 +7115,10 @@ collisions between non-managed files and files defined in
 then the actions taken by the script should be logged to standard out
 and not actually performed. A convenient shell function <span class="command"><strong>run</strong></span>
 is provided for activation script blocks. It is used as follows:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><span class="command"><strong>run {command}</strong></span></span></dt><dd><p>Runs the given command on live run, otherwise prints the command to
-standard output.</p></dd><dt><span class="term"><span class="command"><strong>run --silence {command}</strong></span></span></dt><dd><p>Runs the given command on live run and sends its standard and error
+standard output.</p></dd><dt><span class="term"><span class="command"><strong>run --quiet {command}</strong></span></span></dt><dd><p>Runs the given command on live run and sends its standard output to
+<code class="filename">/dev/null</code>, otherwise prints the command to standard output.</p></dd><dt><span class="term"><span class="command"><strong>run --silence {command}</strong></span></span></dt><dd><p>Runs the given command on live run and sends its standard and error
 output to <code class="filename">/dev/null</code>, otherwise prints the command to standard
-output.</p></dd></dl></div><p>A script block should also respect the <code class="varname">VERBOSE</code> variable, and if
+output.</p></dd></dl></div><p>The <code class="literal">--quiet</code> and <code class="literal">--silence</code> flags are mutually exclusive.</p><p>A script block should also respect the <code class="varname">VERBOSE</code> variable, and if
 set print information on standard out that may be useful for debugging
 any issue that may arise. The variable <code class="varname">VERBOSE_ARG</code> is set to
 <code class="option">--verbose</code> if verbose output is enabled. You can also use the
@@ -14714,6 +14715,41 @@ YAML value</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.borgmatic.backups._name_.location.patterns"></a><a class="term" href="options.xhtml#opt-programs.borgmatic.backups._name_.location.patterns"><code class="option">programs.borgmatic.backups.&lt;name&gt;.location.patterns</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Patterns to include/exclude.</p><p>See the output of <code class="literal">borg help patterns</code> for the syntax. Pattern paths
+are relative to <code class="literal">/</code> even when a different recursion root is set.</p><p>Mutually exclusive with <a class="xref" href="options.xhtml#opt-programs.borgmatic.backups._name_.location.sourceDirectories"  ><code class="option">programs.borgmatic.backups.&lt;name&gt;.location.sourceDirectories</code></a>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or (list of string)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[
+  &quot;R /home/user&quot;
+  &quot;- home/user/.cache&quot;
+  &quot;- home/user/Downloads&quot;
+  &quot;+ home/user/Videos/Important Video&quot;
+  &quot;- home/user/Videos&quot;
+]
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/borgmatic.nix" target="_top">
+&lt;home-manager/modules/programs/borgmatic.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.borgmatic.backups._name_.location.repositories"></a><a class="term" href="options.xhtml#opt-programs.borgmatic.backups._name_.location.repositories"><code class="option">programs.borgmatic.backups.&lt;name&gt;.location.repositories</code>
   </a>
  </span>
@@ -14753,10 +14789,13 @@ list of (string or (submodule))</p>
  </span>
 </dt>
 <dd>
-<p>Directories to backup.</p>
+<p>Directories to backup.</p><p>Mutually exclusive with <a class="xref" href="options.xhtml#opt-programs.borgmatic.backups._name_.location.patterns"  ><code class="option">programs.borgmatic.backups.&lt;name&gt;.location.patterns</code></a>.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-list of string</p>
+null or (list of string)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">[config.home.homeDirectory]</code></p>
@@ -37886,6 +37925,351 @@ attribute set of anything</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.ranger.enable"></a><a class="term" href="options.xhtml#opt-programs.ranger.enable"><code class="option">programs.ranger.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable ranger file manager.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ranger.nix" target="_top">
+&lt;home-manager/modules/programs/ranger.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ranger.package"></a><a class="term" href="options.xhtml#opt-programs.ranger.package"><code class="option">programs.ranger.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The ranger package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.ranger</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ranger.nix" target="_top">
+&lt;home-manager/modules/programs/ranger.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ranger.aliases"></a><a class="term" href="options.xhtml#opt-programs.ranger.aliases"><code class="option">programs.ranger.aliases</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Aliases written to <code class="filename">$XDG_CONFIG_HOME/ranger/rc.conf</code>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  e = &quot;edit&quot;;
+  filter = &quot;scout -prts&quot;;
+  setl = &quot;setlocal&quot;;
+}
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ranger.nix" target="_top">
+&lt;home-manager/modules/programs/ranger.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ranger.extraConfig"></a><a class="term" href="options.xhtml#opt-programs.ranger.extraConfig"><code class="option">programs.ranger.extraConfig</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Extra configuration lines to add to
+<code class="filename">$XDG_CONFIG_HOME/ranger/rc.conf</code>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+strings concatenated with “\n”</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ranger.nix" target="_top">
+&lt;home-manager/modules/programs/ranger.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ranger.extraPackages"></a><a class="term" href="options.xhtml#opt-programs.ranger.extraPackages"><code class="option">programs.ranger.extraPackages</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Extra packages added to ranger.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ranger.nix" target="_top">
+&lt;home-manager/modules/programs/ranger.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ranger.mappings"></a><a class="term" href="options.xhtml#opt-programs.ranger.mappings"><code class="option">programs.ranger.mappings</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Mappings written to <code class="filename">$XDG_CONFIG_HOME/ranger/rc.conf</code>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  Q = &quot;quitall&quot;;
+  q = &quot;quit&quot;;
+}
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ranger.nix" target="_top">
+&lt;home-manager/modules/programs/ranger.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ranger.plugins"></a><a class="term" href="options.xhtml#opt-programs.ranger.plugins"><code class="option">programs.ranger.plugins</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>List of files to be added to <code class="filename">$XDG_CONFIG_HOME/ranger/plugins/</code>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of (submodule)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[
+  {
+    name = &quot;zoxide&quot;;
+    src = builtins.fetchGit {
+      url = &quot;https://github.com/jchook/ranger-zoxide.git&quot;;
+      rev = &quot;363df97af34c96ea873c5b13b035413f56b12ead&quot;;
+    };
+  }
+]
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ranger.nix" target="_top">
+&lt;home-manager/modules/programs/ranger.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ranger.plugins._.name"></a><a class="term" href="options.xhtml#opt-programs.ranger.plugins._.name"><code class="option">programs.ranger.plugins.*.name</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Name of the plugin linked to
+<code class="filename">$XDG_CONFIG_HOME/ranger/plugins/</code>. In the case of a
+single-file plugin, it must also have <code class="literal">.py</code> suffix.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ranger.nix" target="_top">
+&lt;home-manager/modules/programs/ranger.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ranger.plugins._.src"></a><a class="term" href="options.xhtml#opt-programs.ranger.plugins._.src"><code class="option">programs.ranger.plugins.*.src</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The plugin file or directory.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+path</p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ranger.nix" target="_top">
+&lt;home-manager/modules/programs/ranger.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ranger.rifle"></a><a class="term" href="options.xhtml#opt-programs.ranger.rifle"><code class="option">programs.ranger.rifle</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Settings written to <code class="filename">$XDG_CONFIG_HOME/ranger/rifle.conf</code>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of (submodule)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ranger.nix" target="_top">
+&lt;home-manager/modules/programs/ranger.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ranger.rifle._.command"></a><a class="term" href="options.xhtml#opt-programs.ranger.rifle._.command"><code class="option">programs.ranger.rifle.*.command</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>A command to run for the matching file.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;${pkgs.vim}/bin/vim -- \&quot;$@\&quot;&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ranger.nix" target="_top">
+&lt;home-manager/modules/programs/ranger.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ranger.rifle._.condition"></a><a class="term" href="options.xhtml#opt-programs.ranger.rifle._.condition"><code class="option">programs.ranger.rifle.*.condition</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>A condition to match a file.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;mime ^text, label editor&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ranger.nix" target="_top">
+&lt;home-manager/modules/programs/ranger.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ranger.settings"></a><a class="term" href="options.xhtml#opt-programs.ranger.settings"><code class="option">programs.ranger.settings</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Settings written to <code class="filename">$XDG_CONFIG_HOME/ranger/rc.conf</code>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of (boolean or floating point number or signed integer or string)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  column_ratios = &quot;1,3,3&quot;;
+  confirm_on_delete = &quot;never&quot;;
+  scroll_offset = 8;
+  unicode_ellipsis = true;
+}
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ranger.nix" target="_top">
+&lt;home-manager/modules/programs/ranger.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.rbenv.enable"></a><a class="term" href="options.xhtml#opt-programs.rbenv.enable"><code class="option">programs.rbenv.enable</code>
   </a>
  </span>
@@ -38511,9 +38895,8 @@ package</p>
  </span>
 </dt>
 <dd>
-<p>Configuration written to &lt;filename&gt;$XDG_CONFIG_HOME/rio/config.toml&lt;/filename&gt; on Linux or
-&lt;filename&gt;$HOME/Library/Application Support/rio/config.toml&lt;/filename&gt; on Darwin. See
-&lt;link xlink:href=“https://raphamorim.io/rio/docs/#configuration-file”/&gt; for options.</p>
+<p>Configuration written to <code class="filename">$XDG_CONFIG_HOME/rio/config.toml</code>. See
+<a class="link" href="https://raphamorim.io/rio/docs/#configuration-file"  target="_top">https://raphamorim.io/rio/docs/#configuration-file</a> for options.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 TOML value</p>
@@ -49934,6 +50317,100 @@ YAML value</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.zk.enable"></a><a class="term" href="options.xhtml#opt-programs.zk.enable"><code class="option">programs.zk.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable zk.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zk.nix" target="_top">
+&lt;home-manager/modules/programs/zk.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.zk.package"></a><a class="term" href="options.xhtml#opt-programs.zk.package"><code class="option">programs.zk.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The zk package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.zk</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zk.nix" target="_top">
+&lt;home-manager/modules/programs/zk.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.zk.settings"></a><a class="term" href="options.xhtml#opt-programs.zk.settings"><code class="option">programs.zk.settings</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Configuration written to <code class="filename">$XDG_CONFIG_HOME/zk/config.toml</code>.</p><p>See <a class="link" href="https://github.com/mickael-menu/zk/blob/main/docs/config.md"  target="_top">https://github.com/mickael-menu/zk/blob/main/docs/config.md</a> for
+available options and documentation.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+TOML value</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  note = {
+    language = &quot;en&quot;;
+    default-title = &quot;Untitled&quot;;
+    filename = &quot;{{id}}-{{slug title}}&quot;;
+    extension = &quot;md&quot;;
+    template = &quot;default.md&quot;;
+    id-charset = &quot;alphanum&quot;;
+    id-length = 4;
+    id-case = &quot;lower&quot;;
+  };
+  extra = {
+    author = &quot;Mickaël&quot;;
+  };
+}
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zk.nix" target="_top">
+&lt;home-manager/modules/programs/zk.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.zoxide.enable"></a><a class="term" href="options.xhtml#opt-programs.zoxide.enable"><code class="option">programs.zoxide.enable</code>
   </a>
  </span>
@@ -56732,6 +57209,33 @@ package</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 attribute set of (submodule)</p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/git-sync.nix" target="_top">
+&lt;home-manager/modules/services/git-sync.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.git-sync.repositories._name_.extraPackages"></a><a class="term" href="options.xhtml#opt-services.git-sync.repositories._name_.extraPackages"><code class="option">services.git-sync.repositories.&lt;name&gt;.extraPackages</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Extra packages available to git-sync.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">with pkgs; [ git-crypt ]</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
