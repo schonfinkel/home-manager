@@ -17595,18 +17595,126 @@ boolean</p>
 </dd>
 <dt>
  <span class="term">
- <a id="opt-programs.eza.enableAliases"></a><a class="term" href="options.xhtml#opt-programs.eza.enableAliases"><code class="option">programs.eza.enableAliases</code>
+ <a id="opt-programs.eza.enableBashIntegration"></a><a class="term" href="options.xhtml#opt-programs.eza.enableBashIntegration"><code class="option">programs.eza.enableBashIntegration</code>
   </a>
  </span>
 </dt>
 <dd>
-<p>Whether to enable recommended eza aliases (ls, ll…).</p>
+<p>Whether to enable Bash integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/eza.nix" target="_top">
+&lt;home-manager/modules/programs/eza.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.eza.enableFishIntegration"></a><a class="term" href="options.xhtml#opt-programs.eza.enableFishIntegration"><code class="option">programs.eza.enableFishIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Fish integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/eza.nix" target="_top">
+&lt;home-manager/modules/programs/eza.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.eza.enableIonIntegration"></a><a class="term" href="options.xhtml#opt-programs.eza.enableIonIntegration"><code class="option">programs.eza.enableIonIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Ion integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/eza.nix" target="_top">
+&lt;home-manager/modules/programs/eza.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.eza.enableNushellIntegration"></a><a class="term" href="options.xhtml#opt-programs.eza.enableNushellIntegration"><code class="option">programs.eza.enableNushellIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Nushell integration.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 boolean</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/eza.nix" target="_top">
+&lt;home-manager/modules/programs/eza.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.eza.enableZshIntegration"></a><a class="term" href="options.xhtml#opt-programs.eza.enableZshIntegration"><code class="option">programs.eza.enableZshIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Zsh integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">true</code></p>
@@ -32724,6 +32832,31 @@ one of “date”, “date-received”, “from”, “mailbox-order”, “scor
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.neomutt.unmailboxes"></a><a class="term" href="options.xhtml#opt-programs.neomutt.unmailboxes"><code class="option">programs.neomutt.unmailboxes</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Set <code class="literal">unmailboxes *</code> at the start of account configurations.
+It removes previous sidebar mailboxes when sourcing an account configuration.</p><p>See <a class="link" href="http://www.mutt.org/doc/manual/#mailboxes"  target="_top">http://www.mutt.org/doc/manual/#mailboxes</a> for more information.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/neomutt.nix" target="_top">
+&lt;home-manager/modules/programs/neomutt.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.neomutt.vimKeys"></a><a class="term" href="options.xhtml#opt-programs.neomutt.vimKeys"><code class="option">programs.neomutt.vimKeys</code>
   </a>
  </span>
@@ -37059,15 +37192,50 @@ package</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.pqiv.extraConfig"></a><a class="term" href="options.xhtml#opt-programs.pqiv.extraConfig"><code class="option">programs.pqiv.extraConfig</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Extra lines to be added to <code class="filename">$XDG_CONFIG_HOME/pqivrc</code>. See
+<span class="citerefentry"><span class="refentrytitle">pqiv</span>(1)</span> for a list of available options.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+strings concatenated with “\n”</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;&quot;</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[actions]
+set_cursor_auto_hide(1)
+
+[keybindings]
+t { montage_mode_enter() }
+@MONTAGE {
+  t { montage_mode_return_cancel() }
+}
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/pqiv.nix" target="_top">
+&lt;home-manager/modules/programs/pqiv.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.pqiv.settings"></a><a class="term" href="options.xhtml#opt-programs.pqiv.settings"><code class="option">programs.pqiv.settings</code>
   </a>
  </span>
 </dt>
 <dd>
-<p>Configuration written to
-&lt;filename&gt;$XDG_CONFIG_HOME/pqivrc&lt;/filename&gt;. See &lt;link
-xlink:href=“https://github.com/phillipberndt/pqiv/blob/master/pqiv.1”/&gt;
-for a list of available options. To set a boolean flag, set the value to 1.</p>
+<p>Configuration written to <code class="filename">$XDG_CONFIG_HOME/pqivrc</code>. See
+<span class="citerefentry"><span class="refentrytitle">pqiv</span>(1)</span> for a list of available options. To set a
+boolean flag, set the value to 1.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 attribute set of section of an INI file (attrs of INI atom (null, bool, int, float or string))</p>
@@ -38686,7 +38854,7 @@ system configuration:</p><pre><code class="programlisting nix">services.dbus.pac
 now.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package or one of “curses”, “tty”, “gtk2”, “emacs”, “gnome3”, “qt”</p>
+package or one of “curses”, “gtk2”, “gnome2”, “qt”, “emacs”</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">&quot;gtk2&quot;</code></p>
@@ -57761,7 +57929,7 @@ system configuration:</p><pre><code class="programlisting nix">services.dbus.pac
 </code></pre>
 
 <p><span class="emphasis"><em>Type:</em></span>
-null or one of “curses”, “tty”, “gtk2”, “emacs”, “gnome3”, “qt”</p>
+null or one of “curses”, “gtk2”, “gnome2”, “qt”, “emacs”</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">null</code></p>
