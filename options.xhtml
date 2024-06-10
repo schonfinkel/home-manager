@@ -6458,14 +6458,15 @@ null or path</p>
 </dt>
 <dd>
 <p>The base directory for account maildir directories. May be a
-relative path, in which case it is relative the home
-directory.</p>
+relative path (e.g. the user setting this value as “MyMaildir”),
+in which case it is relative the home directory (e.g. resulting
+in “~/MyMaildir”).</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 string</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">&quot;$HOME/Maildir&quot;</code></p>
+<code class="literal">&quot;Maildir&quot;</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -11230,6 +11231,36 @@ null or string</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-nix.gc.persistent"></a><a class="term" href="options.xhtml#opt-nix.gc.persistent"><code class="option">nix.gc.persistent</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>If true, the time when the service unit was last triggered is
+stored on disk. When the timer is activated, the service unit is
+triggered immediately if it would have been triggered at least once
+during the time when the timer was inactive.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/nix-gc.nix" target="_top">
+&lt;home-manager/modules/services/nix-gc.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-nix.registry"></a><a class="term" href="options.xhtml#opt-nix.registry"><code class="option">nix.registry</code>
   </a>
  </span>
@@ -13977,7 +14008,7 @@ strings concatenated with “\n”</p>
 <p>Controlling how commands are saved on the history list.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-list of (one of “erasedups”, “ignoredups”, “ignorespace”)</p>
+list of (one of “erasedups”, “ignoredups”, “ignorespace”, “ignoreboth”)</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">[ ]</code></p>
@@ -29503,6 +29534,30 @@ boolean</p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/khal.nix" target="_top">
+&lt;home-manager/modules/programs/khal.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.khal.package"></a><a class="term" href="options.xhtml#opt-programs.khal.package"><code class="option">programs.khal.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The khal package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.khal</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -45904,7 +45959,7 @@ boolean</p>
 package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">&lt;derivation terminator-2.1.3&gt;</code></p>
+<code class="literal">&lt;derivation terminator-2.1.4&gt;</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">pkgs.terminator</code></p>
@@ -48878,13 +48933,15 @@ TOML value</p>
 <code class="literal">{ }</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
-  assume_yes = true;
-  disable = [
-    &quot;flutter&quot;
-    &quot;node&quot;
-  ];
-  set_title = false;
-  cleanup = true;
+  misc = {
+    assume_yes = true;
+    disable = [
+      &quot;flutter&quot;
+      &quot;node&quot;
+    ];
+    set_title = false;
+    cleanup = true;
+  };
   commands = {
     &quot;Run garbage collection on Nix store&quot; = &quot;nix-collect-garbage&quot;;
   };
@@ -51851,13 +51908,71 @@ boolean</p>
  </span>
 </dt>
 <dd>
-<p>Yazi package to install.</p>
+<p>The yazi package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.yazi</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/yazi.nix" target="_top">
+&lt;home-manager/modules/programs/yazi.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.yazi.flavors"></a><a class="term" href="options.xhtml#opt-programs.yazi.flavors"><code class="option">programs.yazi.flavors</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Pre-made themes.</p><p>See https://yazi-rs.github.io/docs/flavors/overview/ for documentation.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of (path or package)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  foo = ./foo;
+  bar = pkgs.bar;
+}
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/yazi.nix" target="_top">
+&lt;home-manager/modules/programs/yazi.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.yazi.initLua"></a><a class="term" href="options.xhtml#opt-programs.yazi.initLua"><code class="option">programs.yazi.initLua</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The init.lua for Yazi itself.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or path</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">./init.lua</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -51897,6 +52012,37 @@ TOML value</p>
     { exec = &quot;quit&quot;; on = [ &quot;q&quot; ]; }
     { exec = &quot;close&quot;; on = [ &quot;&lt;C-q&gt;&quot; ]; }
   ];
+}
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/yazi.nix" target="_top">
+&lt;home-manager/modules/programs/yazi.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.yazi.plugins"></a><a class="term" href="options.xhtml#opt-programs.yazi.plugins"><code class="option">programs.yazi.plugins</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Lua plugins.</p><p>See https://yazi-rs.github.io/docs/plugins/overview/ for documentation.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of (path or package)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  foo = ./foo;
+  bar = pkgs.bar;
 }
 
 </code></pre>
@@ -62952,7 +63098,7 @@ TOML value</p>
 
 <p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
   submission = {
-    tokenFile = &quot;/run/secrets/listenbrainz-mpd&quot;;
+    token_file = &quot;/run/secrets/listenbrainz-mpd&quot;;
   };
 }
 </code></pre>
