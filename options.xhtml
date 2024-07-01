@@ -11096,6 +11096,38 @@ null or package</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-nix.channels"></a><a class="term" href="options.xhtml#opt-nix.channels"><code class="option">nix.channels</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>A declarative alternative to Nix channels. Whereas with stock channels,
+you would register URLs and fetch them into the Nix store with
+<span class="citerefentry"><span class="refentrytitle">nix-channel</span>(1)</span>, this option allows you to register the store
+path directly. One particularly useful example is registering flake
+inputs as channels.</p><p>This option can coexist with stock Nix channels. If the same channel is
+defined in both, this option takes precedence.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">{ inherit nixpkgs; }</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/misc/nix.nix" target="_top">
+&lt;home-manager/modules/misc/nix.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-nix.checkConfig"></a><a class="term" href="options.xhtml#opt-nix.checkConfig"><code class="option">nix.checkConfig</code>
   </a>
  </span>
@@ -11255,6 +11287,65 @@ boolean</p>
 <tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/nix-gc.nix" target="_top">
 &lt;home-manager/modules/services/nix-gc.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-nix.keepOldNixPath"></a><a class="term" href="options.xhtml#opt-nix.keepOldNixPath"><code class="option">nix.keepOldNixPath</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether <code class="option">nix.nixPath</code> should keep the previously set values in
+<code class="envar">NIX_PATH</code>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/misc/nix.nix" target="_top">
+&lt;home-manager/modules/misc/nix.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-nix.nixPath"></a><a class="term" href="options.xhtml#opt-nix.nixPath"><code class="option">nix.nixPath</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Adds new directories to the Nix expression search path.</p><p>Used by Nix when looking up paths in angular brackets
+(e.g. <code class="literal">&lt;nixpkgs&gt;</code>).</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[
+  &quot;$HOME/.nix-defexpr/channels&quot;
+  &quot;darwin-config=$HOME/.config/nixpkgs/darwin-configuration.nix&quot;
+]
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/misc/nix.nix" target="_top">
+&lt;home-manager/modules/misc/nix.nix&gt;
 </a></code>
 </td></tr>
 </table>
@@ -17567,6 +17658,33 @@ package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.nix-direnv</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/direnv.nix" target="_top">
+&lt;home-manager/modules/programs/direnv.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.direnv.silent"></a><a class="term" href="options.xhtml#opt-programs.direnv.silent"><code class="option">programs.direnv.silent</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable silent mode, that is, disabling direnv logging.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -32698,7 +32816,7 @@ boolean</p>
 package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">&lt;derivation mpv-with-scripts-0.37.0&gt;</code></p>
+<code class="literal">&lt;derivation mpv-with-scripts-0.38.0&gt;</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">pkgs.wrapMpv (pkgs.mpv-unwrapped.override { vapoursynthSupport = true; }) { youtubeSupport = true; }</code></p>
@@ -40460,7 +40578,7 @@ null or string</p>
 <code class="literal">null</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span>
-<code class="literal">&quot;bitwarden.example.com&quot;</code></p>
+<code class="literal">&quot;https://bitwarden.example.com/&quot;</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -40511,7 +40629,7 @@ null or string</p>
 <code class="literal">null</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span>
-<code class="literal">&quot;identity.example.com&quot;</code></p>
+<code class="literal">&quot;https://identity.example.com/&quot;</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -49693,7 +49811,7 @@ strings concatenated with “\n”</p>
 list of (string or package)</p>
 
 <p><span class="emphasis"><em>Default:</em></span></p><pre><code class="programlisting">[
-  &lt;derivation vimplugin-vim-sensible-2023-03-29&gt;
+  &lt;derivation vimplugin-vim-sensible-2024-06-08&gt;
 ]
 </code></pre>
 
@@ -51932,7 +52050,9 @@ package</p>
  </span>
 </dt>
 <dd>
-<p>Pre-made themes.</p><p>See https://yazi-rs.github.io/docs/flavors/overview/ for documentation.</p>
+<p>Pre-made themes.
+Values should be a package or path containing the required files.
+Will be linked to <code class="filename">$XDG_CONFIG_HOME/yazi/flavors/&lt;name&gt;.yazi</code>.</p><p>See <a class="link" href="https://yazi-rs.github.io/docs/flavors/overview/"  target="_top">https://yazi-rs.github.io/docs/flavors/overview/</a> for documentation.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 attribute set of (path or package)</p>
@@ -52032,7 +52152,10 @@ TOML value</p>
  </span>
 </dt>
 <dd>
-<p>Lua plugins.</p><p>See https://yazi-rs.github.io/docs/plugins/overview/ for documentation.</p>
+<p>Lua plugins.
+Values should be a package or path containing an <code class="literal">init.lua</code> file.
+Will be linked to <code class="filename">$XDG_CONFIG_HOME/yazi/plugins/&lt;name&gt;.yazi</code>.</p><p>See <a class="link" href="https://yazi-rs.github.io/docs/plugins/overview"  target="_top">https://yazi-rs.github.io/docs/plugins/overview</a>
+for documentation.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 attribute set of (path or package)</p>
@@ -52086,6 +52209,33 @@ TOML value</p>
 }
 
 </code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/yazi.nix" target="_top">
+&lt;home-manager/modules/programs/yazi.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.yazi.shellWrapperName"></a><a class="term" href="options.xhtml#opt-programs.yazi.shellWrapperName"><code class="option">programs.yazi.shellWrapperName</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Name of the shell wrapper to be called.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;yy&quot;</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;y&quot;</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -57069,6 +57219,57 @@ signed integer</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-services.blanket.enable"></a><a class="term" href="options.xhtml#opt-services.blanket.enable"><code class="option">services.blanket.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable blanket.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/blanket.nix" target="_top">
+&lt;home-manager/modules/services/blanket.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.blanket.package"></a><a class="term" href="options.xhtml#opt-services.blanket.package"><code class="option">services.blanket.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The blanket package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.blanket</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/blanket.nix" target="_top">
+&lt;home-manager/modules/services/blanket.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-services.blueman-applet.enable"></a><a class="term" href="options.xhtml#opt-services.blueman-applet.enable"><code class="option">services.blueman-applet.enable</code>
   </a>
  </span>
@@ -60395,6 +60596,125 @@ string</p>
 <tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/git-sync.nix" target="_top">
 &lt;home-manager/modules/services/git-sync.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.glance.enable"></a><a class="term" href="options.xhtml#opt-services.glance.enable"><code class="option">services.glance.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable glance.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/glance.nix" target="_top">
+&lt;home-manager/modules/services/glance.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.glance.package"></a><a class="term" href="options.xhtml#opt-services.glance.package"><code class="option">services.glance.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The glance package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.glance</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/glance.nix" target="_top">
+&lt;home-manager/modules/services/glance.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.glance.settings"></a><a class="term" href="options.xhtml#opt-services.glance.settings"><code class="option">services.glance.settings</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Configuration written to a yaml file that is read by glance. See
+<a class="link" href="https://github.com/glanceapp/glance/blob/main/docs/configuration.md"  target="_top">https://github.com/glanceapp/glance/blob/main/docs/configuration.md</a>
+for more.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+YAML value</p>
+
+<p><span class="emphasis"><em>Default:</em></span></p><pre><code class="programlisting">{
+  pages = [
+    {
+      columns = [
+        {
+          size = &quot;full&quot;;
+          widgets = [
+            {
+              type = &quot;calendar&quot;;
+            }
+          ];
+        }
+      ];
+      name = &quot;Calendar&quot;;
+    }
+  ];
+}
+</code></pre>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  pages = [
+    {
+      columns = [
+        {
+          size = &quot;full&quot;;
+          widgets = [
+            {
+              type = &quot;calendar&quot;;
+            }
+            {
+              location = &quot;London, United Kingdom&quot;;
+              type = &quot;weather&quot;;
+            }
+          ];
+        }
+      ];
+      name = &quot;Home&quot;;
+    }
+  ];
+  server = {
+    port = 5678;
+  };
+}
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/glance.nix" target="_top">
+&lt;home-manager/modules/services/glance.nix&gt;
 </a></code>
 </td></tr>
 </table>
