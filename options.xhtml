@@ -18173,6 +18173,87 @@ boolean</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.eww.enableBashIntegration"></a><a class="term" href="options.xhtml#opt-programs.eww.enableBashIntegration"><code class="option">programs.eww.enableBashIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Bash integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/eww.nix" target="_top">
+&lt;home-manager/modules/programs/eww.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.eww.enableFishIntegration"></a><a class="term" href="options.xhtml#opt-programs.eww.enableFishIntegration"><code class="option">programs.eww.enableFishIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Fish integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/eww.nix" target="_top">
+&lt;home-manager/modules/programs/eww.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.eww.enableZshIntegration"></a><a class="term" href="options.xhtml#opt-programs.eww.enableZshIntegration"><code class="option">programs.eww.enableZshIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Zsh integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/eww.nix" target="_top">
+&lt;home-manager/modules/programs/eww.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.eww.package"></a><a class="term" href="options.xhtml#opt-programs.eww.package"><code class="option">programs.eww.package</code>
   </a>
  </span>
@@ -18918,7 +18999,7 @@ boolean</p>
  </span>
 </dt>
 <dd>
-<p>The Firefox package to use. If state version ≥ 19.09 then
+<p>The Firefox package to use. If state version ≥ 19.09 then
 this should be a wrapped Firefox package. For earlier state
 versions it should be an unwrapped Firefox package.
 Set to <code class="literal">null</code> to disable installing Firefox.</p>
@@ -19282,10 +19363,10 @@ string</p>
  </span>
 </dt>
 <dd>
-<p>Whether to force replace the existing containers
-configuration. This is recommended since Firefox will
-replace the symlink on every launch, but note that you’ll
-lose any existing configuration by enabling this.</p>
+<p>Whether to force replace the existing containers configuration.
+This is recommended since Firefox will replace the symlink on
+every launch, but note that you’ll lose any existing configuration
+by enabling this.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 boolean</p>
@@ -19309,12 +19390,12 @@ boolean</p>
  </span>
 </dt>
 <dd>
-<p>List of Firefox add-on packages to install for this profile.
+<p>List of ‹name› add-on packages to install for this profile.
 Some pre-packaged add-ons are accessible from the
 <a class="link" href="https://github.com/nix-community/NUR"  target="_top">Nix User Repository</a>.
 Once you have NUR installed run</p><pre><code class="programlisting console">$ nix-env -f &#x27;&lt;nixpkgs&gt;&#x27; -qaP -A nur.repos.rycee.firefox-addons
-</code></pre><p>to list the available Firefox add-ons.</p><p>Note that it is necessary to manually enable these extensions
-inside Firefox after the first installation.</p><p>To automatically enable extensions add
+</code></pre><p>to list the available ‹name› add-ons.</p><p>Note that it is necessary to manually enable these extensions
+inside ‹name› after the first installation.</p><p>To automatically enable extensions add
 <code class="literal">&quot;extensions.autoDisableScopes&quot; = 0;</code>
 to
 <a class="link" href="options.xhtml#opt-programs.firefox.profiles._name_.settings"  ><code class="option">programs.firefox.profiles.&lt;profile&gt;.settings</code></a></p>
@@ -19496,7 +19577,7 @@ null or string</p>
 <dd>
 <p>Attribute set of search engine configurations. Engines
 that only have <code class="varname">metaData</code> specified will
-be treated as builtin to Firefox.</p><p>See <a class="link" href="https://searchfox.org/mozilla-central/rev/669329e284f8e8e2bb28090617192ca9b4ef3380/toolkit/components/search/SearchEngine.jsm#1138-1177"  target="_top">SearchEngine.jsm</a>
+be treated as builtin to ‹name›.</p><p>See <a class="link" href="https://searchfox.org/mozilla-central/rev/669329e284f8e8e2bb28090617192ca9b4ef3380/toolkit/components/search/SearchEngine.jsm#1138-1177"  target="_top">SearchEngine.jsm</a>
 in Firefox’s source for available options. We maintain a
 mapping to let you specify all options in the referenced
 link without underscores, but it may fall out of date with
@@ -19554,7 +19635,7 @@ attribute set of attribute set of (JSON value)</p>
 </dt>
 <dd>
 <p>Whether to force replace the existing search
-configuration. This is recommended since Firefox will
+configuration. This is recommended since ‹name› will
 replace the symlink for the search configuration on every
 launch, but note that you’ll lose any existing
 configuration by enabling this.</p>
@@ -19640,12 +19721,12 @@ null or string</p>
  </span>
 </dt>
 <dd>
-<p>Attribute set of Firefox preferences.</p><p>Firefox only supports int, bool, and string types for
+<p>Attribute set of ‹name› preferences.</p><p>‹name› only supports int, bool, and string types for
 preferences, but home-manager will automatically
 convert all other JSON-compatible values into strings.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-attribute set of (Firefox preference (int, bool, string, and also attrs, list, float as a JSON string))</p>
+attribute set of (‹name› preference (int, bool, string, and also attrs, list, float as a JSON string))</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -19681,7 +19762,7 @@ attribute set of (Firefox preference (int, bool, string, and also attrs, list, f
  </span>
 </dt>
 <dd>
-<p>Custom Firefox user chrome CSS.</p>
+<p>Custom ‹name› user chrome CSS.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 strings concatenated with “\n”</p>
@@ -19720,7 +19801,7 @@ strings concatenated with “\n”</p>
  </span>
 </dt>
 <dd>
-<p>Custom Firefox user content CSS.</p>
+<p>Custom ‹name› user content CSS.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 strings concatenated with “\n”</p>
@@ -32374,6 +32455,52 @@ one of “emacs”, “vim”</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.mcfly.settings"></a><a class="term" href="options.xhtml#opt-programs.mcfly.settings"><code class="option">programs.mcfly.settings</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Settings written to <code class="filename">~/.config/mcfly/config.toml</code>.</p><p>Note, if your McFly database is currently in <code class="filename">~/.mcfly</code>,
+then this option has no effect.
+Move the database to <code class="filename">$XDG_DATA_DIR/mcfly/history.db</code> and
+remove <code class="filename">~/.mcfly</code> to make the settings take effect. See
+<a class="link" href="https://github.com/cantino/mcfly#database-location"  target="_top">https://github.com/cantino/mcfly#database-location</a>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+TOML value</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  colors = {
+    menubar = {
+      bg = &quot;black&quot;;
+      fg = &quot;red&quot;;
+    };
+    darkmode = {
+      prompt = &quot;cyan&quot;;
+      timing = &quot;yellow&quot;;
+      results_selection_fg = &quot;cyan&quot;;
+      results_selection_bg = &quot;black&quot;;
+      results_selection_hl = &quot;red&quot;;
+    };
+  };
+}
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/mcfly.nix" target="_top">
+&lt;home-manager/modules/programs/mcfly.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.mercurial.enable"></a><a class="term" href="options.xhtml#opt-programs.mercurial.enable"><code class="option">programs.mercurial.enable</code>
   </a>
  </span>
@@ -32590,6 +32717,30 @@ boolean</p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/micro.nix" target="_top">
+&lt;home-manager/modules/programs/micro.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.micro.package"></a><a class="term" href="options.xhtml#opt-programs.micro.package"><code class="option">programs.micro.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The micro package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.micro</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -53499,6 +53650,36 @@ null or string</p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">&quot;fg=#ff00ff,bg=cyan,bold,underline&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix" target="_top">
+&lt;home-manager/modules/programs/zsh.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.zsh.autosuggestion.strategy"></a><a class="term" href="options.xhtml#opt-programs.zsh.autosuggestion.strategy"><code class="option">programs.zsh.autosuggestion.strategy</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p><code class="literal">ZSH_AUTOSUGGEST_STRATEGY</code> is an array that specifies how suggestions should be generated.
+The strategies in the array are tried successively until a suggestion is found.
+There are currently three built-in strategies to choose from:</p><div class="itemizedlist"><ul class="itemizedlist " style="list-style-type: disc;"><li class="listitem"><p><code class="literal">history</code>: Chooses the most recent match from history.</p></li><li class="listitem"><p><code class="literal">completion</code>: Chooses a suggestion based on what tab-completion would suggest. (requires <code class="literal">zpty</code> module)</p></li><li class="listitem"><p><code class="literal">match_prev_cmd</code>: Like <code class="literal">history</code>, but chooses the most recent match whose preceding history item matches
+the most recently executed command. Note that this strategy won’t work as expected with ZSH options that
+don’t preserve the history order such as <code class="literal">HIST_IGNORE_ALL_DUPS</code> or <code class="literal">HIST_EXPIRE_DUPS_FIRST</code>.</p></li></ul></div>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of (one of “history”, “completion”, “match_prev_cmd”)</p>
+
+<p><span class="emphasis"><em>Default:</em></span></p><pre><code class="programlisting">[
+  &quot;history&quot;
+]
+</code></pre>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
