@@ -53902,6 +53902,35 @@ submodule</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.zsh.history.append"></a><a class="term" href="options.xhtml#opt-programs.zsh.history.append"><code class="option">programs.zsh.history.append</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>If set, zsh sessions will append their history list to the history
+file, rather than replace it. Thus, multiple parallel zsh sessions
+will all have the new entries from their history lists added to the
+history file, in the order that they exit.</p><p>This file will still be periodically re-written to trim it when the
+number of lines grows 20% beyond the value specified by
+<code class="literal">programs.zsh.history.save</code>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix" target="_top">
+&lt;home-manager/modules/programs/zsh.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.zsh.history.expireDuplicatesFirst"></a><a class="term" href="options.xhtml#opt-programs.zsh.history.expireDuplicatesFirst"><code class="option">programs.zsh.history.expireDuplicatesFirst</code>
   </a>
  </span>
@@ -74253,13 +74282,11 @@ systemd socket unit configuration</p>
 should be started. Additionally, stop obsolete services from the
 previous generation.</p><p>The alternatives are</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">suggest</code> (or <code class="literal">false</code>)</span></dt><dd><p>Use a very simple shell script to print suggested
 <span class="command"><strong>systemctl</strong></span> commands to run. You will have to
-manually run those commands after the switch.</p></dd><dt><span class="term"><code class="literal">legacy</code> (or <code class="literal">true</code>)</span></dt><dd><p>Use a Ruby script to, in a more robust fashion, determine the
+manually run those commands after the switch.</p></dd><dt><span class="term"><code class="literal">legacy</code></span></dt><dd><p>Use a Ruby script to, in a more robust fashion, determine the
 necessary changes and automatically run the
-<span class="command"><strong>systemctl</strong></span> commands.</p></dd><dt><span class="term"><code class="literal">sd-switch</code></span></dt><dd><p>Use sd-switch, a third party application, to perform the service
-updates. This tool offers more features while having a small
-closure size. Note, it requires a fully functional user D-Bus
-session. Once tested and deemed sufficiently robust, this will
-become the default.</p></dd></dl></div>
+<span class="command"><strong>systemctl</strong></span> commands. Note, this alternative will soon
+be removed.</p></dd><dt><span class="term"><code class="literal">sd-switch</code> (or <code class="literal">true</code>)</span></dt><dd><p>Use sd-switch, a tool that determines the necessary changes and
+automatically apply them.</p></dd></dl></div>
 
 <p><span class="emphasis"><em>Type:</em></span>
 boolean or one of “suggest”, “legacy”, “sd-switch”</p>
