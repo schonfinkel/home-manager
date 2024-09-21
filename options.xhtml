@@ -30831,15 +30831,15 @@ string</p>
 </dd>
 <dt>
  <span class="term">
- <a id="opt-programs.kitty.theme"></a><a class="term" href="options.xhtml#opt-programs.kitty.theme"><code class="option">programs.kitty.theme</code>
+ <a id="opt-programs.kitty.themeFile"></a><a class="term" href="options.xhtml#opt-programs.kitty.themeFile"><code class="option">programs.kitty.themeFile</code>
   </a>
  </span>
 </dt>
 <dd>
-<p>Apply a Kitty color theme. This option takes the friendly name of
-any theme given by the command <span class="command"><strong>kitty +kitten themes</strong></span>.
-See <a class="link" href="https://github.com/kovidgoyal/kitty-themes"  target="_top">https://github.com/kovidgoyal/kitty-themes</a>
-for more details.</p>
+<p>Apply a Kitty color theme. This option takes the file name of a theme
+in <code class="literal">kitty-themes</code>, without the <code class="literal">.conf</code> suffix. See
+<a class="link" href="https://github.com/kovidgoyal/kitty-themes/tree/master/themes"  target="_top">https://github.com/kovidgoyal/kitty-themes/tree/master/themes</a> for a
+list of themes.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 null or string</p>
@@ -30848,7 +30848,7 @@ null or string</p>
 <code class="literal">null</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span>
-<code class="literal">&quot;Space Gray Eighties&quot;</code></p>
+<code class="literal">&quot;SpaceGray_Eighties&quot;</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -48143,13 +48143,23 @@ string <span class="emphasis"><em>(read only)</em></span></p>
 <code class="filename">user.js</code>.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-attribute set of (boolean or signed integer or string)</p>
+Thunderbird preference (int, bool, string, and also attrs, list, float as a JSON string)</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
   &quot;mail.spellcheck.inline&quot; = false;
+  &quot;mailnews.database.global.views.global.columns&quot; = {
+    selectCol = {
+      visible = false;
+      ordinal = 1;
+    };
+    threadCol = {
+      visible = true;
+      ordinal = 2;
+    };
+  };
 }
 
 </code></pre>
@@ -48263,7 +48273,7 @@ boolean</p>
 all profiles.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-attribute set of (boolean or signed integer or string)</p>
+Thunderbird preference (int, bool, string, and also attrs, list, float as a JSON string)</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -53620,7 +53630,7 @@ package</p>
  </span>
 </dt>
 <dd>
-<p>List of options to pass to zoxide.</p>
+<p>List of options to pass to zoxide init.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 list of string</p>
@@ -53629,7 +53639,7 @@ list of string</p>
 <code class="literal">[ ]</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[
-  &quot;--no-aliases&quot;
+  &quot;--no-cmd&quot;
 ]
 </code></pre>
 
@@ -68070,6 +68080,36 @@ boolean</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-services.poweralertd.extraArgs"></a><a class="term" href="options.xhtml#opt-services.poweralertd.extraArgs"><code class="option">services.poweralertd.extraArgs</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Extra command line arguments to pass to poweralertd.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[
+  &quot;-s&quot;
+  &quot;-S&quot;
+]
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/poweralertd.nix" target="_top">
+&lt;home-manager/modules/services/poweralertd.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-services.psd.enable"></a><a class="term" href="options.xhtml#opt-services.psd.enable"><code class="option">services.psd.enable</code>
   </a>
  </span>
@@ -69949,8 +69989,10 @@ one of “before-sleep”, “after-resume”, “lock”, “unlock”</p>
 <p><span class="emphasis"><em>Type:</em></span>
 list of string</p>
 
-<p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">[ ]</code></p>
+<p><span class="emphasis"><em>Default:</em></span></p><pre><code class="programlisting">[
+  &quot;-w&quot;
+]
+</code></pre>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
