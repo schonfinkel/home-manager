@@ -362,7 +362,7 @@ null or string</p>
 string</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">&quot;‹accounts.calendar.basePath›/‹name›&quot;</code></p>
+<code class="literal">‹accounts.calendar.basePath›/‹name›</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -1502,7 +1502,7 @@ null or string</p>
 string</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">&quot;‹accounts.contact.basePath›/‹name›&quot;</code></p>
+<code class="literal">‹accounts.contact.basePath›/‹name›</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -11317,6 +11317,36 @@ boolean</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-nix.gc.randomizedDelaySec"></a><a class="term" href="options.xhtml#opt-nix.gc.randomizedDelaySec"><code class="option">nix.gc.randomizedDelaySec</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Add a randomized delay before each garbage collection.
+The delay will be chosen between zero and this value.
+This value must be a time span in the format specified by
+<a class="link" href="https://www.freedesktop.org/software/systemd/man/systemd.time.html" target="_top"><span class="citerefentry"><span class="refentrytitle">systemd.time</span>(7)</span></a></p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+(optionally newline-terminated) single-line string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;0&quot;</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;45min&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/nix-gc.nix" target="_top">
+&lt;home-manager/modules/services/nix-gc.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-nix.keepOldNixPath"></a><a class="term" href="options.xhtml#opt-nix.keepOldNixPath"><code class="option">nix.keepOldNixPath</code>
   </a>
  </span>
@@ -11536,6 +11566,245 @@ attribute set of (Nix config atom (null, bool, int, float, str, path or package)
 <tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/misc/nix.nix" target="_top">
 &lt;home-manager/modules/misc/nix.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-nixGL.packages"></a><a class="term" href="options.xhtml#opt-nixGL.packages"><code class="option">nixGL.packages</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The nixGL package set containing GPU library wrappers. This can be used
+to provide OpenGL and Vulkan access to applications on non-NixOS systems
+by using <code class="literal">(config.lib.nixGL.wrap &lt;package&gt;)</code> for the default wrapper, or
+<code class="literal">(config.lib.nixGL.wrappers.&lt;wrapper&gt; &lt;package&gt;)</code> for any available
+wrapper.</p><p>The wrapper functions are always available. If this option is empty (the
+default), they are a no-op. This is useful on NixOS where the wrappers
+are unnecessary.</p><p>Note that using any Nvidia wrapper requires building the configuration
+with the <code class="literal">--impure</code> option.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or (attribute set)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">inputs.nixGL.packages</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/misc/nixgl.nix" target="_top">
+&lt;home-manager/modules/misc/nixgl.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-nixGL.defaultWrapper"></a><a class="term" href="options.xhtml#opt-nixGL.defaultWrapper"><code class="option">nixGL.defaultWrapper</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The package wrapper function available for use as <code class="literal">(config.lib.nixGL.wrap &lt;package&gt;)</code>. Intended to start programs on the main GPU.</p><p>Wrapper functions can be found under <code class="literal">config.lib.nixGL.wrappers</code>. They
+can be used directly, however, setting this option provides a convenient
+shorthand.</p><p>The following wrappers are available:</p><div class="itemizedlist"><ul class="itemizedlist " style="list-style-type: disc;"><li class="listitem"><p>mesa</p></li><li class="listitem"><p>mesaPrime</p></li><li class="listitem"><p>nvidia</p></li><li class="listitem"><p>nvidiaPrime</p></li></ul></div>
+
+<p><span class="emphasis"><em>Type:</em></span>
+one of “mesa”, “mesaPrime”, “nvidia”, “nvidiaPrime”</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;mesa&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/misc/nixgl.nix" target="_top">
+&lt;home-manager/modules/misc/nixgl.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-nixGL.installScripts"></a><a class="term" href="options.xhtml#opt-nixGL.installScripts"><code class="option">nixGL.installScripts</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>For each wrapper <code class="literal">wrp</code> named in the provided list, a wrapper script
+named <code class="literal">nixGLWrp</code> is installed into the environment. These scripts are
+useful for running programs not installed via Home Manager.</p><p>The following wrappers are available:</p><div class="itemizedlist"><ul class="itemizedlist " style="list-style-type: disc;"><li class="listitem"><p>mesa</p></li><li class="listitem"><p>mesaPrime</p></li><li class="listitem"><p>nvidia</p></li><li class="listitem"><p>nvidiaPrime</p></li></ul></div>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or (list of (one of “mesa”, “mesaPrime”, “nvidia”, “nvidiaPrime”))</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[
+  &quot;mesa&quot;
+  &quot;mesaPrime&quot;
+]
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/misc/nixgl.nix" target="_top">
+&lt;home-manager/modules/misc/nixgl.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-nixGL.offloadWrapper"></a><a class="term" href="options.xhtml#opt-nixGL.offloadWrapper"><code class="option">nixGL.offloadWrapper</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The package wrapper function available for use as
+<code class="literal">(config.lib.nixGL.wrapOffload &lt;package&gt;)</code>. Intended to start programs
+on the secondary GPU.</p><p>Wrapper functions can be found under <code class="literal">config.lib.nixGL.wrappers</code>. They
+can be used directly, however, setting this option provides a convenient
+shorthand.</p><p>The following wrappers are available:</p><div class="itemizedlist"><ul class="itemizedlist " style="list-style-type: disc;"><li class="listitem"><p>mesa</p></li><li class="listitem"><p>mesaPrime</p></li><li class="listitem"><p>nvidia</p></li><li class="listitem"><p>nvidiaPrime</p></li></ul></div>
+
+<p><span class="emphasis"><em>Type:</em></span>
+one of “mesa”, “mesaPrime”, “nvidia”, “nvidiaPrime”</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;mesaPrime&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/misc/nixgl.nix" target="_top">
+&lt;home-manager/modules/misc/nixgl.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-nixGL.prime.card"></a><a class="term" href="options.xhtml#opt-nixGL.prime.card"><code class="option">nixGL.prime.card</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Selects the non-default graphics card used for PRIME render offloading.
+The value can be:</p><div class="itemizedlist"><ul class="itemizedlist " style="list-style-type: disc;"><li class="listitem"><p>a number, selecting the n-th non-default GPU;</p></li><li class="listitem"><p>a PCI bus id in the form <code class="literal">pci-XXX_YY_ZZ_U</code>;</p></li><li class="listitem"><p>a PCI id in the form <code class="literal">vendor_id:device_id</code></p></li></ul></div><p>For more information, consult the Mesa documentation on the <code class="literal">DRI_PRIME</code>
+environment variable.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;1&quot;</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;pci-0000_06_00_0&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/misc/nixgl.nix" target="_top">
+&lt;home-manager/modules/misc/nixgl.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-nixGL.prime.installScript"></a><a class="term" href="options.xhtml#opt-nixGL.prime.installScript"><code class="option">nixGL.prime.installScript</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>If this option is set, the wrapper script <code class="literal">prime-offload</code> is installed
+into the environment. It allows starting programs on the secondary GPU
+selected by the <code class="literal">nixGL.prime.card</code> option. This makes sense when the
+program is not already using one of nixGL PRIME wrappers, or for
+programs not installed from Nixpkgs.</p><p>This option can be set to either “mesa” or “nvidia”, making the script
+use one or the other graphics library.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or one of “mesa”, “nvidia”</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;mesa&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/misc/nixgl.nix" target="_top">
+&lt;home-manager/modules/misc/nixgl.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-nixGL.prime.nvidiaProvider"></a><a class="term" href="options.xhtml#opt-nixGL.prime.nvidiaProvider"><code class="option">nixGL.prime.nvidiaProvider</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>If this option is set, it overrides the offload provider for Nvidia
+PRIME offloading. Consult the proprietary Nvidia driver documentation
+on the <code class="literal">__NV_PRIME_RENDER_OFFLOAD_PROVIDER</code> environment variable.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;NVIDIA-G0&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/misc/nixgl.nix" target="_top">
+&lt;home-manager/modules/misc/nixgl.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-nixGL.vulkan.enable"></a><a class="term" href="options.xhtml#opt-nixGL.vulkan.enable"><code class="option">nixGL.vulkan.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Vulkan in nixGL wrappers.</p><p>This is disabled by default bacause Vulkan brings in several libraries
+that can cause symbol version conflicts in wrapped programs. Your
+mileage may vary.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/misc/nixgl.nix" target="_top">
+&lt;home-manager/modules/misc/nixgl.nix&gt;
 </a></code>
 </td></tr>
 </table>
@@ -16297,13 +16566,13 @@ attribute set of string</p>
 <dd>
 <p>Define new verbs. For more information, see
 <a class="link" href="https://dystroy.org/broot/documentation/configuration/#verb-definition-attributes"  target="_top">Verb Definition Attributes</a>
-in the broot documentation.</p><p>The possible attributes are:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">invocation</code> (optional)</span></dt><dd><p>how the verb is called by the user, with placeholders for arguments</p></dd><dt><span class="term"><code class="literal">execution</code> (mandatory)</span></dt><dd><p>how the verb is executed</p></dd><dt><span class="term"><code class="literal">key</code> (optional)</span></dt><dd><p>a keyboard key triggering execution</p></dd><dt><span class="term"><code class="literal">shortcut</code> (optional)</span></dt><dd><p>an alternate way to call the verb (without
+in the broot documentation.</p><p>The possible attributes are:</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">invocation</code> (optional)</span></dt><dd><p>how the verb is called by the user, with placeholders for arguments</p></dd><dt><span class="term"><code class="literal">execution</code> (mandatory)</span></dt><dd><p>how the verb is executed</p></dd><dt><span class="term"><code class="literal">key</code> (optional)</span></dt><dd><p>a keyboard key triggering execution</p></dd><dt><span class="term"><code class="literal">keys</code> (optional)</span></dt><dd><p>multiple keyboard keys each triggering execution</p></dd><dt><span class="term"><code class="literal">shortcut</code> (optional)</span></dt><dd><p>an alternate way to call the verb (without
 the arguments part)</p></dd><dt><span class="term"><code class="literal">leave_broot</code> (optional)</span></dt><dd><p>whether to quit broot on execution
-(default: <code class="literal">true</code>)</p></dd><dt><span class="term"><code class="literal">from_shell</code> (optional)&lt;/term&gt;</span></dt><dd><p>whether the verb must be executed from the
+(default: <code class="literal">true</code>)</p></dd><dt><span class="term"><code class="literal">from_shell</code> (optional)</span></dt><dd><p>whether the verb must be executed from the
 parent shell (default: <code class="literal">false</code>)</p></dd></dl></div>
 
 <p><span class="emphasis"><em>Type:</em></span>
-list of attribute set of (boolean or string)</p>
+list of attribute set of (boolean or string or list of string)</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">[ ]</code></p>
@@ -17123,6 +17392,91 @@ null or string</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.cmus.enable"></a><a class="term" href="options.xhtml#opt-programs.cmus.enable"><code class="option">programs.cmus.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Enable cmus, the music player…</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/cmus.nix" target="_top">
+&lt;home-manager/modules/programs/cmus.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.cmus.extraConfig"></a><a class="term" href="options.xhtml#opt-programs.cmus.extraConfig"><code class="option">programs.cmus.extraConfig</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Extra configuration to add to cmus <code class="filename">rc</code>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+strings concatenated with “\n”</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;&quot;</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">&#x27;&#x27;
+  set audio_backend = &quot;mpd&quot;
+  set status_display = &quot;default&quot;
+&#x27;&#x27;
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/cmus.nix" target="_top">
+&lt;home-manager/modules/programs/cmus.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.cmus.theme"></a><a class="term" href="options.xhtml#opt-programs.cmus.theme"><code class="option">programs.cmus.theme</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Select color theme. A list of available color themes can be found
+here: <a class="link" href="https://github.com/cmus/cmus/tree/master/data"  target="_top">https://github.com/cmus/cmus/tree/master/data</a>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+strings concatenated with “\n”</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;&quot;</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;gruvbox&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/cmus.nix" target="_top">
+&lt;home-manager/modules/programs/cmus.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.command-not-found.enable"></a><a class="term" href="options.xhtml#opt-programs.command-not-found.enable"><code class="option">programs.command-not-found.enable</code>
   </a>
  </span>
@@ -17685,6 +18039,58 @@ TOML value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/direnv.nix" target="_top">
+&lt;home-manager/modules/programs/direnv.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.direnv.mise.enable"></a><a class="term" href="options.xhtml#opt-programs.direnv.mise.enable"><code class="option">programs.direnv.mise.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable <a class="link" href="https://mise.jdx.dev/direnv.html"  target="_top">mise</a>,
+integration of use_mise for direnv.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/direnv.nix" target="_top">
+&lt;home-manager/modules/programs/direnv.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.direnv.mise.package"></a><a class="term" href="options.xhtml#opt-programs.direnv.mise.package"><code class="option">programs.direnv.mise.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The mise package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.mise</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -18535,6 +18941,30 @@ package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.eza</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/eza.nix" target="_top">
+&lt;home-manager/modules/programs/eza.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.eza.colors"></a><a class="term" href="options.xhtml#opt-programs.eza.colors"><code class="option">programs.eza.colors</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Use terminal colors in output (<code class="option">--color</code> argument).</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+one of &lt;null&gt;, “auto”, “always”, “never”</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -19983,6 +20413,33 @@ attribute set of (strings concatenated with “\n” or (submodule))</p>
 }
 
 </code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/fish.nix" target="_top">
+&lt;home-manager/modules/programs/fish.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.fish.generateCompletions"></a><a class="term" href="options.xhtml#opt-programs.fish.generateCompletions"><code class="option">programs.fish.generateCompletions</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable the automatic generation of completions based upon installed man pages.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -23568,6 +24025,33 @@ package</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.git-credential-oauth.extraFlags"></a><a class="term" href="options.xhtml#opt-programs.git-credential-oauth.extraFlags"><code class="option">programs.git-credential-oauth.extraFlags</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Extra command-line arguments passed to git-credential-oauth.</p><p>For valid arguments, see <span class="citerefentry"><span class="refentrytitle">git-credential-oauth</span>(1)</span>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">[ &quot;-device&quot; ]</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/git-credential-oauth.nix" target="_top">
+&lt;home-manager/modules/programs/git-credential-oauth.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.gitui.enable"></a><a class="term" href="options.xhtml#opt-programs.gitui.enable"><code class="option">programs.gitui.enable</code>
   </a>
  </span>
@@ -26699,7 +27183,7 @@ package</p>
 <code class="filename">$XDG_CONFIG_HOME/htop/htoprc</code>.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-attribute set</p>
+attribute set of (boolean or signed integer or string or list of (signed integer or string))</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -37031,6 +37515,161 @@ string</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.nh.enable"></a><a class="term" href="options.xhtml#opt-programs.nh.enable"><code class="option">programs.nh.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable nh, yet another Nix CLI helper.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/nh.nix" target="_top">
+&lt;home-manager/modules/programs/nh.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.nh.package"></a><a class="term" href="options.xhtml#opt-programs.nh.package"><code class="option">programs.nh.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The nh package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.nh</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/nh.nix" target="_top">
+&lt;home-manager/modules/programs/nh.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.nh.clean.enable"></a><a class="term" href="options.xhtml#opt-programs.nh.clean.enable"><code class="option">programs.nh.clean.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable periodic garbage collection for user profile and nix store with nh clean
+user.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/nh.nix" target="_top">
+&lt;home-manager/modules/programs/nh.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.nh.clean.dates"></a><a class="term" href="options.xhtml#opt-programs.nh.clean.dates"><code class="option">programs.nh.clean.dates</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>How often cleanup is performed.</p><p>The format is described in <a class="link" href="https://www.freedesktop.org/software/systemd/man/systemd.time.html" target="_top"><span class="citerefentry"><span class="refentrytitle">systemd.time</span>(7)</span></a>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+(optionally newline-terminated) single-line string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;weekly&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/nh.nix" target="_top">
+&lt;home-manager/modules/programs/nh.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.nh.clean.extraArgs"></a><a class="term" href="options.xhtml#opt-programs.nh.clean.extraArgs"><code class="option">programs.nh.clean.extraArgs</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Options given to nh clean when the service is run automatically.</p><p>See <code class="literal">nh clean all --help</code> for more information.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+(optionally newline-terminated) single-line string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;&quot;</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;--keep 5 --keep-since 3d&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/nh.nix" target="_top">
+&lt;home-manager/modules/programs/nh.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.nh.flake"></a><a class="term" href="options.xhtml#opt-programs.nh.flake"><code class="option">programs.nh.flake</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The path that will be used for the <code class="envar">FLAKE</code> environment variable.</p><p><code class="envar">FLAKE</code> is used by nh as the default flake for performing actions,
+like <span class="command"><strong>nh os switch</strong></span>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or path</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/nh.nix" target="_top">
+&lt;home-manager/modules/programs/nh.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.nheko.enable"></a><a class="term" href="options.xhtml#opt-programs.nheko.enable"><code class="option">programs.nheko.enable</code>
   </a>
  </span>
@@ -38028,17 +38667,25 @@ strings concatenated with “\n”</p>
  </span>
 </dt>
 <dd>
-<p>An attribute set that maps an environment variable to a shell interpreted string.</p>
+<p>Environment variables to be set.</p><p>Inline values can be set with <code class="literal">lib.hm.nushell.mkNushellInline</code>.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-attribute set of string</p>
+attribute set of (null or (Nushell inline value) or boolean or signed integer or floating point number or string or path or (attribute set of Nushell values) or (list of Nushell values))</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
   FOO = &quot;BAR&quot;;
+  LIST_VALUE = [ &quot;foo&quot; &quot;bar&quot; ];
+  NU_LIB_DIRS = lib.concatStringsSep &quot;:&quot; [ ./scripts ];
+  PROMPT_COMMAND = lib.hm.nushell.mkNushellInline &#x27;&#x27;{|| &quot;&gt; &quot;}&#x27;&#x27;;
+  ENV_CONVERSIONS.PATH = {
+    from_string = lib.hm.nushell.mkNushellInline &quot;{|s| $s | split row (char esep) }&quot;;
+    to_string = lib.hm.nushell.mkNushellInline &quot;{|v| $v | str join (char esep) }&quot;;
+  };
 }
+
 </code></pre>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
@@ -45118,6 +45765,51 @@ package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.spotify-player</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/spotify-player.nix" target="_top">
+&lt;home-manager/modules/programs/spotify-player.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.spotify-player.actions"></a><a class="term" href="options.xhtml#opt-programs.spotify-player.actions"><code class="option">programs.spotify-player.actions</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Configuration written to the <code class="literal">actions</code> field of
+<code class="filename">$XDG_CONFIG_HOME/spotify-player/keymap.toml</code>.</p><p>See
+<a class="link" href="https://github.com/aome510/spotify-player/blob/master/docs/config.md#actions"  target="_top">https://github.com/aome510/spotify-player/blob/master/docs/config.md#actions</a>
+for the full list of options.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of (TOML value)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[
+  {
+    action = &quot;GoToArtist&quot;;
+    key_sequence = &quot;g A&quot;;
+  }
+  {
+    action = &quot;GoToAlbum&quot;;
+    key_sequence = &quot;g B&quot;;
+    target = &quot;PlayingTrack&quot;;
+  }
+  {
+    action = &quot;ToggleLiked&quot;;
+    key_sequence = &quot;C-l&quot;;
+  }
+]
+
+</code></pre>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -53726,7 +54418,7 @@ boolean</p>
 boolean</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">false</code></p>
+<code class="literal">true</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">true</code></p>
@@ -53753,7 +54445,7 @@ boolean</p>
 boolean</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">false</code></p>
+<code class="literal">true</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">true</code></p>
@@ -53780,7 +54472,7 @@ boolean</p>
 boolean</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">false</code></p>
+<code class="literal">true</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">true</code></p>
@@ -53807,7 +54499,7 @@ boolean</p>
 boolean</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">false</code></p>
+<code class="literal">true</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">true</code></p>
@@ -54503,6 +55195,159 @@ attribute set of (string or boolean or signed integer or floating point number)<
 <tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zathura.nix" target="_top">
 &lt;home-manager/modules/programs/zathura.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.zed-editor.enable"></a><a class="term" href="options.xhtml#opt-programs.zed-editor.enable"><code class="option">programs.zed-editor.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Zed, the high performance, multiplayer code editor from the creators of Atom and Tree-sitter.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zed-editor.nix" target="_top">
+&lt;home-manager/modules/programs/zed-editor.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.zed-editor.package"></a><a class="term" href="options.xhtml#opt-programs.zed-editor.package"><code class="option">programs.zed-editor.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The zed-editor package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.zed-editor</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zed-editor.nix" target="_top">
+&lt;home-manager/modules/programs/zed-editor.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.zed-editor.extensions"></a><a class="term" href="options.xhtml#opt-programs.zed-editor.extensions"><code class="option">programs.zed-editor.extensions</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>A list of the extensions Zed should install on startup.
+Use the name of a repository in the <a class="link" href="https://github.com/zed-industries/extensions/tree/main/extensions"  target="_top">extension list</a>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[ &quot;swift&quot; &quot;nix&quot; &quot;xy-zed&quot; ]
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zed-editor.nix" target="_top">
+&lt;home-manager/modules/programs/zed-editor.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.zed-editor.userKeymaps"></a><a class="term" href="options.xhtml#opt-programs.zed-editor.userKeymaps"><code class="option">programs.zed-editor.userKeymaps</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Configuration written to Zed’s <code class="filename">keymap.json</code>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+JSON value</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[
+  {
+    context = &quot;Workspace&quot;;
+    bindings = {
+      ctrl-shift-t = &quot;workspace::NewTerminal&quot;;
+    };
+  };
+]
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zed-editor.nix" target="_top">
+&lt;home-manager/modules/programs/zed-editor.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.zed-editor.userSettings"></a><a class="term" href="options.xhtml#opt-programs.zed-editor.userSettings"><code class="option">programs.zed-editor.userSettings</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Configuration written to Zed’s <code class="filename">settings.json</code>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+JSON value</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  features = {
+    copilot = false;
+  };
+  telemetry = {
+    metrics = false;
+  };
+  vim_mode = false;
+  ui_font_size = 16;
+  buffer_font_size = 16;
+}
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zed-editor.nix" target="_top">
+&lt;home-manager/modules/programs/zed-editor.nix&gt;
 </a></code>
 </td></tr>
 </table>
