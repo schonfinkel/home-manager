@@ -4328,6 +4328,8 @@ attribute set of (string or signed integer or boolean or list of string)</p>
 <code class="literal">{ }</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  TLSType = &quot;IMAP&quot;;
+  TLSVersions = [ &quot;+1.3&quot; &quot;+1.2&quot; &quot;-1.1&quot; ];
   PipelineDepth = 10;
   Timeout = 60;
 };
@@ -17295,6 +17297,145 @@ attribute set of section of an INI file (attrs of INI atom (null, bool, int, flo
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.cavalier.enable"></a><a class="term" href="options.xhtml#opt-programs.cavalier.enable"><code class="option">programs.cavalier.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Cava audio visualizer GUI.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/cavalier.nix" target="_top">
+&lt;home-manager/modules/programs/cavalier.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.cavalier.package"></a><a class="term" href="options.xhtml#opt-programs.cavalier.package"><code class="option">programs.cavalier.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The cavalier package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.cavalier</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/cavalier.nix" target="_top">
+&lt;home-manager/modules/programs/cavalier.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.cavalier.settings.cava"></a><a class="term" href="options.xhtml#opt-programs.cavalier.settings.cava"><code class="option">programs.cavalier.settings.cava</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Settings to be written to the underlying Cava configuration file. See
+<a class="link" href="https://github.com/karlstav/cava/blob/master/example_files/config"  target="_top">https://github.com/karlstav/cava/blob/master/example_files/config</a> for
+all available options.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of section of an INI file (attrs of INI atom (null, bool, int, float or string))</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  general.framerate = 60;
+  input.method = &quot;alsa&quot;;
+  smoothing.noise_reduction = 88;
+  color = {
+    background = &quot;&#x27;#000000&#x27;&quot;;
+    foreground = &quot;&#x27;#FFFFFF&#x27;&quot;;
+  };
+}
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/cavalier.nix" target="_top">
+&lt;home-manager/modules/programs/cavalier.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.cavalier.settings.general"></a><a class="term" href="options.xhtml#opt-programs.cavalier.settings.general"><code class="option">programs.cavalier.settings.general</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Settings to be written to the Cavalier configuration file. See
+<a class="link" href="https://github.com/NickvisionApps/Cavalier/blob/main/NickvisionCavalier.Shared/Models/Configuration.cs"  target="_top">https://github.com/NickvisionApps/Cavalier/blob/main/NickvisionCavalier.Shared/Models/Configuration.cs</a>
+for all available options.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+JSON value</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  ShowControls = true;
+  ColorProfiles = [
+    {
+      Name = &quot;Default&quot;;
+      FgColors = [
+        &quot;#ffed333b&quot;
+        &quot;#ffffa348&quot;
+        &quot;#fff8e45c&quot;
+        &quot;#ff57e389&quot;
+        &quot;#ff62a0ea&quot;
+        &quot;#ffc061cb&quot;
+      ];
+      BgColors = [
+        &quot;#ff1e1e2e&quot;
+      ];
+      Theme = 1;
+    }
+  ];
+  ActiveProfile = 0;
+}
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/cavalier.nix" target="_top">
+&lt;home-manager/modules/programs/cavalier.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.chromium.enable"></a><a class="term" href="options.xhtml#opt-programs.chromium.enable"><code class="option">programs.chromium.enable</code>
   </a>
  </span>
@@ -23008,6 +23149,312 @@ YAML value</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.ghostty.enable"></a><a class="term" href="options.xhtml#opt-programs.ghostty.enable"><code class="option">programs.ghostty.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Ghostty.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ghostty.nix" target="_top">
+&lt;home-manager/modules/programs/ghostty.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ghostty.enableBashIntegration"></a><a class="term" href="options.xhtml#opt-programs.ghostty.enableBashIntegration"><code class="option">programs.ghostty.enableBashIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable bash shell integration.</p><p>This is ensures that shell integration works in more scenarios, such as switching shells within Ghostty.
+But it is not needed to have shell integration.
+See <a class="link" href="https://ghostty.org/docs/features/shell-integration#manual-shell-integration-setup"  target="_top">https://ghostty.org/docs/features/shell-integration#manual-shell-integration-setup</a> for more information
+.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ghostty.nix" target="_top">
+&lt;home-manager/modules/programs/ghostty.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ghostty.enableFishIntegration"></a><a class="term" href="options.xhtml#opt-programs.ghostty.enableFishIntegration"><code class="option">programs.ghostty.enableFishIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable fish shell integration.</p><p>This is ensures that shell integration works in more scenarios, such as switching shells within Ghostty.
+But it is not needed to have shell integration.
+See <a class="link" href="https://ghostty.org/docs/features/shell-integration#manual-shell-integration-setup"  target="_top">https://ghostty.org/docs/features/shell-integration#manual-shell-integration-setup</a> for more information
+.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ghostty.nix" target="_top">
+&lt;home-manager/modules/programs/ghostty.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ghostty.enableZshIntegration"></a><a class="term" href="options.xhtml#opt-programs.ghostty.enableZshIntegration"><code class="option">programs.ghostty.enableZshIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable zsh shell integration.</p><p>This is ensures that shell integration works in more scenarios, such as switching shells within Ghostty.
+But it is not needed to have shell integration.
+See <a class="link" href="https://ghostty.org/docs/features/shell-integration#manual-shell-integration-setup"  target="_top">https://ghostty.org/docs/features/shell-integration#manual-shell-integration-setup</a> for more information
+.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ghostty.nix" target="_top">
+&lt;home-manager/modules/programs/ghostty.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ghostty.package"></a><a class="term" href="options.xhtml#opt-programs.ghostty.package"><code class="option">programs.ghostty.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The ghostty package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.ghostty</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ghostty.nix" target="_top">
+&lt;home-manager/modules/programs/ghostty.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ghostty.clearDefaultKeybinds"></a><a class="term" href="options.xhtml#opt-programs.ghostty.clearDefaultKeybinds"><code class="option">programs.ghostty.clearDefaultKeybinds</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to clear default keybinds.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ghostty.nix" target="_top">
+&lt;home-manager/modules/programs/ghostty.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ghostty.installBatSyntax"></a><a class="term" href="options.xhtml#opt-programs.ghostty.installBatSyntax"><code class="option">programs.ghostty.installBatSyntax</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable installation of Ghostty configuration syntax for bat.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ghostty.nix" target="_top">
+&lt;home-manager/modules/programs/ghostty.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ghostty.installVimSyntax"></a><a class="term" href="options.xhtml#opt-programs.ghostty.installVimSyntax"><code class="option">programs.ghostty.installVimSyntax</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable installation of Ghostty configuration syntax for Vim.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ghostty.nix" target="_top">
+&lt;home-manager/modules/programs/ghostty.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ghostty.settings"></a><a class="term" href="options.xhtml#opt-programs.ghostty.settings"><code class="option">programs.ghostty.settings</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Configuration written to <code class="filename">$XDG_CONFIG_HOME/ghostty/config</code>.</p><p>See <a class="link" href="https://ghostty.org/docs/config/reference"  target="_top">https://ghostty.org/docs/config/reference</a> for more information.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of (atom (null, bool, int, float or string) or a list of them for duplicate keys)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  theme = &quot;catppuccin-mocha&quot;;
+  font-size = 10;
+}
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ghostty.nix" target="_top">
+&lt;home-manager/modules/programs/ghostty.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ghostty.themes"></a><a class="term" href="options.xhtml#opt-programs.ghostty.themes"><code class="option">programs.ghostty.themes</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Custom themes written to <code class="filename">$XDG_CONFIG_HOME/ghostty/themes</code>.</p><p>See <a class="link" href="https://ghostty.org/docs/features/theme#authoring-a-custom-theme"  target="_top">https://ghostty.org/docs/features/theme#authoring-a-custom-theme</a> for more information.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of attribute set of (atom (null, bool, int, float or string) or a list of them for duplicate keys)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  catppuccin-mocha = {
+    background = &quot;1e1e2e&quot;;
+    cursor-color = &quot;f5e0dc&quot;;
+    foreground = &quot;cdd6f4&quot;;
+    palette = [
+      &quot;0=#45475a&quot;
+      &quot;1=#f38ba8&quot;
+      &quot;2=#a6e3a1&quot;
+      &quot;3=#f9e2af&quot;
+      &quot;4=#89b4fa&quot;
+      &quot;5=#f5c2e7&quot;
+      &quot;6=#94e2d5&quot;
+      &quot;7=#bac2de&quot;
+      &quot;8=#585b70&quot;
+      &quot;9=#f38ba8&quot;
+      &quot;10=#a6e3a1&quot;
+      &quot;11=#f9e2af&quot;
+      &quot;12=#89b4fa&quot;
+      &quot;13=#f5c2e7&quot;
+      &quot;14=#94e2d5&quot;
+      &quot;15=#a6adc8&quot;
+    ];
+    selection-background = &quot;353749&quot;;
+    selection-foreground = &quot;cdd6f4&quot;;
+  };
+}
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ghostty.nix" target="_top">
+&lt;home-manager/modules/programs/ghostty.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.git.enable"></a><a class="term" href="options.xhtml#opt-programs.git.enable"><code class="option">programs.git.enable</code>
   </a>
  </span>
@@ -24449,7 +24896,7 @@ list of (submodule)</p>
   { package = pkgs.gnomeExtensions.dash-to-panel; }
   {
     id = &quot;user-theme@gnome-shell-extensions.gcampax.github.com&quot;;
-    package = pkgs.gnome.gnome-shell-extensions;
+    package = pkgs.gnome-shell-extensions;
   }
 ]
 
@@ -24478,7 +24925,7 @@ list of (submodule)</p>
 package</p>
 
 <p><span class="emphasis"><em>Example:</em></span>
-<code class="literal">&quot;pkgs.gnome.gnome-shell-extensions&quot;</code></p>
+<code class="literal">&quot;pkgs.gnome-shell-extensions&quot;</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -33201,6 +33648,30 @@ boolean</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.lesspipe.package"></a><a class="term" href="options.xhtml#opt-programs.lesspipe.package"><code class="option">programs.lesspipe.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The lesspipe package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.lesspipe</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/lesspipe.nix" target="_top">
+&lt;home-manager/modules/programs/lesspipe.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.lf.enable"></a><a class="term" href="options.xhtml#opt-programs.lf.enable"><code class="option">programs.lf.enable</code>
   </a>
  </span>
@@ -39356,6 +39827,33 @@ strings concatenated with “\n”</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.nushell.plugins"></a><a class="term" href="options.xhtml#opt-programs.nushell.plugins"><code class="option">programs.nushell.plugins</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>A list of nushell plugins to write to the plugin registry file.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">[ pkgs.nushellPlugins.formats ]</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/nushell.nix" target="_top">
+&lt;home-manager/modules/programs/nushell.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.nushell.shellAliases"></a><a class="term" href="options.xhtml#opt-programs.nushell.shellAliases"><code class="option">programs.nushell.shellAliases</code>
   </a>
  </span>
@@ -40644,6 +41142,165 @@ attribute set of string</p>
 <tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/password-store.nix" target="_top">
 &lt;home-manager/modules/programs/password-store.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.pay-respects.enable"></a><a class="term" href="options.xhtml#opt-programs.pay-respects.enable"><code class="option">programs.pay-respects.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable pay-respects.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/pay-respects.nix" target="_top">
+&lt;home-manager/modules/programs/pay-respects.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.pay-respects.enableBashIntegration"></a><a class="term" href="options.xhtml#opt-programs.pay-respects.enableBashIntegration"><code class="option">programs.pay-respects.enableBashIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Bash integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/pay-respects.nix" target="_top">
+&lt;home-manager/modules/programs/pay-respects.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.pay-respects.enableFishIntegration"></a><a class="term" href="options.xhtml#opt-programs.pay-respects.enableFishIntegration"><code class="option">programs.pay-respects.enableFishIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Fish integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/pay-respects.nix" target="_top">
+&lt;home-manager/modules/programs/pay-respects.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.pay-respects.enableNushellIntegration"></a><a class="term" href="options.xhtml#opt-programs.pay-respects.enableNushellIntegration"><code class="option">programs.pay-respects.enableNushellIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Nushell integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/pay-respects.nix" target="_top">
+&lt;home-manager/modules/programs/pay-respects.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.pay-respects.enableZshIntegration"></a><a class="term" href="options.xhtml#opt-programs.pay-respects.enableZshIntegration"><code class="option">programs.pay-respects.enableZshIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Zsh integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/pay-respects.nix" target="_top">
+&lt;home-manager/modules/programs/pay-respects.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.pay-respects.package"></a><a class="term" href="options.xhtml#opt-programs.pay-respects.package"><code class="option">programs.pay-respects.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The pay-respects package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.pay-respects</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/pay-respects.nix" target="_top">
+&lt;home-manager/modules/programs/pay-respects.nix&gt;
 </a></code>
 </td></tr>
 </table>
@@ -50293,6 +50950,40 @@ attribute set of (submodule)</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.thunderbird.profiles._name_.extensions"></a><a class="term" href="options.xhtml#opt-programs.thunderbird.profiles._name_.extensions"><code class="option">programs.thunderbird.profiles.&lt;name&gt;.extensions</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>List of ‹name› add-on packages to install for this profile.</p><p>Note that it is necessary to manually enable extensions
+inside ‹name› after the first installation.</p><p>To automatically enable extensions add
+<code class="literal">&quot;extensions.autoDisableScopes&quot; = 0;</code>
+to
+<a class="link" href="options.xhtml#opt-programs.thunderbird.profiles._name_.settings"  ><code class="option">programs.thunderbird.profiles.&lt;profile&gt;.settings</code></a></p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[
+  pkgs.some-thunderbird-extension
+]
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/thunderbird.nix" target="_top">
+&lt;home-manager/modules/programs/thunderbird.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.thunderbird.profiles._name_.extraConfig"></a><a class="term" href="options.xhtml#opt-programs.thunderbird.profiles._name_.extraConfig"><code class="option">programs.thunderbird.profiles.&lt;name&gt;.extraConfig</code>
   </a>
  </span>
@@ -55249,7 +55940,7 @@ TOML value</p>
   };
   manager = {
     show_hidden = false;
-    sort_by = &quot;modified&quot;;
+    sort_by = &quot;mtime&quot;;
     sort_dir_first = true;
     sort_reverse = true;
   };
@@ -55316,7 +56007,7 @@ TOML value</p>
       { fg = &quot;#7AD9E5&quot;; mime = &quot;image/*&quot;; }
       { fg = &quot;#F3D398&quot;; mime = &quot;video/*&quot;; }
       { fg = &quot;#F3D398&quot;; mime = &quot;audio/*&quot;; }
-      { fg = &quot;#CD9EFC&quot;; mime = &quot;application/x-bzip&quot;; }
+      { fg = &quot;#CD9EFC&quot;; mime = &quot;application/bzip&quot;; }
     ];
   };
 }
@@ -61649,6 +62340,33 @@ package</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-services.copyq.forceXWayland"></a><a class="term" href="options.xhtml#opt-services.copyq.forceXWayland"><code class="option">services.copyq.forceXWayland</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Force the CopyQ to use the X backend on wayland</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/copyq.nix" target="_top">
+&lt;home-manager/modules/services/copyq.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-services.copyq.systemdTarget"></a><a class="term" href="options.xhtml#opt-services.copyq.systemdTarget"><code class="option">services.copyq.systemdTarget</code>
   </a>
  </span>
@@ -64472,13 +65190,10 @@ null or signed integer</p>
  </span>
 </dt>
 <dd>
-<p>Which pinentry interface to use. If not
-<code class="literal">null</code>, it sets
-<code class="option">pinentry-program</code> in
-<code class="filename">gpg-agent.conf</code>. Beware that
-<code class="literal">pinentry-gnome3</code> may not work on non-Gnome
-systems. You can fix it by adding the following to your
-system configuration:</p><pre><code class="programlisting nix">services.dbus.packages = [ pkgs.gcr ];
+<p>Which pinentry interface to use. If not <code class="literal">null</code>, it sets
+<code class="option">pinentry-program</code> in <code class="filename">gpg-agent.conf</code>. Beware that
+<code class="literal">pinentry-gnome3</code> may not work on non-GNOME systems. You can fix it by
+adding the following to your configuration:</p><pre><code class="programlisting nix">home.packages = [ pkgs.gcr ];
 </code></pre>
 
 <p><span class="emphasis"><em>Type:</em></span>
@@ -66638,7 +67353,7 @@ boolean</p>
 package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">&lt;derivation kdeconnect-kde-24.08.3&gt;</code></p>
+<code class="literal">&lt;derivation kdeconnect-kde-24.12.0&gt;</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">pkgs.plasma5Packages.kdeconnect-kde</code></p>
@@ -79649,17 +80364,14 @@ systemd socket unit configuration</p>
 should be started. Additionally, stop obsolete services from the
 previous generation.</p><p>The alternatives are</p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">suggest</code> (or <code class="literal">false</code>)</span></dt><dd><p>Use a very simple shell script to print suggested
 <span class="command"><strong>systemctl</strong></span> commands to run. You will have to
-manually run those commands after the switch.</p></dd><dt><span class="term"><code class="literal">legacy</code></span></dt><dd><p>Use a Ruby script to, in a more robust fashion, determine the
-necessary changes and automatically run the
-<span class="command"><strong>systemctl</strong></span> commands. Note, this alternative will soon
-be removed.</p></dd><dt><span class="term"><code class="literal">sd-switch</code> (or <code class="literal">true</code>)</span></dt><dd><p>Use sd-switch, a tool that determines the necessary changes and
+manually run those commands after the switch.</p></dd><dt><span class="term"><code class="literal">sd-switch</code> (or <code class="literal">true</code>)</span></dt><dd><p>Use sd-switch, a tool that determines the necessary changes and
 automatically apply them.</p></dd></dl></div>
 
 <p><span class="emphasis"><em>Type:</em></span>
-boolean or one of “suggest”, “legacy”, “sd-switch”</p>
+boolean or one of “suggest”, “sd-switch”</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">&quot;suggest&quot;</code></p>
+<code class="literal">true</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -86947,7 +87659,7 @@ If this and all other xresources options are
 <code class="filename">~/.Xresources</code> link is produced.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-null or (attribute set of (boolean or signed integer or string or list of (boolean or signed integer or string)))</p>
+null or (attribute set of (boolean or signed integer or floating point number or string or list of (boolean or signed integer or floating point number or string)))</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">null</code></p>
