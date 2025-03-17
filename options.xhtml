@@ -8251,7 +8251,7 @@ null or string</p>
  </span>
 </dt>
 <dd>
-<p>Cursor configuration. Set to <code class="literal">null</code> to disable.</p><p>Top-level options declared under this submodule are backend independent
+<p>Cursor configuration.</p><p>Top-level options declared under this submodule are backend independent
 options. Options declared under namespaces such as <code class="literal">x11</code>
 are backend specific options. By default, only backend independent cursor
 configurations are generated. If you need configurations for specific
@@ -8280,6 +8280,33 @@ null or (submodule)</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-home.pointerCursor.enable"></a><a class="term" href="options.xhtml#opt-home.pointerCursor.enable"><code class="option">home.pointerCursor.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable cursor config generation.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/config/home-cursor.nix" target="_top">
+&lt;home-manager/modules/config/home-cursor.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-home.pointerCursor.package"></a><a class="term" href="options.xhtml#opt-home.pointerCursor.package"><code class="option">home.pointerCursor.package</code>
   </a>
  </span>
@@ -8292,6 +8319,34 @@ package</p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">pkgs.vanilla-dmz</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/config/home-cursor.nix" target="_top">
+&lt;home-manager/modules/config/home-cursor.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-home.pointerCursor.dotIcons.enable"></a><a class="term" href="options.xhtml#opt-home.pointerCursor.dotIcons.enable"><code class="option">home.pointerCursor.dotIcons.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable <code class="literal">.icons</code> config generation for <code class="option">home.pointerCursor</code>
+.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -8577,7 +8632,7 @@ absolute path <span class="emphasis"><em>(read only)</em></span></p>
  </span>
 </dt>
 <dd>
-<p>Extra directories to add to <code class="envar">PATH</code>.</p><p>These directories are added to the <code class="envar">PATH</code> variable in a
+<p>Extra directories to prepend to <code class="envar">PATH</code>.</p><p>These directories are added to the <code class="envar">PATH</code> variable in a
 double-quoted context, so expressions like <code class="literal">$HOME</code> are
 expanded by the shell. However, since expressions like <code class="literal">~</code> or
 <code class="literal">*</code> are escaped, they will end up in the <code class="envar">PATH</code>
@@ -8594,6 +8649,45 @@ list of string</p>
   &quot;\${xdg.configHome}/emacs/bin&quot;
   &quot;.git/safe/../../bin&quot;
 ]
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/home-environment.nix" target="_top">
+&lt;home-manager/modules/home-environment.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-home.sessionSearchVariables"></a><a class="term" href="options.xhtml#opt-home.sessionSearchVariables"><code class="option">home.sessionSearchVariables</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Extra directories to prepend to arbitrary PATH-like
+environment variables (e.g.: <code class="envar">MANPATH</code>). The values
+will be concatenated by <code class="literal">:</code>.
+These directories are added to the environment variable in a
+double-quoted context, so expressions like <code class="literal">$HOME</code> are
+expanded by the shell. However, since expressions like <code class="literal">~</code> or
+<code class="literal">*</code> are escaped, they will end up in the environment
+verbatim.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  MANPATH = [
+    &quot;$HOME/.npm-packages/man&quot;
+    &quot;\${xdg.configHome}/.local/share/man&quot;
+  ];
+}
 </code></pre>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
@@ -12333,7 +12427,7 @@ boolean</p>
 <p>The aerc package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.aerc</code></p>
@@ -12522,7 +12616,7 @@ boolean</p>
 <p>The aerospace package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.aerospace</code></p>
@@ -13369,7 +13463,7 @@ boolean</p>
 <p>The alot package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.alot</code></p>
@@ -15281,7 +15375,7 @@ boolean</p>
 <p>The bacon package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.bacon</code></p>
@@ -15430,7 +15524,7 @@ boolean</p>
 <p>The bash package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.bashInteractive</code></p>
@@ -16236,7 +16330,7 @@ boolean</p>
 <p>The bemenu package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.bemenu</code></p>
@@ -16330,7 +16424,7 @@ boolean</p>
 <p>The borgmatic package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.borgmatic</code></p>
@@ -17120,7 +17214,7 @@ boolean</p>
 <p>The boxxy package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.boxxy</code></p>
@@ -17774,7 +17868,7 @@ boolean</p>
 <p>The btop package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.btop</code></p>
@@ -17908,7 +18002,7 @@ boolean</p>
 <p>The bun package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.bun</code></p>
@@ -18158,7 +18252,7 @@ boolean</p>
 <p>The cava package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.cava</code></p>
@@ -18247,7 +18341,7 @@ boolean</p>
 <p>The cavalier package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.cavalier</code></p>
@@ -18808,7 +18902,7 @@ boolean</p>
 <p>The comodoro package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.comodoro</code></p>
@@ -18884,7 +18978,7 @@ boolean</p>
 <p>The darcs package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.darcs</code></p>
@@ -19506,7 +19600,7 @@ boolean</p>
 <p>The discocss package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.discocss</code></p>
@@ -19578,7 +19672,7 @@ boolean</p>
 <p>The discord package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.discord</code></p>
@@ -19629,7 +19723,7 @@ boolean</p>
 <p>The earthly package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.earthly</code></p>
@@ -20287,7 +20381,7 @@ boolean</p>
 <p>The eza package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.eza</code></p>
@@ -20441,7 +20535,7 @@ boolean</p>
 <p>The fastfetch package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.fastfetch</code></p>
@@ -20551,7 +20645,7 @@ boolean</p>
 <p>The fd package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.fd</code></p>
@@ -20686,7 +20780,7 @@ boolean</p>
 <p>The feh package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.feh</code></p>
@@ -21905,7 +21999,7 @@ attribute set of (Firefox preference (int, bool, string, and also attrs, list, f
 <p>Custom Firefox user chrome CSS.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-strings concatenated with “\n”</p>
+strings concatenated with “\n” or absolute path</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">&quot;&quot;</code></p>
@@ -21944,7 +22038,7 @@ strings concatenated with “\n”</p>
 <p>Custom Firefox user content CSS.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-strings concatenated with “\n”</p>
+strings concatenated with “\n” or absolute path</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">&quot;&quot;</code></p>
@@ -23436,7 +23530,7 @@ attribute set of (Floorp preference (int, bool, string, and also attrs, list, fl
 <p>Custom Floorp user chrome CSS.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-strings concatenated with “\n”</p>
+strings concatenated with “\n” or absolute path</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">&quot;&quot;</code></p>
@@ -23475,7 +23569,7 @@ strings concatenated with “\n”</p>
 <p>Custom Floorp user content CSS.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-strings concatenated with “\n”</p>
+strings concatenated with “\n” or absolute path</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">&quot;&quot;</code></p>
@@ -23651,7 +23745,7 @@ boolean</p>
 <p>The freetube package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.freetube</code></p>
@@ -23736,7 +23830,7 @@ boolean</p>
 <p>The fuzzel package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.fuzzel</code></p>
@@ -24249,7 +24343,7 @@ boolean</p>
 <p>The gallery-dl package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.gallery-dl</code></p>
@@ -24589,7 +24683,7 @@ boolean</p>
 <p>The gh-dash package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.gh-dash</code></p>
@@ -26171,7 +26265,7 @@ boolean</p>
 <p>The git-cliff package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.git-cliff</code></p>
@@ -28099,7 +28193,7 @@ boolean</p>
 <p>The gradle package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.gradle</code></p>
@@ -28290,6 +28384,33 @@ boolean</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.granted.enableFishIntegration"></a><a class="term" href="options.xhtml#opt-programs.granted.enableFishIntegration"><code class="option">programs.granted.enableFishIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Fish integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<a class="xref" href="options.xhtml#opt-home.shell.enableFishIntegration"  ><code class="option">home.shell.enableFishIntegration</code></a></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/granted.nix" target="_top">
+&lt;home-manager/modules/programs/granted.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.granted.enableZshIntegration"></a><a class="term" href="options.xhtml#opt-programs.granted.enableZshIntegration"><code class="option">programs.granted.enableZshIntegration</code>
   </a>
  </span>
@@ -28352,7 +28473,7 @@ boolean</p>
 <p>The havoc package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.havoc</code></p>
@@ -29376,7 +29497,7 @@ boolean</p>
 <p>The himalaya package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.himalaya</code></p>
@@ -29815,7 +29936,7 @@ boolean</p>
 <p>The hyprlock package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.hyprlock</code></p>
@@ -30141,7 +30262,7 @@ boolean</p>
 <p>The i3status package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.i3status</code></p>
@@ -30699,7 +30820,7 @@ boolean</p>
 <p>The imv package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.imv</code></p>
@@ -31845,7 +31966,7 @@ boolean</p>
 <p>The jqp package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.jqp</code></p>
@@ -31930,7 +32051,7 @@ boolean</p>
 <p>The jujutsu package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.jujutsu</code></p>
@@ -32039,7 +32160,7 @@ boolean</p>
 <p>The k9s package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.k9s</code></p>
@@ -32327,7 +32448,7 @@ boolean</p>
 <p>The kakoune-unwrapped package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.kakoune-unwrapped</code></p>
@@ -33727,7 +33848,7 @@ strings concatenated with “\n”</p>
 <dd>
 <p>List of kakoune plugins to install. To get a list of
 supported plugins run:
-<span class="command"><strong>nix-env -f &#x27;&lt;nixpkgs&gt;&#x27; -qaP -A kakounePlugins</strong></span>.</p>
+<span class="command"><strong>nix-env -f &#x27;&lt;nixpkgs&gt;&#x27; -qaP -A kakounePlugins</strong></span>.</p><p>Requires <code class="literal">package</code> to not be set to have effect.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 list of package</p>
@@ -34067,7 +34188,7 @@ boolean</p>
 <p>The khal package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.khal</code></p>
@@ -35308,7 +35429,7 @@ boolean</p>
 <p>The lapce package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.lapce</code></p>
@@ -35597,7 +35718,7 @@ boolean</p>
 <p>The lazygit package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.lazygit</code></p>
@@ -35689,7 +35810,7 @@ boolean</p>
 <p>The ledger package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.ledger</code></p>
@@ -36365,7 +36486,7 @@ boolean</p>
 <p>The looking-glass-client package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.looking-glass-client</code></p>
@@ -37535,7 +37656,7 @@ boolean</p>
 <p>The micro package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.micro</code></p>
@@ -37728,7 +37849,7 @@ boolean</p>
 <p>The mise package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.mise</code></p>
@@ -37805,6 +37926,181 @@ disable_tools = [&quot;node&quot;];
 <tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/mise.nix" target="_top">
 &lt;home-manager/modules/programs/mise.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.mods.enable"></a><a class="term" href="options.xhtml#opt-programs.mods.enable"><code class="option">programs.mods.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable mods.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/mods.nix" target="_top">
+&lt;home-manager/modules/programs/mods.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.mods.enableBashIntegration"></a><a class="term" href="options.xhtml#opt-programs.mods.enableBashIntegration"><code class="option">programs.mods.enableBashIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Bash integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<a class="xref" href="options.xhtml#opt-home.shell.enableBashIntegration"  ><code class="option">home.shell.enableBashIntegration</code></a></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/mods.nix" target="_top">
+&lt;home-manager/modules/programs/mods.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.mods.enableFishIntegration"></a><a class="term" href="options.xhtml#opt-programs.mods.enableFishIntegration"><code class="option">programs.mods.enableFishIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Fish integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<a class="xref" href="options.xhtml#opt-home.shell.enableFishIntegration"  ><code class="option">home.shell.enableFishIntegration</code></a></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/mods.nix" target="_top">
+&lt;home-manager/modules/programs/mods.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.mods.enableZshIntegration"></a><a class="term" href="options.xhtml#opt-programs.mods.enableZshIntegration"><code class="option">programs.mods.enableZshIntegration</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable Zsh integration.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<a class="xref" href="options.xhtml#opt-home.shell.enableZshIntegration"  ><code class="option">home.shell.enableZshIntegration</code></a></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/mods.nix" target="_top">
+&lt;home-manager/modules/programs/mods.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.mods.package"></a><a class="term" href="options.xhtml#opt-programs.mods.package"><code class="option">programs.mods.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The mods package to install</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.mods</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/mods.nix" target="_top">
+&lt;home-manager/modules/programs/mods.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.mods.settings"></a><a class="term" href="options.xhtml#opt-programs.mods.settings"><code class="option">programs.mods.settings</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Configuration written to
+<code class="filename">$XDG_CONFIG_HOME/mods/mods.yml</code>.</p><p>See <a class="link" href="https://github.com/charmbracelet/mods/blob/main/config_template.yml"  target="_top">https://github.com/charmbracelet/mods/blob/main/config_template.yml</a> for the full
+list of options.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+YAML value</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">&#x27;&#x27;
+  {
+    default-model = &quot;llama3.2&quot;;
+    apis = {
+      ollama = {
+        base-url = &quot;http://localhost:11434/api&quot;;
+        models = {
+          &quot;llama3.2&quot; = {
+            max-input-chars = 650000;
+          };
+        };
+      };
+    };
+  }
+&#x27;&#x27;
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/mods.nix" target="_top">
+&lt;home-manager/modules/programs/mods.nix&gt;
 </a></code>
 </td></tr>
 </table>
@@ -38165,7 +38461,7 @@ boolean</p>
 <p>The mr package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.mr</code></p>
@@ -39710,7 +40006,7 @@ boolean</p>
 <p>The neovide package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.neovide</code></p>
@@ -40921,7 +41217,7 @@ boolean</p>
 <p>The nheko package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.nheko</code></p>
@@ -41831,7 +42127,7 @@ boolean</p>
 <p>The nushell package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.nushell</code></p>
@@ -43030,7 +43326,7 @@ boolean</p>
 <p>The openstackclient package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.openstackclient</code></p>
@@ -43342,7 +43638,7 @@ boolean</p>
 <p>The papis package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.papis</code></p>
@@ -44468,7 +44764,7 @@ boolean</p>
 <p>The poetry package to use. May be used to install custom poetry plugins.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.poetry</code></p>
@@ -46648,7 +46944,7 @@ boolean</p>
 <p>The rio package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.rio</code></p>
@@ -46724,7 +47020,7 @@ boolean</p>
 <p>The ripgrep package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.ripgrep</code></p>
@@ -47014,7 +47310,7 @@ boolean</p>
 <p>The rofi-pass package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.rofi-pass</code></p>
@@ -47337,7 +47633,7 @@ boolean</p>
 <p>The ruff package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.ruff</code></p>
@@ -47418,10 +47714,10 @@ boolean</p>
  </span>
 </dt>
 <dd>
-<p>The SageMath package to use.</p>
+<p>The sage package to use. The SageMath package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.sage</code></p>
@@ -47551,7 +47847,7 @@ boolean</p>
 <p>The sapling package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.sapling</code></p>
@@ -48493,7 +48789,7 @@ boolean</p>
 <p>The sftpman package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.sftpman</code></p>
@@ -49233,10 +49529,10 @@ boolean</p>
 <p>The sm64ex package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">&lt;derivation sm64ex-0-unstable-2024-07-04&gt;</code></p>
+<code class="literal">pkgs.sm64ex</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -49428,7 +49724,7 @@ boolean</p>
 <p>The spotify-player package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.spotify-player</code></p>
@@ -51454,7 +51750,7 @@ false otherwise
 <p>The swaylock package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.swaylock</code></p>
@@ -51479,7 +51775,7 @@ package</p>
 disables configuration generation.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-attribute set of (boolean or floating point number or signed integer or string)</p>
+attribute set of (boolean or floating point number or signed integer or absolute path or string)</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -51748,7 +52044,7 @@ boolean</p>
 <p>The taskwarrior package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.taskwarrior</code></p>
@@ -55385,7 +55681,7 @@ boolean</p>
 <p>The tofi package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.tofi</code></p>
@@ -56161,7 +56457,7 @@ boolean</p>
 <p>The vifm package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.vifm</code></p>
@@ -56435,7 +56731,7 @@ boolean</p>
 <p>The vim-vint package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.vim-vint</code></p>
@@ -56511,7 +56807,7 @@ boolean</p>
 <p>The vinegar package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.vinegar</code></p>
@@ -57798,7 +58094,7 @@ boolean</p>
 <p>The wlogout package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.wlogout</code></p>
@@ -58110,7 +58406,7 @@ boolean</p>
 <p>The wofi package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.wofi</code></p>
@@ -58331,7 +58627,7 @@ boolean</p>
 <p>The xplr package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.xplr</code></p>
@@ -58451,7 +58747,7 @@ boolean</p>
 <p>The yambar package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.yambar</code></p>
@@ -58653,7 +58949,7 @@ boolean</p>
 <p>The yazi package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.yazi</code></p>
@@ -59752,7 +60048,7 @@ boolean</p>
 <p>The zk package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.zk</code></p>
@@ -60927,6 +61223,39 @@ The default of <code class="literal">^[[A</code> may correspond to the UP key �
 <p><span class="emphasis"><em>Default:</em></span></p><pre><code class="programlisting">[
   &quot;^[[A&quot;
 ]
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix" target="_top">
+&lt;home-manager/modules/programs/zsh.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.zsh.initContent"></a><a class="term" href="options.xhtml#opt-programs.zsh.initContent"><code class="option">programs.zsh.initContent</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Content to be added to <code class="filename">.zshrc</code>. To specify the order, use <code class="literal">lib.mkOrder</code>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+strings concatenated with “\n”</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;&quot;</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  _type = &quot;order&quot;;
+  content = &#x27;&#x27;
+    echo &quot;Hello, initContent!&quot;
+  &#x27;&#x27;;
+  priority = 1000;
+}
 </code></pre>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
@@ -63150,7 +63479,7 @@ attribute set of (KDE option value)</p>
 <p>Deprecated. Use <code class="option">qt.platformTheme.name</code> instead.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-null or one of “gtk”, “gtk3”, “gnome”, “adwaita”, “lxqt”, “qtct”, “kde” or (submodule)</p>
+null or one of “gtk”, “gtk3”, “gnome”, “adwaita”, “lxqt”, “qtct”, “kde”, “kde6” or (submodule)</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">null</code></p>
@@ -65137,7 +65466,7 @@ boolean</p>
 <p>The clipse package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.clipse</code></p>
@@ -65764,7 +66093,7 @@ boolean</p>
 <p>The darkman package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.darkman</code></p>
@@ -69330,7 +69659,7 @@ boolean</p>
 <p>The hypridle package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.hypridle</code></p>
@@ -69460,7 +69789,7 @@ boolean</p>
 <p>The hyprpaper package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.hyprpaper</code></p>
@@ -70629,7 +70958,7 @@ boolean</p>
 package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">&lt;derivation kdeconnect-kde-24.12.2&gt;</code></p>
+<code class="literal">&lt;derivation kdeconnect-kde-24.12.3&gt;</code></p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">pkgs.plasma5Packages.kdeconnect-kde</code></p>
@@ -71091,7 +71420,7 @@ boolean</p>
 <p>The listenbrainz-mpd package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.listenbrainz-mpd</code></p>
@@ -71238,6 +71567,93 @@ package</p>
 <tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/lorri.nix" target="_top">
 &lt;home-manager/modules/services/lorri.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.macos-remap-keys.enable"></a><a class="term" href="options.xhtml#opt-services.macos-remap-keys.enable"><code class="option">services.macos-remap-keys.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable macOS key remapping service.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/macos-remap-keys" target="_top">
+&lt;home-manager/modules/services/macos-remap-keys&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.macos-remap-keys.keyboard"></a><a class="term" href="options.xhtml#opt-services.macos-remap-keys.keyboard"><code class="option">services.macos-remap-keys.keyboard</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Mapping of keyboard keys to remap</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  Capslock = &quot;Escape&quot;;
+  SquareBracketOpen = &quot;SquareBracketClose&quot;;
+}
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/macos-remap-keys" target="_top">
+&lt;home-manager/modules/services/macos-remap-keys&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.macos-remap-keys.keypad"></a><a class="term" href="options.xhtml#opt-services.macos-remap-keys.keypad"><code class="option">services.macos-remap-keys.keypad</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Mapping of keypad keys to remap</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  Enter = &quot;Equal&quot;;
+  Plus = &quot;Minus&quot;;
+}
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/macos-remap-keys" target="_top">
+&lt;home-manager/modules/services/macos-remap-keys&gt;
 </a></code>
 </td></tr>
 </table>
@@ -72219,6 +72635,33 @@ package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.megasync</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/megasync.nix" target="_top">
+&lt;home-manager/modules/services/megasync.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.megasync.forceWayland"></a><a class="term" href="options.xhtml#opt-services.megasync.forceWayland"><code class="option">services.megasync.forceWayland</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Force Megasync to run on wayland</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -75214,6 +75657,331 @@ string</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-services.podman.builds"></a><a class="term" href="options.xhtml#opt-services.podman.builds"><code class="option">services.podman.builds</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Defines Podman build quadlet configurations.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of (submodule)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/builds.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/builds.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.builds._name_.authFile"></a><a class="term" href="options.xhtml#opt-services.podman.builds._name_.authFile"><code class="option">services.podman.builds.&lt;name&gt;.authFile</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Path of the authentication file.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or absolute path</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/builds.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/builds.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.builds._name_.autoStart"></a><a class="term" href="options.xhtml#opt-services.podman.builds._name_.autoStart"><code class="option">services.podman.builds.&lt;name&gt;.autoStart</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to start the build on boot. Requires user lingering.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/builds.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/builds.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.builds._name_.description"></a><a class="term" href="options.xhtml#opt-services.podman.builds._name_.description"><code class="option">services.podman.builds.&lt;name&gt;.description</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The description of the build.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;Service for build \${name}&quot;</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;My Build&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/builds.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/builds.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.builds._name_.environment"></a><a class="term" href="options.xhtml#opt-services.podman.builds._name_.environment"><code class="option">services.podman.builds.&lt;name&gt;.environment</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Environment variables to set in the build.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of (null or boolean or signed integer or string or absolute path or list of (null or boolean or signed integer or string or absolute path))</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  VAR1 = &quot;0:100&quot;;
+  VAR2 = true;
+  VAR3 = 5;
+}
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/builds.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/builds.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.builds._name_.extraConfig"></a><a class="term" href="options.xhtml#opt-services.podman.builds._name_.extraConfig"><code class="option">services.podman.builds.&lt;name&gt;.extraConfig</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>INI sections and values to populate the Build Quadlet.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of attribute set of ((attribute set of (null or boolean or signed integer or string or absolute path or list of (null or boolean or signed integer or string or absolute path))) or list of (null or boolean or signed integer or string or absolute path) or null or boolean or signed integer or string or absolute path)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  Build = {
+    Arch = &quot;aarch64&quot;;
+  };
+  Service = {
+    TimeoutStartSec = 15;
+  };
+}
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/builds.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/builds.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.builds._name_.extraPodmanArgs"></a><a class="term" href="options.xhtml#opt-services.podman.builds._name_.extraPodmanArgs"><code class="option">services.podman.builds.&lt;name&gt;.extraPodmanArgs</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Extra arguments to pass to the podman build command.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[
+  &quot;--retries 5&quot;
+]
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/builds.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/builds.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.builds._name_.file"></a><a class="term" href="options.xhtml#opt-services.podman.builds._name_.file"><code class="option">services.podman.builds.&lt;name&gt;.file</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Path to a Containerfile which contains instructions to build the image.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">`&quot;xdg.configFile.&quot;containerfiles/my-img/Containerfile&quot;`
+or
+`&quot;https://github.com/.../my-img/Containerfile&quot;`
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/builds.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/builds.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.builds._name_.labels"></a><a class="term" href="options.xhtml#opt-services.podman.builds._name_.labels"><code class="option">services.podman.builds.&lt;name&gt;.labels</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The labels to apply to the build.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  app = &quot;myapp&quot;;
+  some-label = &quot;somelabel&quot;;
+}
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/builds.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/builds.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.builds._name_.tags"></a><a class="term" href="options.xhtml#opt-services.podman.builds._name_.tags"><code class="option">services.podman.builds.&lt;name&gt;.tags</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Name associated with the build.
+First tag will always be “homemanager/&lt;name&gt;”.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/builds.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/builds.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.builds._name_.tlsVerify"></a><a class="term" href="options.xhtml#opt-services.podman.builds._name_.tlsVerify"><code class="option">services.podman.builds.&lt;name&gt;.tlsVerify</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Require HTTPS and verification of certificates when contacting registries.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/builds.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/builds.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.builds._name_.workingDirectory"></a><a class="term" href="options.xhtml#opt-services.podman.builds._name_.workingDirectory"><code class="option">services.podman.builds.&lt;name&gt;.workingDirectory</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>WorkingDirectory of the systemd unit file.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or absolute path</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/builds.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/builds.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-services.podman.containers"></a><a class="term" href="options.xhtml#opt-services.podman.containers"><code class="option">services.podman.containers</code>
   </a>
  </span>
@@ -75882,6 +76650,343 @@ list of string</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-services.podman.images"></a><a class="term" href="options.xhtml#opt-services.podman.images"><code class="option">services.podman.images</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Defines Podman image quadlet configurations.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of (submodule)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/images.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/images.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.images._name_.authFile"></a><a class="term" href="options.xhtml#opt-services.podman.images._name_.authFile"><code class="option">services.podman.images.&lt;name&gt;.authFile</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Path of the authentication file used to connect to registry.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or absolute path</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/images.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/images.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.images._name_.autoStart"></a><a class="term" href="options.xhtml#opt-services.podman.images._name_.autoStart"><code class="option">services.podman.images.&lt;name&gt;.autoStart</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to pull the image on boot. Requires user lingering.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/images.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/images.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.images._name_.certDir"></a><a class="term" href="options.xhtml#opt-services.podman.images._name_.certDir"><code class="option">services.podman.images.&lt;name&gt;.certDir</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Path of certificates (*.{crt,cert,key}) used to connect to registry.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or absolute path</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/images.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/images.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.images._name_.decryptionKeyFile"></a><a class="term" href="options.xhtml#opt-services.podman.images._name_.decryptionKeyFile"><code class="option">services.podman.images.&lt;name&gt;.decryptionKeyFile</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Path to key used for decrpytion of images.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or absolute path</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/images.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/images.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.images._name_.description"></a><a class="term" href="options.xhtml#opt-services.podman.images._name_.description"><code class="option">services.podman.images.&lt;name&gt;.description</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The description of the image.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;Service for image \${name}&quot;</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;My Image&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/images.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/images.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.images._name_.extraConfig"></a><a class="term" href="options.xhtml#opt-services.podman.images._name_.extraConfig"><code class="option">services.podman.images.&lt;name&gt;.extraConfig</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>INI sections and values to populate the Image Quadlet.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of attribute set of ((attribute set of (null or boolean or signed integer or string or absolute path or list of (null or boolean or signed integer or string or absolute path))) or list of (null or boolean or signed integer or string or absolute path) or null or boolean or signed integer or string or absolute path)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  Image = {
+    ContainersConfModule = &quot;/etc/nvd.conf&quot;;
+  };
+}
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/images.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/images.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.images._name_.extraPodmanArgs"></a><a class="term" href="options.xhtml#opt-services.podman.images._name_.extraPodmanArgs"><code class="option">services.podman.images.&lt;name&gt;.extraPodmanArgs</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Extra arguments to pass to the podman image pull command.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[
+  &quot;--os=linux&quot;
+]
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/images.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/images.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.images._name_.image"></a><a class="term" href="options.xhtml#opt-services.podman.images._name_.image"><code class="option">services.podman.images.&lt;name&gt;.image</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Image to pull.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;quay.io/centos/centos:latest&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/images.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/images.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.images._name_.password"></a><a class="term" href="options.xhtml#opt-services.podman.images._name_.password"><code class="option">services.podman.images.&lt;name&gt;.password</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Password used to connect to registry. (Will be visible in nix store)</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;P@ssw0rd&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/images.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/images.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.images._name_.tag"></a><a class="term" href="options.xhtml#opt-services.podman.images._name_.tag"><code class="option">services.podman.images.&lt;name&gt;.tag</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>FQIN of referenced Image when source is a file or directory archive.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;quay.io/centos/centos:latest&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/images.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/images.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.images._name_.tlsVerify"></a><a class="term" href="options.xhtml#opt-services.podman.images._name_.tlsVerify"><code class="option">services.podman.images.&lt;name&gt;.tlsVerify</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Require HTTPS and verification of certificates when contacting registries.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/images.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/images.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.images._name_.username"></a><a class="term" href="options.xhtml#opt-services.podman.images._name_.username"><code class="option">services.podman.images.&lt;name&gt;.username</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Username used to connect to registry.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;bob&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/images.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/images.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-services.podman.networks"></a><a class="term" href="options.xhtml#opt-services.podman.networks"><code class="option">services.podman.networks</code>
   </a>
  </span>
@@ -76307,6 +77412,377 @@ TOML value</p>
 <tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux" target="_top">
 &lt;home-manager/modules/services/podman-linux&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.volumes"></a><a class="term" href="options.xhtml#opt-services.podman.volumes"><code class="option">services.podman.volumes</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Defines Podman volume quadlet configurations.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of (submodule)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/volumes.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/volumes.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.volumes._name_.autoStart"></a><a class="term" href="options.xhtml#opt-services.podman.volumes._name_.autoStart"><code class="option">services.podman.volumes.&lt;name&gt;.autoStart</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to create the volume on boot.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/volumes.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/volumes.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.volumes._name_.copy"></a><a class="term" href="options.xhtml#opt-services.podman.volumes._name_.copy"><code class="option">services.podman.volumes.&lt;name&gt;.copy</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Copy content of the image located at the mountpoint of the volume on first run.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/volumes.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/volumes.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.volumes._name_.description"></a><a class="term" href="options.xhtml#opt-services.podman.volumes._name_.description"><code class="option">services.podman.volumes.&lt;name&gt;.description</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The description of the volume.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;Service for volume \${name}&quot;</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;My Volume&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/volumes.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/volumes.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.volumes._name_.device"></a><a class="term" href="options.xhtml#opt-services.podman.volumes._name_.device"><code class="option">services.podman.volumes.&lt;name&gt;.device</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The path of a device which is mounted for the volume.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;tmpfs&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/volumes.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/volumes.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.volumes._name_.driver"></a><a class="term" href="options.xhtml#opt-services.podman.volumes._name_.driver"><code class="option">services.podman.volumes.&lt;name&gt;.driver</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The volume driver to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;image&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/volumes.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/volumes.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.volumes._name_.extraConfig"></a><a class="term" href="options.xhtml#opt-services.podman.volumes._name_.extraConfig"><code class="option">services.podman.volumes.&lt;name&gt;.extraConfig</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>INI sections and values to populate the Volume Quadlet.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of attribute set of ((attribute set of (null or boolean or signed integer or string or absolute path or list of (null or boolean or signed integer or string or absolute path))) or list of (null or boolean or signed integer or string or absolute path) or null or boolean or signed integer or string or absolute path)</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  Volume = {
+    ContainerConfModule = &quot;/etc/nvd.conf&quot;;
+  };
+}
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/volumes.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/volumes.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.volumes._name_.extraPodmanArgs"></a><a class="term" href="options.xhtml#opt-services.podman.volumes._name_.extraPodmanArgs"><code class="option">services.podman.volumes.&lt;name&gt;.extraPodmanArgs</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Extra arguments to pass to the podman volume create command.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[
+  &quot;--opt copy&quot;
+]
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/volumes.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/volumes.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.volumes._name_.group"></a><a class="term" href="options.xhtml#opt-services.podman.volumes._name_.group"><code class="option">services.podman.volumes.&lt;name&gt;.group</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The group ID owning the volume inside the container.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or signed integer or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/volumes.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/volumes.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.volumes._name_.image"></a><a class="term" href="options.xhtml#opt-services.podman.volumes._name_.image"><code class="option">services.podman.volumes.&lt;name&gt;.image</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Specifies the image the volume is based on when Driver is set to the image.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;quay.io/centos/centos:latest&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/volumes.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/volumes.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.volumes._name_.labels"></a><a class="term" href="options.xhtml#opt-services.podman.volumes._name_.labels"><code class="option">services.podman.volumes.&lt;name&gt;.labels</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The labels to apply to the volume.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+attribute set of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  app = &quot;myapp&quot;;
+  some-label = &quot;somelabel&quot;;
+}
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/volumes.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/volumes.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.volumes._name_.preserve"></a><a class="term" href="options.xhtml#opt-services.podman.volumes._name_.preserve"><code class="option">services.podman.volumes.&lt;name&gt;.preserve</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether the volume should be preserved if it is removed from the configuration.
+Setting this to false will cause the volume to be deleted if the volume is removed from the configuration</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/volumes.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/volumes.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.volumes._name_.type"></a><a class="term" href="options.xhtml#opt-services.podman.volumes._name_.type"><code class="option">services.podman.volumes.&lt;name&gt;.type</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Filesystem type of Device. (used as -t in mount commands)</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;tmpfs&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/volumes.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/volumes.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.volumes._name_.user"></a><a class="term" href="options.xhtml#opt-services.podman.volumes._name_.user"><code class="option">services.podman.volumes.&lt;name&gt;.user</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The user ID owning the volume inside the container.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or signed integer or string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">null</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/volumes.nix" target="_top">
+&lt;home-manager/modules/services/podman-linux/volumes.nix&gt;
 </a></code>
 </td></tr>
 </table>
@@ -76768,7 +78244,7 @@ boolean</p>
 <p>The pueue package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.pueue</code></p>
@@ -77785,6 +79261,35 @@ string</p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">&quot;\${pkgs.i3lock}/bin/i3lock -n -c 000000&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/screen-locker.nix" target="_top">
+&lt;home-manager/modules/services/screen-locker.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.screen-locker.lockCmdEnv"></a><a class="term" href="options.xhtml#opt-services.screen-locker.lockCmdEnv"><code class="option">services.screen-locker.lockCmdEnv</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Environment variables to source a with the locker command (lockCmd).</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[
+  &quot;XSECURELOCK_PAM_SERVICE=xsecurelock&quot;
+]
+</code></pre>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -82482,7 +83987,7 @@ boolean</p>
 <p>The wob package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.wob</code></p>
@@ -82596,7 +84101,7 @@ boolean</p>
 <p>The wpaperd package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.wpaperd</code></p>
@@ -82785,7 +84290,7 @@ program.</p>
 package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">pkgs.plasma-workspace</code></p>
+<code class="literal">pkgs.kdePackages.plasma-workspace</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -93872,7 +95377,7 @@ boolean</p>
 <p>The fluxbox package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.fluxbox</code></p>
@@ -94348,7 +95853,7 @@ boolean</p>
 <p>The i3 package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.i3</code></p>

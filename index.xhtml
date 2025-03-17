@@ -124,9 +124,15 @@ home-manager.users.eve = { pkgs, ... }: {
   home.packages = [ pkgs.atool pkgs.httpie ];
   programs.bash.enable = true;
 
-  # The state version is required and should stay at the version you
-  # originally installed.
-  home.stateVersion = &quot;24.11&quot;;
+  # This value determines the Home Manager release that your configuration is 
+  # compatible with. This helps avoid breakage when a new Home Manager release 
+  # introduces backwards incompatible changes. 
+  #
+  # You should not change this value, even if you update Home Manager. If you do 
+  # want to update the value, then make sure to first check the Home Manager 
+  # release notes. 
+  home.stateVersion = &quot;24.05&quot;; # Please read the comment before changing. 
+
 };
 </code></pre><p>and after a <code class="literal">sudo nixos-rebuild switch</code> the user eve’s environment
 should include a basic Bash configuration and the packages atool and
@@ -575,15 +581,15 @@ you may wish to import Home Manager’s flake module,
         inputs.home-manager.flakeModules.home-manager
       ];
       flake = {
-        # Define `homeManagerModules`, `homeConfigurations`,
+        # Define `homeModules`, `homeConfigurations`,
         # `nixosConfigurations`, etc here
       };
       # See flake.parts for more features, such as `perSystem`
     };
 }
-</code></pre><p>The flake module defines the <code class="literal">flake.homeManagerModules</code> and <code class="literal">flake.homeConfigurations</code>
+</code></pre><p>The flake module defines the <code class="literal">flake.homeModules</code> and <code class="literal">flake.homeConfigurations</code>
 options, allowing them to be properly merged if they are defined in multiple
-modules.</p><p>If you are only defining <code class="literal">homeManagerModules</code> and/or <code class="literal">homeConfigurations</code> once in a
+modules.</p><p>If you are only defining <code class="literal">homeModules</code> and/or <code class="literal">homeConfigurations</code> once in a
 single module, flake-parts should work fine without importing
 <code class="literal">flakeModules.home-manager</code>.</p>
 </div>
