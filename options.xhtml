@@ -88,6 +88,11 @@ attribute set of (submodule)</p>
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
 <tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/thunderbird.nix" target="_top">
+&lt;home-manager/modules/programs/thunderbird.nix&gt;
+</a></code>
+</td></tr>
+<tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/qcal.nix" target="_top">
 &lt;home-manager/modules/programs/qcal.nix&gt;
 </a></code>
@@ -615,6 +620,114 @@ null or string</p>
 <tr><td>
 <code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/accounts/calendar.nix" target="_top">
 &lt;home-manager/modules/accounts/calendar.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-accounts.calendar.accounts._name_.thunderbird.enable"></a><a class="term" href="options.xhtml#opt-accounts.calendar.accounts._name_.thunderbird.enable"><code class="option">accounts.calendar.accounts.&lt;name&gt;.thunderbird.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable the Thunderbird mail client for this account.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/thunderbird.nix" target="_top">
+&lt;home-manager/modules/programs/thunderbird.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-accounts.calendar.accounts._name_.thunderbird.color"></a><a class="term" href="options.xhtml#opt-accounts.calendar.accounts._name_.thunderbird.color"><code class="option">accounts.calendar.accounts.&lt;name&gt;.thunderbird.color</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Display color of the calendar in hex</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">&quot;&quot;</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;#dc8add&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/thunderbird.nix" target="_top">
+&lt;home-manager/modules/programs/thunderbird.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-accounts.calendar.accounts._name_.thunderbird.profiles"></a><a class="term" href="options.xhtml#opt-accounts.calendar.accounts._name_.thunderbird.profiles"><code class="option">accounts.calendar.accounts.&lt;name&gt;.thunderbird.profiles</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>List of Thunderbird profiles for which this account should be
+enabled. If this list is empty (the default), this account will
+be enabled for all declared profiles.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">[ &quot;profile1&quot; &quot;profile2&quot; ]
+
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/thunderbird.nix" target="_top">
+&lt;home-manager/modules/programs/thunderbird.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-accounts.calendar.accounts._name_.thunderbird.readOnly"></a><a class="term" href="options.xhtml#opt-accounts.calendar.accounts._name_.thunderbird.readOnly"><code class="option">accounts.calendar.accounts.&lt;name&gt;.thunderbird.readOnly</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Mark calendar as read only</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/thunderbird.nix" target="_top">
+&lt;home-manager/modules/programs/thunderbird.nix&gt;
 </a></code>
 </td></tr>
 </table>
@@ -14275,7 +14388,7 @@ See
 for supported values.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -15616,6 +15729,163 @@ attribute set of (boolean or floating point number or signed integer or string)<
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.ashell.enable"></a><a class="term" href="options.xhtml#opt-programs.ashell.enable"><code class="option">programs.ashell.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable ashell, a ready to go wayland status bar for hyprland.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ashell.nix" target="_top">
+&lt;home-manager/modules/programs/ashell.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ashell.package"></a><a class="term" href="options.xhtml#opt-programs.ashell.package"><code class="option">programs.ashell.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The ashell package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.ashell</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ashell.nix" target="_top">
+&lt;home-manager/modules/programs/ashell.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ashell.settings"></a><a class="term" href="options.xhtml#opt-programs.ashell.settings"><code class="option">programs.ashell.settings</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Ashell configuration written to <code class="filename">$XDG_CONFIG_HOME/ashell.yml</code>.
+For available settings see
+<a class="link" href="https://github.com/MalpenZibo/ashell/tree/0.4.1?tab=readme-ov-file#configuration"  target="_top">https://github.com/MalpenZibo/ashell/tree/0.4.1?tab=readme-ov-file#configuration</a>.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+YAML 1.1 value</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  modules = {
+    center = [
+      &quot;Window Title&quot;
+    ];
+    left = [
+      &quot;Workspaces&quot;
+    ];
+    right = [
+      &quot;SystemInfo&quot;
+      [
+        &quot;Clock&quot;
+        &quot;Privacy&quot;
+        &quot;Settings&quot;
+      ]
+    ];
+  };
+  workspaces = {
+    visibilityMode = &quot;MonitorSpecific&quot;;
+  };
+}
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ashell.nix" target="_top">
+&lt;home-manager/modules/programs/ashell.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ashell.systemd.enable"></a><a class="term" href="options.xhtml#opt-programs.ashell.systemd.enable"><code class="option">programs.ashell.systemd.enable</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Whether to enable ashell systemd service.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+boolean</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">false</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ashell.nix" target="_top">
+&lt;home-manager/modules/programs/ashell.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.ashell.systemd.target"></a><a class="term" href="options.xhtml#opt-programs.ashell.systemd.target"><code class="option">programs.ashell.systemd.target</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The systemd target that will automatically start ashell.</p><p>If you set this to a WM-specific target, make sure that systemd
+integration for that WM is enabled (for example,
+<a class="xref" href="options.xhtml#opt-wayland.windowManager.hyprland.systemd.enable"  ><code class="option">wayland.windowManager.hyprland.systemd.enable</code></a>). This is
+typically true by default.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">config.wayland.systemd.target</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span>
+<code class="literal">&quot;hyprland-session.target&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/ashell.nix" target="_top">
+&lt;home-manager/modules/programs/ashell.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.astroid.enable"></a><a class="term" href="options.xhtml#opt-programs.astroid.enable"><code class="option">programs.astroid.enable</code>
   </a>
  </span>
@@ -15999,7 +16269,7 @@ list of string</p>
 </dt>
 <dd>
 <p>Configuration written to
-<code class="filename">$XDG_CONFIG_HOME/atuin/config.toml</code>.</p><p>See <a class="link" href="https://atuin.sh/docs/config/"  target="_top">https://atuin.sh/docs/config/</a> for the full list
+<code class="filename">$XDG_CONFIG_HOME/atuin/config.toml</code>.</p><p>See <a class="link" href="https://docs.atuin.sh/configuration/config/"  target="_top">https://docs.atuin.sh/configuration/config/</a> for the full list
 of options.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
@@ -16035,7 +16305,7 @@ Atuin configuration</p>
 <dd>
 <p>Each theme is written to
 <code class="filename">$XDG_CONFIG_HOME/atuin/themes/theme-name.toml</code>
-where the name of each attribute is the theme-name</p><p>See <a class="link" href="https://atuin.sh/guide/theming/"  target="_top">https://atuin.sh/guide/theming/</a> for the full list
+where the name of each attribute is the theme-name</p><p>See <a class="link" href="https://docs.atuin.sh/guide/theming/"  target="_top">https://docs.atuin.sh/guide/theming/</a> for the full list
 of options.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
@@ -18085,7 +18355,7 @@ string</p>
 <code class="filename">$XDG_CONFIG_HOME/beets/config.yaml</code></p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -18389,7 +18659,7 @@ one of “repository”, “archives”, “data”, “extract”</p>
 <p>Extra settings.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -18413,7 +18683,7 @@ YAML value</p>
 <p>Extra settings.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -18467,7 +18737,7 @@ boolean</p>
 <p>Extra settings.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -18587,7 +18857,7 @@ null or (list of string)</p>
 <p>Extra settings.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -18611,7 +18881,7 @@ YAML value</p>
 <p>Extra settings.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -18878,7 +19148,7 @@ null or string</p>
 <p>Extra settings.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -19044,7 +19314,7 @@ null or package</p>
 <p>List of boxxy rules</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-list of (YAML value)</p>
+list of (YAML 1.1 value)</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">[ ]</code></p>
@@ -20988,7 +21258,7 @@ strings concatenated with “\n”</p>
 See <a class="link" href="https://github.com/openai/codex#configuration-guide"  target="_top">https://github.com/openai/codex#configuration-guide</a> for supported values.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -22114,7 +22384,7 @@ null or package</p>
 See https://docs.earthly.dev/docs/earthly-config for supported values.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -23028,7 +23298,7 @@ one of &lt;null&gt;, true, false, “auto”, “always”, “never”</p>
 <p>Written to <code class="filename">$XDG_CONFIG_HOME/eza/theme.yml</code></p><p>See <a class="link" href="https://github.com/eza-community/eza#custom-themes"  target="_top">https://github.com/eza-community/eza#custom-themes</a></p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -23738,7 +24008,7 @@ attribute set of (submodule)</p>
 <p>Declarative bookmarks.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-(submodule) or ((list of ((bookmark submodule) or (directory submodule))) or (attribute set of ((bookmark submodule) or (directory submodule))) convertible to it) convertible to it</p>
+(submodule) or ((list of ((bookmark submodule) or (directory submodule) or value “separator” (singular enum))) or (attribute set of ((bookmark submodule) or (directory submodule) or value “separator” (singular enum))) convertible to it) convertible to it</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -23810,7 +24080,7 @@ boolean</p>
 <p>Custom bookmarks.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-(list of ((bookmark submodule) or (directory submodule))) or (attribute set of ((bookmark submodule) or (directory submodule))) convertible to it</p>
+(list of ((bookmark submodule) or (directory submodule) or value “separator” (singular enum))) or (attribute set of ((bookmark submodule) or (directory submodule) or value “separator” (singular enum))) convertible to it</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">[ ]</code></p>
@@ -23826,6 +24096,7 @@ boolean</p>
     name = &quot;kernel.org&quot;;
     url = &quot;https://www.kernel.org&quot;;
   }
+  &quot;separator&quot;
   {
     name = &quot;Nix sites&quot;;
     toolbar = true;
@@ -25550,7 +25821,7 @@ attribute set of (submodule)</p>
 <p>Declarative bookmarks.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-(submodule) or ((list of ((bookmark submodule) or (directory submodule))) or (attribute set of ((bookmark submodule) or (directory submodule))) convertible to it) convertible to it</p>
+(submodule) or ((list of ((bookmark submodule) or (directory submodule) or value “separator” (singular enum))) or (attribute set of ((bookmark submodule) or (directory submodule) or value “separator” (singular enum))) convertible to it) convertible to it</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -25622,7 +25893,7 @@ boolean</p>
 <p>Custom bookmarks.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-(list of ((bookmark submodule) or (directory submodule))) or (attribute set of ((bookmark submodule) or (directory submodule))) convertible to it</p>
+(list of ((bookmark submodule) or (directory submodule) or value “separator” (singular enum))) or (attribute set of ((bookmark submodule) or (directory submodule) or value “separator” (singular enum))) convertible to it</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">[ ]</code></p>
@@ -25638,6 +25909,7 @@ boolean</p>
     name = &quot;kernel.org&quot;;
     url = &quot;https://www.kernel.org&quot;;
   }
+  &quot;separator&quot;
   {
     name = &quot;Nix sites&quot;;
     toolbar = true;
@@ -27568,7 +27840,7 @@ list of string</p>
 <p>Host-specific configuration written to <code class="filename">$XDG_CONFIG_HOME/gh/hosts.yml</code>.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -27599,7 +27871,7 @@ YAML value</p>
 <p>Configuration written to <code class="filename">$XDG_CONFIG_HOME/gh/config.yml</code>.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -27770,7 +28042,7 @@ null or package</p>
 <p>Configuration written to <code class="filename">$XDG_CONFIG_HOME/gh-dash/config.yml</code>.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -35728,7 +36000,7 @@ null or package</p>
 <p>Jqp configuration</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -35924,7 +36196,7 @@ or <code class="filename">Library/Application Support/k9s/aliases.yaml</code> (d
 <a class="link" href="https://k9scli.io/topics/aliases/"  target="_top">https://k9scli.io/topics/aliases/</a> for supported values.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -35957,7 +36229,7 @@ or <code class="filename">Library/Application Support/k9s/hotkeys.yaml</code> (d
 <a class="link" href="https://k9scli.io/topics/hotkeys/"  target="_top">https://k9scli.io/topics/hotkeys/</a> for supported values.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -35996,7 +36268,7 @@ or <code class="filename">Library/Application Support/k9s/plugins.yaml</code> (d
 <a class="link" href="https://k9scli.io/topics/plugins/"  target="_top">https://k9scli.io/topics/plugins/</a> for supported values.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -36045,7 +36317,7 @@ or <code class="filename">Library/Application Support/k9s/config.yaml</code> (da
 <a class="link" href="https://k9scli.io/topics/config/"  target="_top">https://k9scli.io/topics/config/</a> for supported values.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -36077,7 +36349,7 @@ or <code class="filename">Library/Application Support/k9s/skins/</code> (darwin)
 <a class="link" href="https://k9scli.io/topics/skins/"  target="_top">https://k9scli.io/topics/skins/</a> for supported values.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-attribute set of (YAML value or absolute path)</p>
+attribute set of (YAML 1.1 value or absolute path)</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -36117,7 +36389,7 @@ or <code class="filename">Library/Application Support/k9s/views.yaml</code> (dar
 See <a class="link" href="https://k9scli.io/topics/columns/"  target="_top">https://k9scli.io/topics/columns/</a> for supported values.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -37567,6 +37839,27 @@ strings concatenated with “\n”</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">&quot;&quot;</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/kakoune.nix" target="_top">
+&lt;home-manager/modules/programs/kakoune.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-programs.kakoune.finalPackage"></a><a class="term" href="options.xhtml#opt-programs.kakoune.finalPackage"><code class="option">programs.kakoune.finalPackage</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Resulting customized kakoune package.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+null or package <span class="emphasis"><em>(read only)</em></span></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -39369,7 +39662,7 @@ See <a class="link" href="https://kubecolor.github.io/reference/config/"  target
 values.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -39745,7 +40038,7 @@ See
 for supported values.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span></p><pre><code class="programlisting">{
   commandTemplates = {
@@ -39840,7 +40133,7 @@ See
 for supported values.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -40782,7 +41075,7 @@ boolean</p>
 <p>Custom bookmarks.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-(list of ((bookmark submodule) or (directory submodule))) or (attribute set of ((bookmark submodule) or (directory submodule))) convertible to it</p>
+(list of ((bookmark submodule) or (directory submodule) or value “separator” (singular enum))) or (attribute set of ((bookmark submodule) or (directory submodule) or value “separator” (singular enum))) convertible to it</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">[ ]</code></p>
@@ -40798,6 +41091,7 @@ boolean</p>
     name = &quot;kernel.org&quot;;
     url = &quot;https://www.kernel.org&quot;;
   }
+  &quot;separator&quot;
   {
     name = &quot;Nix sites&quot;;
     toolbar = true;
@@ -41975,7 +42269,7 @@ supported colors.</p><p>If this option is non-empty then the <code class="litera
 automatically set to <code class="literal">&quot;custom&quot;</code>.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -42010,7 +42304,7 @@ YAML value</p>
 details.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -42053,7 +42347,7 @@ YAML value</p>
 for supported values.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -42282,7 +42576,7 @@ submodule</p>
 For references, you must look for the file of said runner on lutris’ source code.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -42332,7 +42626,7 @@ Reference for system options:
 https://github.com/lutris/lutris/blob/master/lutris/sysoptions.py#L78</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -43450,179 +43744,32 @@ TOML value</p>
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
 
-<p><span class="emphasis"><em>Declared by:</em></span></p>
-<table border="0" summary="Simple list" class="simplelist">
-<tr><td>
-<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/meli.nix" target="_top">
-&lt;home-manager/modules/programs/meli.nix&gt;
-</a></code>
-</td></tr>
-</table>
-</dd>
-<dt>
- <span class="term">
- <a id="opt-programs.meli.settings.shortcuts"></a><a class="term" href="options.xhtml#opt-programs.meli.settings.shortcuts"><code class="option">programs.meli.settings.shortcuts</code>
-  </a>
- </span>
-</dt>
-<dd>
-<p>Shortcut Settings</p>
-
-<p><span class="emphasis"><em>Type:</em></span>
-submodule</p>
-
-<p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">{ }</code></p>
-
-<p><span class="emphasis"><em>Declared by:</em></span></p>
-<table border="0" summary="Simple list" class="simplelist">
-<tr><td>
-<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/meli.nix" target="_top">
-&lt;home-manager/modules/programs/meli.nix&gt;
-</a></code>
-</td></tr>
-</table>
-</dd>
-<dt>
- <span class="term">
- <a id="opt-programs.meli.settings.shortcuts.composing"></a><a class="term" href="options.xhtml#opt-programs.meli.settings.shortcuts.composing"><code class="option">programs.meli.settings.shortcuts.composing</code>
-  </a>
- </span>
-</dt>
-<dd>
-<p>composing shortcut configuration</p>
-
-<p><span class="emphasis"><em>Type:</em></span>
-attribute set of string</p>
-
-<p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">{ }</code></p>
-
 <p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+shortcuts = {
+contact-list = {
+            create_contact = &quot;c&quot;;
+            edit_contact = &quot;m&quot;;
+          };
+general = {
   edit = &quot;m&quot;;
-  scroll_down = &quot;n&quot;;
   scroll_up = &quot;e&quot;;
-}
-</code></pre>
-
-<p><span class="emphasis"><em>Declared by:</em></span></p>
-<table border="0" summary="Simple list" class="simplelist">
-<tr><td>
-<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/meli.nix" target="_top">
-&lt;home-manager/modules/programs/meli.nix&gt;
-</a></code>
-</td></tr>
-</table>
-</dd>
-<dt>
- <span class="term">
- <a id="opt-programs.meli.settings.shortcuts.contact-list"></a><a class="term" href="options.xhtml#opt-programs.meli.settings.shortcuts.contact-list"><code class="option">programs.meli.settings.shortcuts.contact-list</code>
-  </a>
- </span>
-</dt>
-<dd>
-<p>contact-list shortcut configuration</p>
-
-<p><span class="emphasis"><em>Type:</em></span>
-attribute set of string</p>
-
-<p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">{ }</code></p>
-
-<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
-  create_contact = &quot;c&quot;;
-  edit_contact = &quot;m&quot;;
-}
-</code></pre>
-
-<p><span class="emphasis"><em>Declared by:</em></span></p>
-<table border="0" summary="Simple list" class="simplelist">
-<tr><td>
-<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/meli.nix" target="_top">
-&lt;home-manager/modules/programs/meli.nix&gt;
-</a></code>
-</td></tr>
-</table>
-</dd>
-<dt>
- <span class="term">
- <a id="opt-programs.meli.settings.shortcuts.general"></a><a class="term" href="options.xhtml#opt-programs.meli.settings.shortcuts.general"><code class="option">programs.meli.settings.shortcuts.general</code>
-  </a>
- </span>
-</dt>
-<dd>
-<p>general shortcut configuration</p>
-
-<p><span class="emphasis"><em>Type:</em></span>
-attribute set of string</p>
-
-<p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">{ }</code></p>
-
-<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
-  next_page = &quot;C-d&quot;;
   scroll_down = &quot;n&quot;;
+};
+composing = {
+  edit = &quot;m&quot;;
   scroll_up = &quot;e&quot;;
-}
-</code></pre>
-
-<p><span class="emphasis"><em>Declared by:</em></span></p>
-<table border="0" summary="Simple list" class="simplelist">
-<tr><td>
-<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/meli.nix" target="_top">
-&lt;home-manager/modules/programs/meli.nix&gt;
-</a></code>
-</td></tr>
-</table>
-</dd>
-<dt>
- <span class="term">
- <a id="opt-programs.meli.settings.shortcuts.listing"></a><a class="term" href="options.xhtml#opt-programs.meli.settings.shortcuts.listing"><code class="option">programs.meli.settings.shortcuts.listing</code>
-  </a>
- </span>
-</dt>
-<dd>
-<p>general shortcut configuration</p>
-
-<p><span class="emphasis"><em>Type:</em></span>
-attribute set of string</p>
-
-<p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">{ }</code></p>
-
-<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
+  scroll_down = &quot;n&quot;;
+};
+listing = {
   new_mail = &quot;t&quot;;
   set_seen = &quot;s&quot;;
+};
+pager = {
+            scroll_up = &quot;e&quot;;
+            scroll_down = &quot;n&quot;;
+};
+
 }
-</code></pre>
-
-<p><span class="emphasis"><em>Declared by:</em></span></p>
-<table border="0" summary="Simple list" class="simplelist">
-<tr><td>
-<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/meli.nix" target="_top">
-&lt;home-manager/modules/programs/meli.nix&gt;
-</a></code>
-</td></tr>
-</table>
-</dd>
-<dt>
- <span class="term">
- <a id="opt-programs.meli.settings.shortcuts.pager"></a><a class="term" href="options.xhtml#opt-programs.meli.settings.shortcuts.pager"><code class="option">programs.meli.settings.shortcuts.pager</code>
-  </a>
- </span>
-</dt>
-<dd>
-<p>general shortcut configuration</p>
-
-<p><span class="emphasis"><em>Type:</em></span>
-attribute set of string</p>
-
-<p><span class="emphasis"><em>Default:</em></span>
-<code class="literal">{ }</code></p>
-
-<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
-  scroll_down = &quot;n&quot;;
-  scroll_up = &quot;e&quot;;
 }
 </code></pre>
 
@@ -44342,7 +44489,7 @@ package</p>
 list of options.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -45276,7 +45423,7 @@ on Darwin. See
 for more information.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -45537,7 +45684,7 @@ boolean</p>
 <p>The ncspot package to use.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-package</p>
+null or package</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">pkgs.ncspot</code></p>
@@ -51485,7 +51632,7 @@ Configuration written to <code class="filename">$XDG_CONFIG_HOME/openstack/cloud
 See <a class="link" href="https://docs.openstack.org/python-openstackclient/latest/configuration/index.html#clouds-yaml"  target="_top">https://docs.openstack.org/python-openstackclient/latest/configuration/index.html#clouds-yaml</a>.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -51524,7 +51671,7 @@ YAML value</p>
 See <a class="link" href="https://docs.openstack.org/python-openstackclient/latest/configuration/index.html#clouds-public-yaml"  target="_top">https://docs.openstack.org/python-openstackclient/latest/configuration/index.html#clouds-public-yaml</a>.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -52956,7 +53103,7 @@ package</p>
 <code class="filename">$XDG_CONFIG_HOME/piston-cli/config.yml</code>.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -60337,7 +60484,7 @@ null or package</p>
 for supported values.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -62436,7 +62583,7 @@ null or package</p>
 <a class="link" href="https://github.com/edzdez/sway-easyfocus?tab=readme-ov-file#config-file"  target="_top">https://github.com/edzdez/sway-easyfocus?tab=readme-ov-file#config-file</a>.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -65173,6 +65320,45 @@ list of string</p>
 </dd>
 <dt>
  <span class="term">
+ <a id="opt-programs.thunderbird.profiles._name_.calendarAccountsOrder"></a><a class="term" href="options.xhtml#opt-programs.thunderbird.profiles._name_.calendarAccountsOrder"><code class="option">programs.thunderbird.profiles.&lt;name&gt;.calendarAccountsOrder</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>Custom ordering of calendar accounts. The accounts are specified
+by their name. For declarative accounts, it must be the name
+of their attribute in <code class="literal">config.accounts.calendar.accounts</code>.
+Enabled accounts that aren’t listed here appear in an arbitrary
+order after the ordered accounts.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
+
+<p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">&#x27;&#x27;
+  [
+    &quot;my-awesome-account&quot;
+    &quot;private&quot;
+    &quot;work&quot;
+    &quot;holidays&quot;
+    /* Other accounts in arbitrary order */
+  ]
+&#x27;&#x27;
+</code></pre>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/programs/thunderbird.nix" target="_top">
+&lt;home-manager/modules/programs/thunderbird.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
  <a id="opt-programs.thunderbird.profiles._name_.extensions"></a><a class="term" href="options.xhtml#opt-programs.thunderbird.profiles._name_.extensions"><code class="option">programs.thunderbird.profiles.&lt;name&gt;.extensions</code>
   </a>
  </span>
@@ -65933,7 +66119,7 @@ package</p>
 for the default configuration.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -68346,7 +68532,7 @@ null or package</p>
 <code class="filename">$XDG_CONFIG_HOME/.vintrc.yaml</code></p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -70822,7 +71008,7 @@ null or package</p>
 See <span class="citerefentry"><span class="refentrytitle">yambar</span>(5)</span> for options.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -72195,7 +72381,7 @@ the configuration is written to <code class="filename">$XDG_CONFIG_HOME/zellij/c
 list of options.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -72227,7 +72413,7 @@ YAML value</p>
 See <a class="link" href="https://zellij.dev/documentation/themes.html"  target="_top">https://zellij.dev/documentation/themes.html</a> for more information.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-attribute set of (YAML value or absolute path or strings concatenated with “\n”)</p>
+attribute set of (YAML 1.1 value or absolute path or strings concatenated with “\n”)</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -78716,7 +78902,7 @@ attribute set of (absolute path or strings concatenated with “\n”)</p>
 <a class="link" href="https://darkman.whynothugo.nl/#CONFIGURATION"  target="_top">https://darkman.whynothugo.nl/#CONFIGURATION</a> for details.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -79788,7 +79974,7 @@ null or package</p>
 for a description of available options.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span></p><pre><code class="programlisting">{
   default = { };
@@ -79828,7 +80014,7 @@ YAML value</p>
 for a description of available options.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span></p><pre><code class="programlisting">{
   default = {
@@ -80467,7 +80653,7 @@ list of package</p>
 <p>YAML config that will override the default fusuma configuration.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Example:</em></span></p><pre><code class="programlisting">{
   threshold = {
@@ -81128,7 +81314,7 @@ package</p>
 for more.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span></p><pre><code class="programlisting">{
   pages = [
@@ -85315,7 +85501,7 @@ https://github.com/mtkennerly/ludusavi#configuration-file
 for available options.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span></p><pre><code class="programlisting">{
   backup = {
@@ -87711,6 +87897,30 @@ boolean</p>
 
 <p><span class="emphasis"><em>Example:</em></span>
 <code class="literal">true</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/opensnitch-ui.nix" target="_top">
+&lt;home-manager/modules/services/opensnitch-ui.nix&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.opensnitch-ui.package"></a><a class="term" href="options.xhtml#opt-services.opensnitch-ui.package"><code class="option">services.opensnitch-ui.package</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>The opensnitch-ui package to use.</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+package</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">pkgs.opensnitch-ui</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
@@ -91835,7 +92045,7 @@ null or package</p>
 <code class="filename">$XDG_CONFIG_HOME/pueue/pueue.yml</code>.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -97546,7 +97756,7 @@ boolean</p>
 for the full list of options.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -98137,10 +98347,11 @@ package</p>
 <p>The way-displays configuration written to
 <code class="filename">$XDG_CONFIG_HOME/way-displays/cfg.yml</code>. See
 <a class="link" href="https://github.com/alex-courtis/way-displays/wiki/Configuration"  target="_top">https://github.com/alex-courtis/way-displays/wiki/Configuration</a> for a
-description of available options.</p>
+description of available options.</p><p>When <code class="literal">null</code> a configuration file is not generated,
+which allows way-displays to write its own configuration.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-YAML value</p>
+null or YAML 1.1 value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -102186,9 +102397,9 @@ null or boolean</p>
  </span>
 </dt>
 <dd>
-<p>Show the full date. Default is null.</p><p>0 = Show the date
-1 = Don’t show
-2 = Don’t show</p><p>TODO: I don’t know what the difference is between 1 and 2.</p>
+<p>Show the full date. Default is null.</p><p>0 = When Space Allows
+1 = Always
+2 = Never</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 null or one of 0, 1, 2</p>
