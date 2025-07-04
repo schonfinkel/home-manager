@@ -17837,7 +17837,7 @@ strings concatenated with “\n”</p>
 <p>Environment variables that will be set for the Bash session.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
-lazy attribute set of (string or signed integer)</p>
+lazy attribute set of (string or signed integer or absolute path)</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
@@ -47850,7 +47850,7 @@ boolean</p>
  </span>
 </dt>
 <dd>
-<p>How often cleanup is performed.</p><p>The format is described in <a class="link" href="https://www.freedesktop.org/software/systemd/man/systemd.time.html" target="_top"><span class="citerefentry"><span class="refentrytitle">systemd.time</span>(7)</span></a>.</p>
+<p>How often cleanup is performed.</p><p>On linux the format is described in <a class="link" href="https://www.freedesktop.org/software/systemd/man/systemd.time.html" target="_top"><span class="citerefentry"><span class="refentrytitle">systemd.time</span>(7)</span></a>.</p><p>On Darwin it must be one of: hourly, daily, weekly, monthly, semiannually, annually, which are implemented as defined in <a class="link" href="https://www.freedesktop.org/software/systemd/man/systemd.time.html" target="_top"><span class="citerefentry"><span class="refentrytitle">systemd.time</span>(7)</span></a>.</p>
 
 <p><span class="emphasis"><em>Type:</em></span>
 (optionally newline-terminated) single-line string</p>
@@ -91306,6 +91306,30 @@ TOML value</p>
 
 <p><span class="emphasis"><em>Default:</em></span>
 <code class="literal">{ }</code></p>
+
+<p><span class="emphasis"><em>Declared by:</em></span></p>
+<table border="0" summary="Simple list" class="simplelist">
+<tr><td>
+<code class="filename"><a class="filename"  href="https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux" target="_top">
+&lt;home-manager/modules/services/podman-linux&gt;
+</a></code>
+</td></tr>
+</table>
+</dd>
+<dt>
+ <span class="term">
+ <a id="opt-services.podman.settings.mounts"></a><a class="term" href="options.xhtml#opt-services.podman.settings.mounts"><code class="option">services.podman.settings.mounts</code>
+  </a>
+ </span>
+</dt>
+<dd>
+<p>mounts.conf configuration</p>
+
+<p><span class="emphasis"><em>Type:</em></span>
+list of string</p>
+
+<p><span class="emphasis"><em>Default:</em></span>
+<code class="literal">[ ]</code></p>
 
 <p><span class="emphasis"><em>Declared by:</em></span></p>
 <table border="0" summary="Simple list" class="simplelist">
